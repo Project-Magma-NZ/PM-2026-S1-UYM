@@ -16,14 +16,11 @@ Dashboard which shows:
 - Clean simple UX/UI with statistics displayed + basic charts 
 
 # Members
-Kavya Thangella (Team Lead)
-Thisumi Goonawardana
-Niklaus Li
-Ben Nguyen
-Wentao Yan
-Alex Xue
+- Kavya Thangella (Team Lead)
+- Thisumi Goonawardana
+- Niklaus Li
+- Ben Nguyen
+- Wentao Yan
+- Alex Xue
 
 # Setup
-=======
-# PM-2026-S1-UYM
->>>>>>> fc91dd3bbb75ba98de2e90f197302c7fc0cdd2c0
