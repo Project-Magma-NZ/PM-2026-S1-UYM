@@ -127,7 +127,7 @@ All endpoints were tested successfully.
 ## 7. API Usage (For Frontend)
 
 The following examples show how frontend developers can use the API.
-
+These endpoints are intended to be used programmatically (e.g., via fetch or axios in frontend applications), not manually through the browser.
 ---
 
 ### Facebook Page Info
