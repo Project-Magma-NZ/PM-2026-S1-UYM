@@ -217,5 +217,7 @@ Optional:
 ---
 
 ## 8. Conclusion
-
 The mock API is fully functional and suitable for development, testing, and frontend integration before connecting to real Meta APIs.
+
+## 9. Development Note
+This mock API documentation is intended to support frontend integration and dashboard development during the prototype stage.
