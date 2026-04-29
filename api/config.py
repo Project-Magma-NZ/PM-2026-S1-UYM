@@ -7,7 +7,7 @@ class Settings:
     api_prefix: str = os.getenv("API_PREFIX", "/api/v1")
     api_host: str = os.getenv("API_HOST", "0.0.0.0")
     api_port: int = int(os.getenv("API_PORT", "8000"))
-    output_dir: str = os.getenv("OUTPUT_DIR", "outputs")
+    output_dir: str = os.getenv("OUTPUT_DIR", "backend/Google Analytics/outputs")
     allowed_origins: tuple[str, ...] = tuple(
         origin.strip()
         for origin in os.getenv(
