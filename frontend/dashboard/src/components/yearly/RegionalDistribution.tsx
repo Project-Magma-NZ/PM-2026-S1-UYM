@@ -1,13 +1,20 @@
+import { useState, useEffect } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import { REGIONS } from '../../data/mockData';
+import { fetchNZRegions } from '../../services/analytics';
 
 const WORLD_TOPO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
-
-// New Zealand country numeric code (ISO 3166-1)
 const NZ_COUNTRY_ID = '554';
 
+interface Region { label: string; percentage: number; }
+
 const RegionalDistribution = () => {
-  const topRegion = REGIONS[0];
+  const [regions, setRegions] = useState<Region[]>([]);
+
+  useEffect(() => {
+    fetchNZRegions().then(setRegions).catch(() => {});
+  }, []);
+
+  const topRegion = regions[0];
 
   return (
     <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
@@ -15,7 +22,6 @@ const RegionalDistribution = () => {
 
       <div className="relative bg-slate-50 rounded-xl mb-4 overflow-hidden" style={{ height: '220px' }}>
         <ComposableMap
-          // Zoom and center projection onto New Zealand
           projectionConfig={{ scale: 1800, center: [172, -41] }}
           style={{ width: '100%', height: '100%' }}
         >
@@ -42,15 +48,19 @@ const RegionalDistribution = () => {
           </Geographies>
         </ComposableMap>
 
-        {/* Top region label */}
-        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-md border border-slate-100">
-          <p className="text-[8px] text-slate-400 font-bold uppercase tracking-widest">Top Region</p>
-          <p className="text-sm font-black text-slate-900">{topRegion.label}</p>
-        </div>
+        {topRegion && (
+          <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-md border border-slate-100">
+            <p className="text-[8px] text-slate-400 font-bold uppercase tracking-widest">Top Region</p>
+            <p className="text-sm font-black text-slate-900">{topRegion.label}</p>
+          </div>
+        )}
       </div>
 
       <div className="space-y-3">
-        {REGIONS.map((region, i) => (
+        {regions.length === 0 && (
+          <p className="text-sm text-slate-400 font-medium">No region data available.</p>
+        )}
+        {regions.map((region, i) => (
           <div key={i} className="space-y-1">
             <div className="flex justify-between text-sm font-bold">
               <span className="text-slate-600">{region.label}</span>

@@ -1,103 +1,329 @@
-dimension_name,dimension_value,activeUsers,newUsers,sessions,engagedSessions,eventCount,userEngagementDuration,date_range_start,date_range_end
-city,Auckland,199,179,353,201,2033,18695,28daysAgo,today
-city,Singapore,159,159,158,2,485,60,28daysAgo,today
-city,(not set),105,103,110,15,395,471,28daysAgo,today
-city,Christchurch,52,43,64,34,330,3303,28daysAgo,today
-city,Wellington,23,17,30,16,189,1649,28daysAgo,today
-city,Ashburn,22,21,22,8,84,66,28daysAgo,today
-city,Canberra,13,13,13,1,40,0,28daysAgo,today
-city,Melbourne,13,13,13,0,39,0,28daysAgo,today
-city,Sydney,12,12,12,4,47,97,28daysAgo,today
-city,Des Moines,8,10,10,3,34,34,28daysAgo,today
-city,Prebbleton,8,6,10,6,42,246,28daysAgo,today
-city,Prineville,7,7,7,3,24,15,28daysAgo,today
-city,Hangzhou,6,6,6,0,20,1,28daysAgo,today
-city,Tauranga,6,6,7,6,55,492,28daysAgo,today
-city,Dublin,5,5,5,1,17,4,28daysAgo,today
-city,Hamilton,5,4,9,4,69,796,28daysAgo,today
-city,London,5,6,5,5,35,94,28daysAgo,today
-city,Shanghai,5,5,5,0,18,1,28daysAgo,today
-city,Boardman,4,4,4,3,29,21,28daysAgo,today
-city,Dubai,4,4,4,0,12,0,28daysAgo,today
-city,Forest City,4,4,4,2,14,14,28daysAgo,today
-city,Guangzhou,4,4,4,1,13,7,28daysAgo,today
-city,Zhuhai,4,4,4,0,12,0,28daysAgo,today
-city,Chengdu,3,3,3,0,10,4,28daysAgo,today
-city,Cheyenne,3,3,3,0,11,2,28daysAgo,today
-city,Paris,3,2,3,3,10,6,28daysAgo,today
-city,Seattle,3,3,4,0,12,1,28daysAgo,today
-city,Taupo,3,2,3,2,16,221,28daysAgo,today
-city,Te Anau,3,3,7,3,32,231,28daysAgo,today
-city,Aspen,2,2,2,0,8,9,28daysAgo,today
-city,Changsha,2,2,2,0,8,9,28daysAgo,today
-city,Dunedin,2,1,2,2,9,146,28daysAgo,today
-city,Flint Hill,2,2,2,2,10,30,28daysAgo,today
-city,Frankfurt am Main,2,3,2,1,10,0,28daysAgo,today
-city,Hong Kong,2,2,2,0,8,1,28daysAgo,today
-city,Jiaxing,2,1,2,0,4,1,28daysAgo,today
-city,Levin,2,1,5,3,37,502,28daysAgo,today
-city,Los Angeles,2,2,2,0,6,0,28daysAgo,today
-city,Lulea,2,2,2,1,8,7,28daysAgo,today
-city,Montreal,2,4,2,2,12,0,28daysAgo,today
-city,Porirua,2,2,2,2,20,238,28daysAgo,today
-city,Santa Clara,2,2,2,0,6,0,28daysAgo,today
-city,Silverdale,2,2,2,2,16,75,28daysAgo,today
-city,Whangaparaoa,2,2,2,2,16,107,28daysAgo,today
-city,Xiamen,2,2,2,0,8,4,28daysAgo,today
-city,Abu Dhabi,1,1,1,0,3,0,28daysAgo,today
-city,Ahmedabad,1,1,1,0,3,0,28daysAgo,today
-city,Alloa,1,1,1,1,4,33,28daysAgo,today
-city,Altoona,1,1,1,1,4,7,28daysAgo,today
-city,Amsterdam,1,1,1,0,3,0,28daysAgo,today
-city,Baghdad,1,1,1,0,3,0,28daysAgo,today
-city,Bayingolin Mongol Autonomous Prefecture,1,1,1,0,3,0,28daysAgo,today
-city,Beijing,1,1,1,0,3,0,28daysAgo,today
-city,Bengaluru,1,1,1,0,3,0,28daysAgo,today
-city,Brisbane,1,1,1,0,3,0,28daysAgo,today
-city,Bristol,1,1,1,1,7,33,28daysAgo,today
-city,Chertsey,1,1,1,1,4,77,28daysAgo,today
-city,Chicago,1,1,1,0,3,0,28daysAgo,today
-city,Chilliwack,1,1,2,1,6,0,28daysAgo,today
-city,Chongqing,1,1,1,0,4,1,28daysAgo,today
-city,Council Bluffs,1,1,1,0,3,0,28daysAgo,today
-city,Culiacan,1,1,1,1,4,12,28daysAgo,today
-city,Fort Worth,1,0,1,1,1,4,28daysAgo,today
-city,Fredericksburg,1,1,1,1,5,9,28daysAgo,today
-city,Gunnison,1,1,1,0,5,1,28daysAgo,today
-city,Haiphong,1,1,1,0,3,0,28daysAgo,today
-city,Idaho Springs,1,1,1,0,3,0,28daysAgo,today
-city,Jinan,1,1,1,0,4,3,28daysAgo,today
-city,Kabul,1,1,1,0,3,0,28daysAgo,today
-city,Karaka,1,1,1,0,3,0,28daysAgo,today
-city,Lagos,1,1,1,1,9,1865,28daysAgo,today
-city,Lahore,1,1,1,1,4,17,28daysAgo,today
-city,Lincoln,1,1,1,1,4,15,28daysAgo,today
-city,Lower Hutt,1,1,1,1,7,143,28daysAgo,today
-city,Minneapolis,1,1,1,1,8,86,28daysAgo,today
-city,Moses Lake,1,1,1,0,3,0,28daysAgo,today
-city,Nadi,1,1,1,0,3,0,28daysAgo,today
-city,Napier,1,1,1,1,5,45,28daysAgo,today
-city,Nassau,1,1,1,1,5,72,28daysAgo,today
-city,Nelson,1,1,2,1,6,100,28daysAgo,today
-city,New York,1,1,1,0,4,1,28daysAgo,today
-city,Oamaru,1,1,1,0,3,0,28daysAgo,today
-city,Palmerston North,1,0,1,0,3,1,28daysAgo,today
-city,Patna,1,1,1,1,5,2,28daysAgo,today
-city,Philadelphia,1,1,1,0,3,0,28daysAgo,today
-city,Providence,1,1,1,0,3,0,28daysAgo,today
-city,Puchong,1,1,1,1,16,97,28daysAgo,today
-city,Qingdao,1,1,1,0,4,0,28daysAgo,today
-city,Queenstown,1,1,1,1,10,139,28daysAgo,today
-city,Rach Gia,1,0,1,0,1,0,28daysAgo,today
-city,Raumati South,1,1,1,1,4,10,28daysAgo,today
-city,Rotorua,1,1,1,1,5,1,28daysAgo,today
-city,Salt Lake City,1,1,1,0,4,4,28daysAgo,today
-city,Stockholm,1,1,1,0,5,2,28daysAgo,today
-city,Stockton-on-Tees,1,0,1,1,1,34,28daysAgo,today
-city,Suzhou,1,1,1,0,3,0,28daysAgo,today
-city,Tirana,1,1,1,0,3,0,28daysAgo,today
-city,Vladivostok,1,1,1,0,3,0,28daysAgo,today
-city,Whanganui,1,1,1,1,5,33,28daysAgo,today
-city,Xi'An,1,1,1,0,4,3,28daysAgo,today
-city,Yerevan,1,1,1,0,3,0,28daysAgo,today
-city,Zhoushan,1,1,1,1,4,0,28daysAgo,today
+demographic_dimension,year_month,demographic_value,activeUsers,newUsers,sessions,engagedSessions,eventCount,userEngagementDuration,date_range_start,date_range_end
+city,202601,(not set),40,39,40,9,166,625,2026-01-01,yesterday
+city,202601,Amesbury,1,1,1,1,4,6,2026-01-01,yesterday
+city,202601,Amsterdam,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Arlington,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Ashburn,14,14,14,10,74,136,2026-01-01,yesterday
+city,202601,Aspen,1,1,1,0,5,4,2026-01-01,yesterday
+city,202601,Auckland,145,130,224,148,1389,16438,2026-01-01,yesterday
+city,202601,Beijing,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Bossier City,1,1,1,1,4,32,2026-01-01,yesterday
+city,202601,Brazzaville,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Brisbane,2,2,2,2,16,206,2026-01-01,yesterday
+city,202601,Calgary,1,0,1,0,2,0,2026-01-01,yesterday
+city,202601,Canberra,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Christchurch,21,17,22,18,111,1391,2026-01-01,yesterday
+city,202601,Chula Vista,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Delhi,1,1,1,0,5,1,2026-01-01,yesterday
+city,202601,Des Moines,2,2,2,0,8,9,2026-01-01,yesterday
+city,202601,Dhaka,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Dlingo,1,1,1,1,5,31,2026-01-01,yesterday
+city,202601,Dublin,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Dunedin,1,1,1,1,18,146,2026-01-01,yesterday
+city,202601,Edmonton,10,10,10,7,55,3813,2026-01-01,yesterday
+city,202601,Everett,1,1,1,0,4,6,2026-01-01,yesterday
+city,202601,Forest City,2,2,2,0,6,0,2026-01-01,yesterday
+city,202601,Gilbert,1,1,1,0,4,1,2026-01-01,yesterday
+city,202601,Grafton,1,1,1,1,7,10,2026-01-01,yesterday
+city,202601,Greenacres,1,1,1,1,4,10,2026-01-01,yesterday
+city,202601,Hamilton,2,2,4,2,35,129,2026-01-01,yesterday
+city,202601,Hangzhou,2,2,2,0,6,0,2026-01-01,yesterday
+city,202601,Hanoi,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Houston,1,1,1,0,4,2,2026-01-01,yesterday
+city,202601,Irvine,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Johnstone,1,1,1,1,5,18,2026-01-01,yesterday
+city,202601,Kabul,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Kumeu,1,0,1,0,2,0,2026-01-01,yesterday
+city,202601,Lanzhou,237,237,236,1,716,4,2026-01-01,yesterday
+city,202601,Loceret,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,London,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Lower Hutt,1,1,1,1,6,23,2026-01-01,yesterday
+city,202601,Lulea,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Masterton,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Melbourne,1,1,1,1,5,13,2026-01-01,yesterday
+city,202601,Moruya,1,0,1,0,2,0,2026-01-01,yesterday
+city,202601,Moses Lake,3,3,3,2,11,49,2026-01-01,yesterday
+city,202601,Napier,1,1,1,1,6,203,2026-01-01,yesterday
+city,202601,Nelson,1,1,2,1,14,43,2026-01-01,yesterday
+city,202601,North Bergen,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Okinawa,1,1,2,1,6,11,2026-01-01,yesterday
+city,202601,Palmerston North,1,1,1,1,6,83,2026-01-01,yesterday
+city,202601,Paraparaumu,1,1,2,1,9,54,2026-01-01,yesterday
+city,202601,Paris,1,0,1,1,2,3,2026-01-01,yesterday
+city,202601,Peace River,1,1,1,1,4,4,2026-01-01,yesterday
+city,202601,Philadelphia,1,1,1,0,4,1,2026-01-01,yesterday
+city,202601,Phuc Yen,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Prebbleton,3,3,3,2,17,199,2026-01-01,yesterday
+city,202601,Qingdao,2,2,2,0,7,0,2026-01-01,yesterday
+city,202601,Quebec City,1,0,1,0,2,0,2026-01-01,yesterday
+city,202601,Richmond,1,0,1,1,14,186,2026-01-01,yesterday
+city,202601,Roldanillo,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,San Jose,1,1,1,0,4,3,2026-01-01,yesterday
+city,202601,San Pedro Sula,1,1,1,1,4,65,2026-01-01,yesterday
+city,202601,Shanghai,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Singapore,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Sydney,1,1,1,1,8,148,2026-01-01,yesterday
+city,202601,Taizhou,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Tauranga,5,4,6,5,23,157,2026-01-01,yesterday
+city,202601,Toronto,1,1,1,1,4,25,2026-01-01,yesterday
+city,202601,Tres Arroyos,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Union,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Upper Hutt,1,1,1,1,4,104,2026-01-01,yesterday
+city,202601,Vegreville,1,1,1,0,3,0,2026-01-01,yesterday
+city,202601,Wellington,15,12,17,11,71,344,2026-01-01,yesterday
+city,202601,Whangaparaoa,0,0,2,0,4,0,2026-01-01,yesterday
+city,202601,Williston,1,1,1,1,4,9,2026-01-01,yesterday
+city,202601,Zhuhai,1,1,1,0,3,0,2026-01-01,yesterday
+city,202602,(not set),133,135,133,32,502,3401,2026-01-01,yesterday
+city,202602,57373,1,1,1,0,3,0,2026-01-01,yesterday
+city,202602,Accra,3,4,4,4,24,51,2026-01-01,yesterday
+city,202602,Aizawl,1,1,1,1,4,1,2026-01-01,yesterday
+city,202602,Altoona,2,2,2,0,6,0,2026-01-01,yesterday
+city,202602,Apopka,2,2,2,1,8,0,2026-01-01,yesterday
+city,202602,Ashburn,13,13,13,7,58,53,2026-01-01,yesterday
+city,202602,Aspen,1,1,1,0,3,0,2026-01-01,yesterday
+city,202602,Atlanta,1,1,1,0,3,0,2026-01-01,yesterday
+city,202602,Auckland,177,155,274,171,1849,12049,2026-01-01,yesterday
+city,202602,Bayingolin Mongol Autonomous Prefecture,4,4,4,0,13,0,2026-01-01,yesterday
+city,202602,Bayreuth,1,1,1,0,4,1,2026-01-01,yesterday
+city,202602,Berlin,2,2,2,1,8,18,2026-01-01,yesterday
+city,202602,Bloomington,1,0,1,1,8,9,2026-01-01,yesterday
+city,202602,Boardman,4,4,4,1,27,18,2026-01-01,yesterday
+city,202602,Cambridge,1,1,1,1,8,247,2026-01-01,yesterday
+city,202602,Canberra,2,2,2,0,6,0,2026-01-01,yesterday
+city,202602,Chicago,1,1,1,1,5,0,2026-01-01,yesterday
+city,202602,Christchurch,25,18,29,19,148,1654,2026-01-01,yesterday
+city,202602,Columbus,7,7,7,0,21,0,2026-01-01,yesterday
+city,202602,Council Bluffs,6,6,6,1,19,13,2026-01-01,yesterday
+city,202602,Dortmund,3,3,3,0,9,0,2026-01-01,yesterday
+city,202602,Dublin,5,5,5,1,17,1,2026-01-01,yesterday
+city,202602,Forest City,6,6,6,0,18,0,2026-01-01,yesterday
+city,202602,Fort Worth,4,4,4,0,13,0,2026-01-01,yesterday
+city,202602,Gallatin,3,2,3,2,10,12,2026-01-01,yesterday
+city,202602,Gisborne,1,1,1,1,4,22,2026-01-01,yesterday
+city,202602,Gore,1,1,1,1,10,35,2026-01-01,yesterday
+city,202602,Guangzhou,1,1,1,0,3,0,2026-01-01,yesterday
+city,202602,Hamilton,3,2,3,3,20,196,2026-01-01,yesterday
+city,202602,Hanamkonda,7,7,7,5,37,71,2026-01-01,yesterday
+city,202602,Hangzhou,2,2,2,0,6,0,2026-01-01,yesterday
+city,202602,Houston,1,1,1,0,4,1,2026-01-01,yesterday
+city,202602,Hyderabad,1,0,1,1,2,3,2026-01-01,yesterday
+city,202602,Jiaxing,1,1,1,0,4,2,2026-01-01,yesterday
+city,202602,Kabul,1,1,1,0,3,0,2026-01-01,yesterday
+city,202602,Kodad,1,1,1,1,5,5,2026-01-01,yesterday
+city,202602,Lanzhou,160,159,160,3,482,4,2026-01-01,yesterday
+city,202602,Lawrenceville,1,1,1,0,3,0,2026-01-01,yesterday
+city,202602,Leipzig,1,1,1,0,4,1,2026-01-01,yesterday
+city,202602,London,1,1,1,1,5,19,2026-01-01,yesterday
+city,202602,Los Angeles,1,1,1,0,3,0,2026-01-01,yesterday
+city,202602,Lower Hutt,3,3,5,5,33,160,2026-01-01,yesterday
+city,202602,Lulea,2,2,2,0,6,0,2026-01-01,yesterday
+city,202602,Mechernich,1,1,1,1,7,61,2026-01-01,yesterday
+city,202602,Melbourne,3,3,3,1,10,6,2026-01-01,yesterday
+city,202602,Napier,1,1,1,1,14,66,2026-01-01,yesterday
+city,202602,New Delhi,1,1,1,0,3,0,2026-01-01,yesterday
+city,202602,New York,6,6,6,0,20,2,2026-01-01,yesterday
+city,202602,Osborne,1,1,1,1,4,29,2026-01-01,yesterday
+city,202602,Ossian,1,1,1,1,6,9,2026-01-01,yesterday
+city,202602,Palmerston North,2,2,4,2,20,54,2026-01-01,yesterday
+city,202602,Prebbleton,2,2,2,2,15,36,2026-01-01,yesterday
+city,202602,Prineville,7,7,7,0,21,0,2026-01-01,yesterday
+city,202602,Pukekohe,2,1,5,4,196,964,2026-01-01,yesterday
+city,202602,Qingdao,2,2,2,0,8,1,2026-01-01,yesterday
+city,202602,Queenstown,1,1,2,0,5,0,2026-01-01,yesterday
+city,202602,Reston,1,1,1,1,4,0,2026-01-01,yesterday
+city,202602,Richmond,1,1,1,1,6,31,2026-01-01,yesterday
+city,202602,Ringgold,1,1,1,1,6,10,2026-01-01,yesterday
+city,202602,Rossford,2,2,2,1,13,11,2026-01-01,yesterday
+city,202602,Rotorua,1,1,1,0,4,5,2026-01-01,yesterday
+city,202602,Salt Lake City,1,1,1,0,4,6,2026-01-01,yesterday
+city,202602,San Diego,1,1,1,0,3,0,2026-01-01,yesterday
+city,202602,San Jose,1,1,1,0,3,0,2026-01-01,yesterday
+city,202602,Santa Fe,1,1,1,0,3,0,2026-01-01,yesterday
+city,202602,Seattle,1,1,1,0,4,1,2026-01-01,yesterday
+city,202602,Sebring,2,2,2,1,8,13,2026-01-01,yesterday
+city,202602,Shanghai,4,4,4,0,16,8,2026-01-01,yesterday
+city,202602,Shenzhen,2,2,2,1,9,25,2026-01-01,yesterday
+city,202602,Singapore,70,67,73,1,211,144,2026-01-01,yesterday
+city,202602,Socastee,2,2,2,1,12,22,2026-01-01,yesterday
+city,202602,Sonipat,1,1,1,1,4,11,2026-01-01,yesterday
+city,202602,Springfield,1,1,1,1,5,6,2026-01-01,yesterday
+city,202602,Suralaga,1,1,1,1,4,32,2026-01-01,yesterday
+city,202602,Suzhou,2,2,2,0,7,2,2026-01-01,yesterday
+city,202602,Sydney,5,4,5,1,20,21,2026-01-01,yesterday
+city,202602,Taupo,1,1,1,1,5,32,2026-01-01,yesterday
+city,202602,Tauranga,1,1,1,1,4,62,2026-01-01,yesterday
+city,202602,Te Puke,1,1,1,1,10,65,2026-01-01,yesterday
+city,202602,Tirana,2,2,2,0,6,0,2026-01-01,yesterday
+city,202602,Visakhapatnam,1,1,1,1,6,5,2026-01-01,yesterday
+city,202602,Warangal,1,1,1,1,6,10,2026-01-01,yesterday
+city,202602,Warsaw,1,1,1,0,3,0,2026-01-01,yesterday
+city,202602,Washington,1,1,1,1,8,27,2026-01-01,yesterday
+city,202602,Wellington,19,14,21,14,82,859,2026-01-01,yesterday
+city,202602,Yonkers,2,2,2,1,8,17,2026-01-01,yesterday
+city,202603,(not set),126,126,127,15,446,452,2026-01-01,yesterday
+city,202603,Abu Dhabi,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Alloa,1,1,1,1,4,33,2026-01-01,yesterday
+city,202603,Altoona,5,5,5,2,17,14,2026-01-01,yesterday
+city,202603,Amsterdam,2,2,2,0,6,0,2026-01-01,yesterday
+city,202603,Ashburn,21,20,21,9,84,94,2026-01-01,yesterday
+city,202603,Ashburton,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Aspen,4,4,4,0,13,4,2026-01-01,yesterday
+city,202603,Auckland,203,183,332,199,1982,16849,2026-01-01,yesterday
+city,202603,Baghdad,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Bayingolin Mongol Autonomous Prefecture,2,2,2,0,6,0,2026-01-01,yesterday
+city,202603,Beijing,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Bengaluru,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Birmingham,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Boardman,6,6,6,2,21,14,2026-01-01,yesterday
+city,202603,Brisbane,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Bristol,1,1,1,1,7,33,2026-01-01,yesterday
+city,202603,Canberra,9,9,9,1,28,0,2026-01-01,yesterday
+city,202603,Changsha,2,2,2,0,8,9,2026-01-01,yesterday
+city,202603,Chengdu,3,3,3,0,10,4,2026-01-01,yesterday
+city,202603,Chertsey,1,1,1,1,4,77,2026-01-01,yesterday
+city,202603,Cheyenne,3,3,3,0,11,2,2026-01-01,yesterday
+city,202603,Chicago,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Chilliwack,1,1,2,1,6,0,2026-01-01,yesterday
+city,202603,Chongqing,2,2,2,0,8,4,2026-01-01,yesterday
+city,202603,Christchurch,37,30,49,23,234,1843,2026-01-01,yesterday
+city,202603,Council Bluffs,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Des Moines,8,10,10,3,34,34,2026-01-01,yesterday
+city,202603,Dubai,4,4,4,0,12,0,2026-01-01,yesterday
+city,202603,Dublin,3,3,3,0,9,0,2026-01-01,yesterday
+city,202603,Dunedin,1,0,1,1,3,56,2026-01-01,yesterday
+city,202603,Flint Hill,3,4,3,3,18,82,2026-01-01,yesterday
+city,202603,Forest City,4,4,4,0,12,0,2026-01-01,yesterday
+city,202603,Fort Worth,4,2,4,2,8,4,2026-01-01,yesterday
+city,202603,Gold Coast,1,1,1,1,7,11,2026-01-01,yesterday
+city,202603,Guangzhou,5,5,5,1,17,7,2026-01-01,yesterday
+city,202603,Hamilton,6,5,10,5,74,813,2026-01-01,yesterday
+city,202603,Hangzhou,7,7,7,0,24,1,2026-01-01,yesterday
+city,202603,Hong Kong,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Hyderabad,1,1,1,1,10,52,2026-01-01,yesterday
+city,202603,Idaho Springs,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Indian River Shores,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Jeddah,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Jiaxing,2,1,2,0,4,1,2026-01-01,yesterday
+city,202603,Jinan,1,1,1,0,4,3,2026-01-01,yesterday
+city,202603,Kabul,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Karaka,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Knox City,2,2,2,1,11,34,2026-01-01,yesterday
+city,202603,Lagos,1,1,1,1,9,1865,2026-01-01,yesterday
+city,202603,Lanzhou,41,41,41,0,123,0,2026-01-01,yesterday
+city,202603,Levin,3,2,6,3,40,502,2026-01-01,yesterday
+city,202603,Lincoln,1,1,1,1,4,15,2026-01-01,yesterday
+city,202603,Los Angeles,2,2,2,0,6,0,2026-01-01,yesterday
+city,202603,Lulea,7,7,7,2,25,14,2026-01-01,yesterday
+city,202603,Melbourne,14,14,14,0,42,0,2026-01-01,yesterday
+city,202603,Minneapolis,1,1,1,1,8,86,2026-01-01,yesterday
+city,202603,Montreal,1,2,1,1,6,0,2026-01-01,yesterday
+city,202603,Mount Maunganui,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Muscat,1,1,1,0,4,3,2026-01-01,yesterday
+city,202603,Napier,1,1,1,1,5,45,2026-01-01,yesterday
+city,202603,Nashville,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Nassau,1,1,1,1,5,72,2026-01-01,yesterday
+city,202603,Nelson,1,1,2,1,6,100,2026-01-01,yesterday
+city,202603,New York,1,1,1,0,4,1,2026-01-01,yesterday
+city,202603,Norwich,1,1,1,1,4,47,2026-01-01,yesterday
+city,202603,Oamaru,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Paris,2,0,2,2,4,6,2026-01-01,yesterday
+city,202603,Patna,1,1,1,1,5,2,2026-01-01,yesterday
+city,202603,Perth,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Prebbleton,12,8,13,7,48,257,2026-01-01,yesterday
+city,202603,Prineville,2,1,2,1,5,7,2026-01-01,yesterday
+city,202603,Providence,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Puchong,1,1,1,1,16,97,2026-01-01,yesterday
+city,202603,Rach Gia,1,0,1,0,1,0,2026-01-01,yesterday
+city,202603,Raumati South,1,1,1,1,4,10,2026-01-01,yesterday
+city,202603,Rotorua,1,1,1,1,5,1,2026-01-01,yesterday
+city,202603,Salt Lake City,1,1,1,0,4,4,2026-01-01,yesterday
+city,202603,Samarkand,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Santa Clara,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Santa Fe,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Seattle,3,3,4,0,12,1,2026-01-01,yesterday
+city,202603,Serang,1,1,1,1,4,12,2026-01-01,yesterday
+city,202603,Shanghai,4,4,4,0,14,1,2026-01-01,yesterday
+city,202603,Singapore,182,181,181,0,544,1,2026-01-01,yesterday
+city,202603,Stockton-on-Tees,1,0,1,1,1,34,2026-01-01,yesterday
+city,202603,Suzhou,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Sydney,14,14,14,3,49,44,2026-01-01,yesterday
+city,202603,Taupo,3,2,3,2,16,221,2026-01-01,yesterday
+city,202603,Tauranga,11,9,12,10,89,708,2026-01-01,yesterday
+city,202603,Te Puke,2,2,2,2,14,162,2026-01-01,yesterday
+city,202603,Tirana,2,2,2,0,6,0,2026-01-01,yesterday
+city,202603,Vladivostok,1,1,1,0,3,0,2026-01-01,yesterday
+city,202603,Wellington,35,27,44,17,186,1151,2026-01-01,yesterday
+city,202603,Whangaparaoa,1,1,1,1,7,81,2026-01-01,yesterday
+city,202603,Xi'An,3,3,3,0,12,4,2026-01-01,yesterday
+city,202603,Xiamen,2,2,2,0,8,4,2026-01-01,yesterday
+city,202603,Yerevan,2,2,2,0,6,0,2026-01-01,yesterday
+city,202603,Yichang,1,1,1,0,4,0,2026-01-01,yesterday
+city,202603,Zhoushan,1,1,1,1,4,0,2026-01-01,yesterday
+city,202603,Zhuhai,3,3,3,0,9,0,2026-01-01,yesterday
+city,202604,(not set),41,38,45,7,149,117,2026-01-01,yesterday
+city,202604,Ahmedabad,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Altoona,1,1,1,1,4,7,2026-01-01,yesterday
+city,202604,Ashburn,18,18,18,3,63,25,2026-01-01,yesterday
+city,202604,Aspen,3,3,3,0,10,5,2026-01-01,yesterday
+city,202604,Auckland,138,117,234,139,1387,13242,2026-01-01,yesterday
+city,202604,Boardman,1,1,1,1,18,8,2026-01-01,yesterday
+city,202604,Burnaby,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Canberra,7,7,7,0,21,0,2026-01-01,yesterday
+city,202604,Christchurch,40,30,49,28,246,2111,2026-01-01,yesterday
+city,202604,Council Bluffs,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Culiacan,1,1,1,1,4,12,2026-01-01,yesterday
+city,202604,Dublin,3,3,3,1,11,4,2026-01-01,yesterday
+city,202604,Dunedin,1,1,1,1,6,90,2026-01-01,yesterday
+city,202604,Forest City,4,4,4,2,14,14,2026-01-01,yesterday
+city,202604,Fort Worth,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Frankfurt am Main,2,3,2,1,10,0,2026-01-01,yesterday
+city,202604,Fredericksburg,1,1,1,1,5,9,2026-01-01,yesterday
+city,202604,Gunnison,3,3,3,0,12,6,2026-01-01,yesterday
+city,202604,Haiphong,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Hamilton,3,2,3,1,14,47,2026-01-01,yesterday
+city,202604,Hanoi,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Hong Kong,1,1,1,0,5,1,2026-01-01,yesterday
+city,202604,Invercargill,1,1,1,1,19,129,2026-01-01,yesterday
+city,202604,Jinhua,1,1,1,0,4,0,2026-01-01,yesterday
+city,202604,Lahore,1,1,1,1,4,17,2026-01-01,yesterday
+city,202604,Levin,1,0,1,0,3,2,2026-01-01,yesterday
+city,202604,London,5,6,5,5,35,94,2026-01-01,yesterday
+city,202604,Los Angeles,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Lower Hutt,2,2,3,2,14,144,2026-01-01,yesterday
+city,202604,Melbourne,3,3,3,0,9,0,2026-01-01,yesterday
+city,202604,Menteng,1,1,1,1,17,217,2026-01-01,yesterday
+city,202604,Montreal,2,4,2,2,12,0,2026-01-01,yesterday
+city,202604,Moses Lake,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Nadi,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Napier,2,2,3,2,25,63,2026-01-01,yesterday
+city,202604,Nelson,2,2,2,1,8,5,2026-01-01,yesterday
+city,202604,New Plymouth,0,0,2,0,4,0,2026-01-01,yesterday
+city,202604,New York,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Orewa,1,1,1,1,4,7,2026-01-01,yesterday
+city,202604,Palmerston North,1,0,1,0,3,1,2026-01-01,yesterday
+city,202604,Paris,1,2,1,1,6,0,2026-01-01,yesterday
+city,202604,Philadelphia,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Porirua,2,2,2,2,20,238,2026-01-01,yesterday
+city,202604,Prebbleton,3,2,4,2,17,100,2026-01-01,yesterday
+city,202604,Prineville,9,9,9,3,30,15,2026-01-01,yesterday
+city,202604,Qingdao,2,2,2,0,7,0,2026-01-01,yesterday
+city,202604,Queenstown,1,1,1,1,10,139,2026-01-01,yesterday
+city,202604,Samarkand,1,0,1,1,1,22,2026-01-01,yesterday
+city,202604,San Francisco,1,1,1,0,4,4,2026-01-01,yesterday
+city,202604,Santa Clara,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Shanghai,1,1,1,0,4,0,2026-01-01,yesterday
+city,202604,Silverdale,2,2,3,2,18,75,2026-01-01,yesterday
+city,202604,Singapore,127,127,127,3,390,60,2026-01-01,yesterday
+city,202604,Stockholm,1,1,1,0,5,2,2026-01-01,yesterday
+city,202604,Suzhou,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Sydney,11,11,11,2,39,80,2026-01-01,yesterday
+city,202604,Tauranga,2,2,2,2,13,102,2026-01-01,yesterday
+city,202604,Te Anau,3,3,7,3,32,231,2026-01-01,yesterday
+city,202604,Toronto,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Warkworth,1,1,1,0,3,0,2026-01-01,yesterday
+city,202604,Washington,1,1,1,1,4,19,2026-01-01,yesterday
+city,202604,Wellington,13,10,19,11,157,1616,2026-01-01,yesterday
+city,202604,Whanganui,1,1,1,1,5,33,2026-01-01,yesterday
+city,202604,Whangaparaoa,1,1,1,1,9,26,2026-01-01,yesterday
+city,202604,Zhuhai,1,1,1,0,3,0,2026-01-01,yesterday

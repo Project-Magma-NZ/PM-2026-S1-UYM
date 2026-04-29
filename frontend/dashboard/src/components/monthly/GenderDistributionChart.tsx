@@ -1,8 +1,19 @@
+import { useState, useEffect } from 'react';
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { GENDER_DISTRIBUTION } from '../../data/mockData';
+import { fetchGenderDistribution } from '../../services/analytics';
+import type { GenderData } from '../../types';
 
-const GenderDistributionChart = () => {
-  const dominant = [...GENDER_DISTRIBUTION].sort((a, b) => b.value - a.value)[0];
+interface Props { yearMonth?: string; }
+
+const GenderDistributionChart = ({ yearMonth }: Props) => {
+  const [data, setData] = useState<GenderData[]>(GENDER_DISTRIBUTION);
+
+  useEffect(() => {
+    fetchGenderDistribution(yearMonth).then(setData).catch(() => {});
+  }, [yearMonth]);
+
+  const dominant = [...data].sort((a, b) => b.value - a.value)[0];
 
   return (
     <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col">
@@ -14,8 +25,8 @@ const GenderDistributionChart = () => {
         </div>
         <ResponsiveContainer width="100%" height={210}>
           <PieChart>
-            <Pie data={GENDER_DISTRIBUTION} innerRadius={65} outerRadius={82} paddingAngle={5} dataKey="value">
-              {GENDER_DISTRIBUTION.map((entry, index) => (
+            <Pie data={data} innerRadius={65} outerRadius={82} paddingAngle={5} dataKey="value">
+              {data.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.color} />
               ))}
             </Pie>
@@ -23,7 +34,7 @@ const GenderDistributionChart = () => {
         </ResponsiveContainer>
       </div>
       <div className="space-y-3 mt-4">
-        {GENDER_DISTRIBUTION.map((item, i) => (
+        {data.map((item, i) => (
           <div key={i} className="flex justify-between items-center">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
