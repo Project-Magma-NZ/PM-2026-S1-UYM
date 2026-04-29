@@ -5,13 +5,26 @@ import Sidebar from './components/Sidebar';
 import LoginPage from './pages/LoginPage';
 import MonthlyStats from './pages/MonthlyStats';
 import YearlyStats from './pages/YearlyStats';
+import { supabase } from './lib/supabase';
 
 export default function App() {
-  const [view, setView] = useState<View>('login');
+  const [view, setView] = useState<View>('monthly');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true);
+    // Check if user is already logged in
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setIsAuthenticated(!!session);
+      setIsLoaded(true);
+    });
+
+    // Listen for login/logout events
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsAuthenticated(!!session);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   if (!isLoaded) return null;
@@ -19,7 +32,7 @@ export default function App() {
   return (
     <div className="min-h-screen font-sans">
       <AnimatePresence mode="wait">
-        {view === 'login' ? (
+        {!isAuthenticated ? (
           <motion.div
             key="login"
             initial={{ opacity: 0 }}
@@ -27,7 +40,7 @@ export default function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <LoginPage onLogin={() => setView('monthly')} />
+            <LoginPage onLogin={() => setIsAuthenticated(true)} />
           </motion.div>
         ) : (
           <motion.div
