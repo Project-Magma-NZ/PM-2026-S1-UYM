@@ -1,10 +1,12 @@
-# Project Magma 2026 Semester 1 - Upside Youth Mentoring
+# PM-2026-S1-UYM
 
-## Overview 
-Creating a web-based analytics dashboard for social media and website performance data for Upside Youth Mentoring. 
+## Project Overview
+
+Creating a web-based analytics dashboard for social media and website performance data for Upside Youth Mentoring.
 
 ## Tech Stack
-Frontend: 
+
+Frontend:
 - React 19 with TypeScript
 - Vite (dev server and build tool)
 - Tailwind CSS v4
@@ -12,17 +14,22 @@ Frontend:
 - react-simple-maps (NZ and world maps)
 - Motion (animations)
 
-Backend: 
+Backend:
+- Python
+- Google Analytics Data API
+- FastAPI
 
 ## Features (MVP)
+
 Dashboard which shows:
-- GoogleAnalytics metrics
+- Google Analytics metrics
 - Meta Business Suite metrics
 - Monthly summary tab
 - Yearly summary tab
-- Clean, simple UX/UI with statistics displayed + basic charts 
+- Clean, simple UX/UI with statistics displayed and basic charts
 
-# Members
+## Members
+
 - Kavya Thangella (Team Lead)
 - Thisumi Goonawardana
 - Niklaus Li
@@ -30,100 +37,13 @@ Dashboard which shows:
 - Wentao Yan
 - Alex Xue
 
-# Setup
-# Fake Meta Business Suite API
+## How to Run This Project
+In root folder, run: 
+```uv run --with fastapi --with uvicorn --with pandas uvicorn api.main:app --reload```
 
-This is a simple mock API that simulates Facebook and Instagram endpoints.
+In frontend/dashboard, run: 
+```npm run dev```
 
-It is designed for testing the integration of Meta API functionality with a frontend application, without requiring real Meta API access.
+Note: if normal npm install is not working try 
+```npm install --legacy-peer-deps```
 
----
-
-## Running the File / Server
-
-1. Install (or check if installed) Flask on your machine:
-   - `pip install flask`
-
-2. Run the script:
-   - `python final_fake_meta_api.py`
-
-3. The server will start at:
-   - `http://localhost:3001`
-
----
-
-## Authentication
-
-All endpoints require a fake (temporary) access token:
-
-- `access_token=fake_token`
-
----
-
-## Available Endpoints
-
-### For Facebook
-
-#### 1. Get Facebook Page Info
-
-http://localhost:3001/fb_page?access_token=fake_token
-
-##### Optional: specify fields (id, name, fan_count, followers_count, website)
-
-http://localhost:3001/fb_page?fields=id,name,fan_count,followers_count,website&access_token=fake_token
-
----
-
-#### 2. Get Facebook Page Insights
-
-http://localhost:3001/fb_page/insights?access_token=fake_token
-
-##### Optional: specify metrics (page_impressions, page_reach, page_fans, page_engaged_users)
-
-http://localhost:3001/fb_page/insights?metric=page_impressions,page_reach,page_fans,page_engaged_users&access_token=fake_token
-
----
-
-#### 3. Get Facebook Demographics (gender, age, location)
-
-http://localhost:3001/fb_page/demographics?access_token=fake_token
-
-##### Optional: specify dimensions (gender, age, location)
-
-http://localhost:3001/fb_page/demographics?dimension=gender,age,location&access_token=fake_token
-
----
-
-### For Instagram
-
-#### 1. Get Instagram Account Info
-
-http://localhost:3001/me/instagram_account?access_token=fake_token
-
----
-
-#### 2. Get Instagram Insights
-
-http://localhost:3001/ig_account/insights?access_token=fake_token
-
-##### Optional: specify metrics (impressions, reach, follower_count)
-
-http://localhost:3001/ig_account/insights?metric=impressions,reach,follower_count&access_token=fake_token
-
----
-
-#### 3. Get Instagram Demographics (gender, age, location)
-
-http://localhost:3001/ig_account/demographics?access_token=fake_token
-
-##### Optional: specify dimensions (gender, age, location)
-
-http://localhost:3001/ig_account/demographics?dimension=gender,age,location&access_token=fake_token
-
----
-
-## Notes
-
-- All data returned by this API is **mock (fake) data**
-- The API does **not connect to Meta services**
-- Intended for **development and testing purposes only**
