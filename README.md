@@ -1,10 +1,12 @@
-# Project Magma 2026 Semester 1 - Upside Youth Mentoring
+# PM-2026-S1-UYM
 
-## Overview 
-Creating a web-based analytics dashboard for social media and website performance data for Upside Youth Mentoring. 
+## Project Overview
+
+Creating a web-based analytics dashboard for social media and website performance data for Upside Youth Mentoring.
 
 ## Tech Stack
-Frontend: 
+
+Frontend:
 - React 19 with TypeScript
 - Vite (dev server and build tool)
 - Tailwind CSS v4
@@ -12,20 +14,36 @@ Frontend:
 - react-simple-maps (NZ and world maps)
 - Motion (animations)
 
-Backend: 
+Backend:
+- Python
+- Google Analytics Data API
+- FastAPI
 
 ## Features (MVP)
+
 Dashboard which shows:
-- GoogleAnalytics metrics
+- Google Analytics metrics
 - Meta Business Suite metrics
 - Monthly summary tab
 - Yearly summary tab
-- Clean, simple UX/UI with statistics displayed + basic charts 
+- Clean, simple UX/UI with statistics displayed and basic charts
 
-# Members
+## Members
+
 - Kavya Thangella (Team Lead)
 - Thisumi Goonawardana
 - Niklaus Li
 - Ben Nguyen
 - Wentao Yan
 - Alex Xue
+
+## How to Run This Project
+In root folder, run: 
+```uv run --with fastapi --with uvicorn --with pandas uvicorn api.main:app --reload```
+
+In frontend/dashboard, run: 
+```npm run dev```
+
+Note: if normal npm install is not working try 
+```npm install --legacy-peer-deps```
+

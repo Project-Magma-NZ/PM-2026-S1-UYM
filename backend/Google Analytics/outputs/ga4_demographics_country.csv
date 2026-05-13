@@ -1,31 +1,91 @@
-dimension_name,dimension_value,activeUsers,newUsers,sessions,engagedSessions,eventCount,userEngagementDuration,date_range_start,date_range_end
-country,New Zealand,297,283,510,285,2960,27273,28daysAgo,today
-country,Singapore,188,188,187,3,572,60,28daysAgo,today
-country,United States,91,94,95,29,371,552,28daysAgo,today
-country,China,76,74,76,2,259,89,28daysAgo,today
-country,Australia,39,39,39,5,129,97,28daysAgo,today
-country,United Kingdom,10,10,10,10,57,286,28daysAgo,today
-country,Ireland,5,5,5,1,17,4,28daysAgo,today
-country,United Arab Emirates,5,5,5,0,15,0,28daysAgo,today
-country,Germany,4,5,4,3,22,40,28daysAgo,today
-country,Canada,3,5,4,3,18,0,28daysAgo,today
-country,France,3,2,3,3,10,6,28daysAgo,today
-country,India,3,3,3,1,11,2,28daysAgo,today
-country,Sweden,3,3,3,1,13,9,28daysAgo,today
-country,(not set),2,2,2,0,6,0,28daysAgo,today
-country,Hong Kong,2,2,2,0,8,1,28daysAgo,today
-country,Sri Lanka,2,2,2,1,7,17,28daysAgo,today
-country,Vietnam,2,1,2,0,4,0,28daysAgo,today
-country,Afghanistan,1,1,1,0,3,0,28daysAgo,today
-country,Albania,1,1,1,0,3,0,28daysAgo,today
-country,Armenia,1,1,1,0,3,0,28daysAgo,today
-country,Bahamas,1,1,1,1,5,72,28daysAgo,today
-country,Cyprus,1,1,1,1,15,11,28daysAgo,today
-country,Fiji,1,1,1,0,3,0,28daysAgo,today
-country,Iraq,1,1,1,0,3,0,28daysAgo,today
-country,Malaysia,1,1,1,1,16,97,28daysAgo,today
-country,Mexico,1,1,1,1,4,12,28daysAgo,today
-country,Netherlands,1,1,1,0,3,0,28daysAgo,today
-country,Nigeria,1,1,1,1,9,1865,28daysAgo,today
-country,Pakistan,1,1,1,1,4,17,28daysAgo,today
-country,Russia,1,1,1,0,3,0,28daysAgo,today
+demographic_dimension,year_month,demographic_value,activeUsers,newUsers,sessions,engagedSessions,eventCount,userEngagementDuration,date_range_start,date_range_end
+country,202601,Afghanistan,1,1,1,0,3,0,2026-01-01,yesterday
+country,202601,Argentina,1,1,1,0,3,0,2026-01-01,yesterday
+country,202601,Australia,6,6,7,5,41,377,2026-01-01,yesterday
+country,202601,Bangladesh,1,1,1,0,3,0,2026-01-01,yesterday
+country,202601,Canada,13,13,15,9,70,3842,2026-01-01,yesterday
+country,202601,China,264,264,263,2,802,33,2026-01-01,yesterday
+country,202601,Colombia,1,1,1,0,3,0,2026-01-01,yesterday
+country,202601,Congo - Brazzaville,1,1,1,0,3,0,2026-01-01,yesterday
+country,202601,France,1,0,1,1,2,3,2026-01-01,yesterday
+country,202601,Honduras,1,1,1,1,4,65,2026-01-01,yesterday
+country,202601,India,1,1,1,0,5,1,2026-01-01,yesterday
+country,202601,Indonesia,2,2,2,1,8,31,2026-01-01,yesterday
+country,202601,Ireland,1,1,1,0,3,0,2026-01-01,yesterday
+country,202601,Japan,1,1,2,1,6,11,2026-01-01,yesterday
+country,202601,Netherlands,1,1,1,0,3,0,2026-01-01,yesterday
+country,202601,New Zealand,194,179,288,192,1776,19857,2026-01-01,yesterday
+country,202601,Singapore,1,1,1,0,3,0,2026-01-01,yesterday
+country,202601,Sweden,2,2,2,0,7,121,2026-01-01,yesterday
+country,202601,United Kingdom,4,4,4,3,16,96,2026-01-01,yesterday
+country,202601,United States,50,50,50,18,204,308,2026-01-01,yesterday
+country,202601,Vietnam,2,2,2,0,6,0,2026-01-01,yesterday
+country,202602,(not set),6,6,6,4,24,97,2026-01-01,yesterday
+country,202602,Afghanistan,1,1,1,0,3,0,2026-01-01,yesterday
+country,202602,Albania,2,2,2,0,6,0,2026-01-01,yesterday
+country,202602,Australia,10,9,10,2,36,27,2026-01-01,yesterday
+country,202602,China,227,228,227,12,733,2851,2026-01-01,yesterday
+country,202602,France,1,1,1,0,3,0,2026-01-01,yesterday
+country,202602,Germany,10,10,10,2,40,83,2026-01-01,yesterday
+country,202602,Ghana,3,4,4,4,24,51,2026-01-01,yesterday
+country,202602,India,17,16,17,13,79,111,2026-01-01,yesterday
+country,202602,Indonesia,2,2,2,1,7,32,2026-01-01,yesterday
+country,202602,Ireland,5,5,5,1,17,1,2026-01-01,yesterday
+country,202602,New Zealand,230,211,351,224,2454,16658,2026-01-01,yesterday
+country,202602,Poland,1,1,1,0,3,0,2026-01-01,yesterday
+country,202602,Singapore,107,104,110,2,322,144,2026-01-01,yesterday
+country,202602,Sweden,3,3,3,0,9,0,2026-01-01,yesterday
+country,202602,Thailand,1,1,1,1,6,14,2026-01-01,yesterday
+country,202602,United Kingdom,1,1,1,1,5,19,2026-01-01,yesterday
+country,202602,United States,114,113,115,37,470,612,2026-01-01,yesterday
+country,202603,(not set),3,3,3,0,10,6,2026-01-01,yesterday
+country,202603,Afghanistan,1,1,1,0,3,0,2026-01-01,yesterday
+country,202603,Albania,2,2,2,0,6,0,2026-01-01,yesterday
+country,202603,Armenia,2,2,2,0,6,0,2026-01-01,yesterday
+country,202603,Australia,40,40,40,5,132,55,2026-01-01,yesterday
+country,202603,Bahamas,1,1,1,1,5,72,2026-01-01,yesterday
+country,202603,Canada,2,3,3,2,12,0,2026-01-01,yesterday
+country,202603,China,137,135,137,3,453,97,2026-01-01,yesterday
+country,202603,France,2,0,2,2,4,6,2026-01-01,yesterday
+country,202603,Germany,1,1,1,1,6,16,2026-01-01,yesterday
+country,202603,Hong Kong,1,1,1,0,3,0,2026-01-01,yesterday
+country,202603,India,3,3,3,2,18,54,2026-01-01,yesterday
+country,202603,Indonesia,1,1,1,1,4,12,2026-01-01,yesterday
+country,202603,Iraq,2,2,2,0,6,0,2026-01-01,yesterday
+country,202603,Ireland,3,3,3,0,9,0,2026-01-01,yesterday
+country,202603,Malaysia,1,1,1,1,16,97,2026-01-01,yesterday
+country,202603,Netherlands,2,2,2,0,6,0,2026-01-01,yesterday
+country,202603,New Zealand,299,281,478,269,2749,22881,2026-01-01,yesterday
+country,202603,Nigeria,1,1,1,1,9,1865,2026-01-01,yesterday
+country,202603,Oman,1,1,1,0,4,3,2026-01-01,yesterday
+country,202603,Russia,1,1,1,0,3,0,2026-01-01,yesterday
+country,202603,Saudi Arabia,1,1,1,0,3,0,2026-01-01,yesterday
+country,202603,Singapore,208,207,207,1,622,1,2026-01-01,yesterday
+country,202603,Sweden,7,7,7,2,25,14,2026-01-01,yesterday
+country,202603,United Arab Emirates,5,5,5,0,15,0,2026-01-01,yesterday
+country,202603,United Kingdom,7,6,7,7,30,258,2026-01-01,yesterday
+country,202603,United States,109,113,112,29,422,651,2026-01-01,yesterday
+country,202603,Uzbekistan,1,1,1,0,3,0,2026-01-01,yesterday
+country,202603,Vietnam,1,0,1,0,1,0,2026-01-01,yesterday
+country,202604,Australia,21,21,21,2,69,80,2026-01-01,yesterday
+country,202604,Canada,4,6,4,2,18,0,2026-01-01,yesterday
+country,202604,China,26,25,26,0,81,41,2026-01-01,yesterday
+country,202604,Cyprus,1,1,1,1,15,11,2026-01-01,yesterday
+country,202604,Fiji,1,1,1,0,3,0,2026-01-01,yesterday
+country,202604,France,1,2,1,1,6,0,2026-01-01,yesterday
+country,202604,Germany,3,4,3,2,16,24,2026-01-01,yesterday
+country,202604,Hong Kong,1,1,1,0,5,1,2026-01-01,yesterday
+country,202604,India,1,1,1,0,3,0,2026-01-01,yesterday
+country,202604,Indonesia,1,1,1,1,17,217,2026-01-01,yesterday
+country,202604,Ireland,3,3,3,1,11,4,2026-01-01,yesterday
+country,202604,Mexico,1,1,1,1,4,12,2026-01-01,yesterday
+country,202604,Netherlands,2,2,2,0,6,0,2026-01-01,yesterday
+country,202604,New Zealand,202,185,342,195,2038,18419,2026-01-01,yesterday
+country,202604,Pakistan,1,1,1,1,4,17,2026-01-01,yesterday
+country,202604,Singapore,131,131,131,4,402,60,2026-01-01,yesterday
+country,202604,Sri Lanka,2,2,2,1,7,17,2026-01-01,yesterday
+country,202604,Sweden,1,1,1,0,5,2,2026-01-01,yesterday
+country,202604,United Kingdom,5,6,5,5,35,94,2026-01-01,yesterday
+country,202604,United States,56,56,56,13,207,118,2026-01-01,yesterday
+country,202604,Uzbekistan,1,0,1,1,1,22,2026-01-01,yesterday
+country,202604,Vietnam,2,2,2,0,6,0,2026-01-01,yesterday

@@ -1,74 +1,238 @@
-dimension_name,dimension_value,activeUsers,newUsers,sessions,engagedSessions,eventCount,userEngagementDuration,date_range_start,date_range_end
-region,(not set),241,239,239,7,768,234,28daysAgo,today
-region,Auckland,203,184,357,204,2068,18877,28daysAgo,today
-region,Canterbury Region,60,50,78,41,385,3564,28daysAgo,today
-region,Virginia,31,32,32,15,131,327,28daysAgo,today
-region,Wellington Region,27,21,34,20,220,2040,28daysAgo,today
-region,Australian Capital Territory,13,13,13,1,40,0,28daysAgo,today
-region,Victoria,13,13,13,0,39,0,28daysAgo,today
-region,New South Wales,12,12,12,4,47,97,28daysAgo,today
-region,Oregon,11,11,11,6,53,36,28daysAgo,today
-region,Iowa,10,12,12,4,41,41,28daysAgo,today
-region,Waikato Region,10,8,16,6,95,1017,28daysAgo,today
-region,Bay of Plenty Region,9,9,10,9,79,578,28daysAgo,today
-region,England,9,9,9,9,53,253,28daysAgo,today
-region,Zhejiang,9,8,9,1,28,2,28daysAgo,today
-region,Guangdong Province,8,8,8,1,25,7,28daysAgo,today
-region,California,7,7,7,0,24,8,28daysAgo,today
-region,County Dublin,5,5,5,1,17,4,28daysAgo,today
-region,Otago Region,5,4,5,4,25,285,28daysAgo,today
-region,Shanghai,5,5,5,0,18,1,28daysAgo,today
-region,Colorado,4,4,4,0,16,10,28daysAgo,today
-region,Dubai,4,4,4,0,12,0,28daysAgo,today
-region,Manawatu-Whanganui Region,4,2,7,4,45,536,28daysAgo,today
-region,North Carolina,4,4,4,2,14,14,28daysAgo,today
-region,Washington,4,4,5,0,15,1,28daysAgo,today
-region,Ile-de-France,3,2,3,3,10,6,28daysAgo,today
-region,Sichuan,3,3,3,0,10,4,28daysAgo,today
-region,Southland Region,3,3,7,3,32,231,28daysAgo,today
-region,Wyoming,3,3,3,0,11,2,28daysAgo,today
-region,Florida,2,2,2,0,8,11,28daysAgo,today
-region,Fujian,2,2,2,0,8,4,28daysAgo,today
-region,Heilongjiang,2,2,2,0,9,12,28daysAgo,today
-region,Hessen,2,3,2,1,10,0,28daysAgo,today
-region,Hunan,2,2,2,0,8,9,28daysAgo,today
-region,Norrbotten County,2,2,2,1,8,7,28daysAgo,today
-region,Quebec,2,4,2,2,12,0,28daysAgo,today
-region,Shandong,2,2,2,0,8,3,28daysAgo,today
-region,Texas,2,2,2,1,8,4,28daysAgo,today
-region,Western Province,2,2,2,1,7,17,28daysAgo,today
-region,,1,1,1,0,3,0,28daysAgo,today
-region,Abu Dhabi,1,1,1,0,3,0,28daysAgo,today
-region,Baghdad Governorate,1,1,1,0,3,0,28daysAgo,today
-region,Beijing,1,1,1,0,3,0,28daysAgo,today
-region,Bihar,1,1,1,1,5,2,28daysAgo,today
-region,British Columbia,1,1,2,1,6,0,28daysAgo,today
-region,Chongqing,1,1,1,0,4,1,28daysAgo,today
-region,Gujarat,1,1,1,0,3,0,28daysAgo,today
-region,Hai Phong,1,1,1,0,3,0,28daysAgo,today
-region,Hawke's Bay Region,1,1,1,1,5,45,28daysAgo,today
-region,Illinois,1,1,1,0,3,0,28daysAgo,today
-region,Jiangsu,1,1,1,0,3,0,28daysAgo,today
-region,Kabul,1,1,1,0,3,0,28daysAgo,today
-region,Kansas,1,1,1,0,3,0,28daysAgo,today
-region,Karnataka,1,1,1,0,3,0,28daysAgo,today
-region,Kien Giang,1,0,1,0,1,0,28daysAgo,today
-region,Lagos,1,1,1,1,9,1865,28daysAgo,today
-region,Minnesota,1,1,1,1,8,86,28daysAgo,today
-region,Nebraska,1,1,1,0,3,0,28daysAgo,today
-region,Nelson Region,1,1,2,1,6,100,28daysAgo,today
-region,New York,1,1,1,0,4,1,28daysAgo,today
-region,North Holland,1,1,1,0,3,0,28daysAgo,today
-region,Pennsylvania,1,1,1,0,3,0,28daysAgo,today
-region,Primorsky Krai,1,1,1,0,3,0,28daysAgo,today
-region,Punjab,1,1,1,1,4,17,28daysAgo,today
-region,Queensland,1,1,1,0,3,0,28daysAgo,today
-region,Rhode Island,1,1,1,0,3,0,28daysAgo,today
-region,Scotland,1,1,1,1,4,33,28daysAgo,today
-region,Selangor,1,1,1,1,16,97,28daysAgo,today
-region,Shaanxi,1,1,1,0,4,3,28daysAgo,today
-region,Sinaloa,1,1,1,1,4,12,28daysAgo,today
-region,Stockholm County,1,1,1,0,5,2,28daysAgo,today
-region,Utah,1,1,1,0,4,4,28daysAgo,today
-region,Western Division,1,1,1,0,3,0,28daysAgo,today
-region,Xinjiang,1,1,1,0,3,0,28daysAgo,today
+demographic_dimension,year_month,demographic_value,activeUsers,newUsers,sessions,engagedSessions,eventCount,userEngagementDuration,date_range_start,date_range_end
+region,202601,(not set),27,26,27,4,101,418,2026-01-01,yesterday
+region,202601,Alberta,12,12,13,8,64,3817,2026-01-01,yesterday
+region,202601,Arizona,1,1,1,0,4,1,2026-01-01,yesterday
+region,202601,Auckland,146,130,227,148,1395,16438,2026-01-01,yesterday
+region,202601,Australian Capital Territory,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,Bay of Plenty Region,5,4,6,5,23,157,2026-01-01,yesterday
+region,202601,Beijing,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,Buenos Aires Province,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,California,5,5,5,0,17,4,2026-01-01,yesterday
+region,202601,Canterbury Region,24,20,25,20,128,1590,2026-01-01,yesterday
+region,202601,Colorado,8,8,8,0,28,13,2026-01-01,yesterday
+region,202601,County Dublin,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,Delhi Division,1,1,1,0,5,1,2026-01-01,yesterday
+region,202601,Dhaka Division,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,East Java,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,England,3,3,3,2,11,78,2026-01-01,yesterday
+region,202601,Florida,4,4,4,3,15,29,2026-01-01,yesterday
+region,202601,Gansu,237,237,236,1,716,4,2026-01-01,yesterday
+region,202601,Guangdong Province,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,Hanoi,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,Hawke's Bay Region,1,1,1,1,6,203,2026-01-01,yesterday
+region,202601,Ile-de-France,1,0,1,1,2,3,2026-01-01,yesterday
+region,202601,Iowa,2,2,2,0,8,9,2026-01-01,yesterday
+region,202601,Kabul,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,Louisiana,1,1,1,1,4,32,2026-01-01,yesterday
+region,202601,Manawatu-Whanganui Region,2,1,2,2,15,211,2026-01-01,yesterday
+region,202601,Massachusetts,1,1,1,0,4,6,2026-01-01,yesterday
+region,202601,Nelson Region,1,1,2,1,14,43,2026-01-01,yesterday
+region,202601,New Jersey,2,2,2,0,6,0,2026-01-01,yesterday
+region,202601,New South Wales,2,2,3,2,17,158,2026-01-01,yesterday
+region,202601,Norrbotten County,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,North Carolina,2,2,2,0,6,0,2026-01-01,yesterday
+region,202601,North Holland,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,Northland Region,1,1,1,1,10,90,2026-01-01,yesterday
+region,202601,Okinawa,1,1,2,1,6,11,2026-01-01,yesterday
+region,202601,Ontario,1,1,1,1,4,25,2026-01-01,yesterday
+region,202601,Otago Region,1,1,1,1,18,146,2026-01-01,yesterday
+region,202601,Pennsylvania,1,1,1,0,4,1,2026-01-01,yesterday
+region,202601,Quebec,1,0,1,0,2,0,2026-01-01,yesterday
+region,202601,Queensland,2,2,2,2,16,206,2026-01-01,yesterday
+region,202601,Scotland,1,1,1,1,5,18,2026-01-01,yesterday
+region,202601,Shandong,2,2,2,0,7,0,2026-01-01,yesterday
+region,202601,Shanghai,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,South Carolina,1,1,1,1,4,9,2026-01-01,yesterday
+region,202601,Special Region of Yogyakarta,1,1,1,1,5,31,2026-01-01,yesterday
+region,202601,Texas,2,2,2,0,7,2,2026-01-01,yesterday
+region,202601,Valle del Cauca,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,Victoria,1,1,1,1,5,13,2026-01-01,yesterday
+region,202601,Vinh Phuc,1,1,1,0,3,0,2026-01-01,yesterday
+region,202601,Virginia,14,14,14,10,74,136,2026-01-01,yesterday
+region,202601,Waikato Region,4,4,6,4,60,268,2026-01-01,yesterday
+region,202601,Washington,3,3,3,2,11,49,2026-01-01,yesterday
+region,202601,Wellington Region,19,16,22,14,93,525,2026-01-01,yesterday
+region,202601,Zhejiang,3,3,3,0,9,0,2026-01-01,yesterday
+region,202602,(not set),183,180,189,28,818,4273,2026-01-01,yesterday
+region,202602,Andhra Pradesh,1,1,1,1,6,5,2026-01-01,yesterday
+region,202602,Auckland,177,155,274,171,1849,12049,2026-01-01,yesterday
+region,202602,Australian Capital Territory,2,2,2,0,6,0,2026-01-01,yesterday
+region,202602,Bavaria,1,1,1,0,4,1,2026-01-01,yesterday
+region,202602,Bay of Plenty Region,3,3,3,2,18,132,2026-01-01,yesterday
+region,202602,Berlin,2,2,2,1,8,18,2026-01-01,yesterday
+region,202602,California,3,3,3,0,9,0,2026-01-01,yesterday
+region,202602,Canterbury Region,28,21,32,22,170,1718,2026-01-01,yesterday
+region,202602,Central Java,1,1,1,0,3,0,2026-01-01,yesterday
+region,202602,Chiang Mai,1,1,1,1,6,14,2026-01-01,yesterday
+region,202602,Colorado,9,9,9,2,29,18,2026-01-01,yesterday
+region,202602,County Dublin,5,5,5,1,17,1,2026-01-01,yesterday
+region,202602,Delhi Division,1,1,1,0,3,0,2026-01-01,yesterday
+region,202602,District of Columbia,1,1,1,1,8,27,2026-01-01,yesterday
+region,202602,England,1,1,1,1,5,19,2026-01-01,yesterday
+region,202602,Florida,7,7,7,2,28,24,2026-01-01,yesterday
+region,202602,Gansu,160,159,160,3,482,4,2026-01-01,yesterday
+region,202602,Georgia,3,3,3,1,12,10,2026-01-01,yesterday
+region,202602,Gisborne Region,1,1,1,1,4,22,2026-01-01,yesterday
+region,202602,Greater Accra Region,3,4,4,4,24,51,2026-01-01,yesterday
+region,202602,Guangdong Province,3,3,3,1,12,25,2026-01-01,yesterday
+region,202602,Haryana,1,1,1,1,4,11,2026-01-01,yesterday
+region,202602,Hawke's Bay Region,1,1,1,1,14,66,2026-01-01,yesterday
+region,202602,Illinois,1,1,1,1,5,0,2026-01-01,yesterday
+region,202602,Indiana,2,1,2,2,14,18,2026-01-01,yesterday
+region,202602,Iowa,8,8,8,1,25,13,2026-01-01,yesterday
+region,202602,Jiangsu,2,2,2,0,7,2,2026-01-01,yesterday
+region,202602,Kabul,1,1,1,0,3,0,2026-01-01,yesterday
+region,202602,Kansas,1,1,1,1,4,29,2026-01-01,yesterday
+region,202602,Manawatu-Whanganui Region,3,3,5,2,23,54,2026-01-01,yesterday
+region,202602,Masovian Voivodeship,1,1,1,0,3,0,2026-01-01,yesterday
+region,202602,Mizoram,1,1,1,1,4,1,2026-01-01,yesterday
+region,202602,Nebraska,1,1,1,1,5,6,2026-01-01,yesterday
+region,202602,New Mexico,1,1,1,0,3,0,2026-01-01,yesterday
+region,202602,New South Wales,5,4,5,1,20,21,2026-01-01,yesterday
+region,202602,New York,10,10,10,1,36,26,2026-01-01,yesterday
+region,202602,Norrbotten County,2,2,2,0,6,0,2026-01-01,yesterday
+region,202602,North Carolina,6,6,6,0,18,0,2026-01-01,yesterday
+region,202602,North Rhine-Westphalia,5,5,5,1,20,63,2026-01-01,yesterday
+region,202602,Northland Region,1,1,1,1,7,91,2026-01-01,yesterday
+region,202602,Ohio,9,9,9,1,34,11,2026-01-01,yesterday
+region,202602,Oregon,11,11,11,1,48,18,2026-01-01,yesterday
+region,202602,Otago Region,1,1,2,0,5,0,2026-01-01,yesterday
+region,202602,Saxony,1,1,1,0,4,1,2026-01-01,yesterday
+region,202602,Shandong,2,2,2,0,8,1,2026-01-01,yesterday
+region,202602,Shanghai,4,4,4,0,16,8,2026-01-01,yesterday
+region,202602,Sichuan,1,1,1,0,3,0,2026-01-01,yesterday
+region,202602,South Carolina,2,2,2,1,12,22,2026-01-01,yesterday
+region,202602,Southland Region,1,1,1,1,10,35,2026-01-01,yesterday
+region,202602,Telangana,13,12,13,10,62,94,2026-01-01,yesterday
+region,202602,Tennessee,3,3,3,2,13,12,2026-01-01,yesterday
+region,202602,Texas,6,6,6,1,21,59,2026-01-01,yesterday
+region,202602,Utah,1,1,1,0,4,6,2026-01-01,yesterday
+region,202602,Victoria,3,3,3,1,10,6,2026-01-01,yesterday
+region,202602,Virginia,15,15,15,9,66,84,2026-01-01,yesterday
+region,202602,Waikato Region,5,4,5,5,33,475,2026-01-01,yesterday
+region,202602,Washington,1,1,1,0,4,1,2026-01-01,yesterday
+region,202602,Wellington Region,22,17,26,19,114,1010,2026-01-01,yesterday
+region,202602,West Coast Region,1,1,1,1,5,11,2026-01-01,yesterday
+region,202602,West Nusa Tenggara,1,1,1,1,4,32,2026-01-01,yesterday
+region,202602,Xinjiang,4,4,4,0,13,0,2026-01-01,yesterday
+region,202602,Zhejiang,3,3,3,0,10,2,2026-01-01,yesterday
+region,202603,(not set),279,276,278,4,863,149,2026-01-01,yesterday
+region,202603,Abu Dhabi,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Alabama,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Auckland,205,185,334,200,1992,16930,2026-01-01,yesterday
+region,202603,Australian Capital Territory,9,9,9,1,28,0,2026-01-01,yesterday
+region,202603,Baghdad Governorate,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Banten,1,1,1,1,4,12,2026-01-01,yesterday
+region,202603,Bay of Plenty Region,16,14,17,14,125,938,2026-01-01,yesterday
+region,202603,Beijing,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Bihar,1,1,1,1,5,2,2026-01-01,yesterday
+region,202603,British Columbia,1,1,2,1,6,0,2026-01-01,yesterday
+region,202603,California,7,7,7,1,26,18,2026-01-01,yesterday
+region,202603,Canterbury Region,49,40,63,30,289,2115,2026-01-01,yesterday
+region,202603,Chongqing,2,2,2,0,8,4,2026-01-01,yesterday
+region,202603,Colorado,9,9,9,0,28,4,2026-01-01,yesterday
+region,202603,County Dublin,3,3,3,0,9,0,2026-01-01,yesterday
+region,202603,Dubai,4,4,4,0,12,0,2026-01-01,yesterday
+region,202603,England,6,5,6,6,26,225,2026-01-01,yesterday
+region,202603,Florida,7,7,7,0,24,16,2026-01-01,yesterday
+region,202603,Fujian,2,2,2,0,8,4,2026-01-01,yesterday
+region,202603,Gansu,41,41,41,0,123,0,2026-01-01,yesterday
+region,202603,Guangdong Province,8,8,8,1,26,7,2026-01-01,yesterday
+region,202603,Hawke's Bay Region,1,1,1,1,5,45,2026-01-01,yesterday
+region,202603,Heilongjiang,2,2,2,0,9,12,2026-01-01,yesterday
+region,202603,Hubei,1,1,1,0,4,0,2026-01-01,yesterday
+region,202603,Hunan,2,2,2,0,8,9,2026-01-01,yesterday
+region,202603,Ile-de-France,2,0,2,2,4,6,2026-01-01,yesterday
+region,202603,Illinois,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Iowa,14,16,16,5,54,48,2026-01-01,yesterday
+region,202603,Jiangsu,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Kabul,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Karnataka,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Kien Giang,1,0,1,0,1,0,2026-01-01,yesterday
+region,202603,Lagos,1,1,1,1,9,1865,2026-01-01,yesterday
+region,202603,Makkah Province,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Manawatu-Whanganui Region,3,2,6,3,40,502,2026-01-01,yesterday
+region,202603,Minnesota,1,1,1,1,8,86,2026-01-01,yesterday
+region,202603,Muscat Governorate,1,1,1,0,4,3,2026-01-01,yesterday
+region,202603,Nebraska,3,3,3,0,9,0,2026-01-01,yesterday
+region,202603,Nelson Region,1,1,2,1,6,100,2026-01-01,yesterday
+region,202603,New Mexico,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,New South Wales,14,14,14,3,49,44,2026-01-01,yesterday
+region,202603,New York,1,1,1,0,4,1,2026-01-01,yesterday
+region,202603,Norrbotten County,7,7,7,2,25,14,2026-01-01,yesterday
+region,202603,North Carolina,4,4,4,0,12,0,2026-01-01,yesterday
+region,202603,North Holland,2,2,2,0,6,0,2026-01-01,yesterday
+region,202603,Oregon,10,10,10,3,35,21,2026-01-01,yesterday
+region,202603,Otago Region,3,2,3,2,9,56,2026-01-01,yesterday
+region,202603,Primorsky Krai,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Quebec,1,2,1,1,6,0,2026-01-01,yesterday
+region,202603,Queensland,2,2,2,1,10,11,2026-01-01,yesterday
+region,202603,Rhode Island,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Scotland,1,1,1,1,4,33,2026-01-01,yesterday
+region,202603,Selangor,1,1,1,1,16,97,2026-01-01,yesterday
+region,202603,Shaanxi,3,3,3,0,12,4,2026-01-01,yesterday
+region,202603,Shandong,1,1,1,0,4,3,2026-01-01,yesterday
+region,202603,Shanghai,4,4,4,0,14,1,2026-01-01,yesterday
+region,202603,Sichuan,3,3,3,0,10,4,2026-01-01,yesterday
+region,202603,Telangana,1,1,1,1,10,52,2026-01-01,yesterday
+region,202603,Tennessee,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Texas,7,7,7,3,30,45,2026-01-01,yesterday
+region,202603,Utah,1,1,1,0,4,4,2026-01-01,yesterday
+region,202603,Victoria,14,14,14,0,42,0,2026-01-01,yesterday
+region,202603,Virginia,29,31,30,16,131,398,2026-01-01,yesterday
+region,202603,Waikato Region,9,8,14,7,93,1034,2026-01-01,yesterday
+region,202603,Washington,3,3,4,0,12,1,2026-01-01,yesterday
+region,202603,Wasit Governorate,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Wellington Region,36,28,45,18,190,1161,2026-01-01,yesterday
+region,202603,Western Australia,1,1,1,0,3,0,2026-01-01,yesterday
+region,202603,Wyoming,3,3,3,0,11,2,2026-01-01,yesterday
+region,202603,Xinjiang,2,2,2,0,6,0,2026-01-01,yesterday
+region,202603,Zhejiang,10,9,10,1,32,2,2026-01-01,yesterday
+region,202604,(not set),158,157,157,6,501,159,2026-01-01,yesterday
+region,202604,Auckland,142,122,239,142,1421,13350,2026-01-01,yesterday
+region,202604,Australian Capital Territory,7,7,7,0,21,0,2026-01-01,yesterday
+region,202604,Bay of Plenty Region,3,3,3,3,18,120,2026-01-01,yesterday
+region,202604,British Columbia,1,1,1,0,3,0,2026-01-01,yesterday
+region,202604,California,3,3,3,0,10,4,2026-01-01,yesterday
+region,202604,Canterbury Region,42,32,57,31,272,2211,2026-01-01,yesterday
+region,202604,Colorado,8,8,8,1,29,17,2026-01-01,yesterday
+region,202604,County Dublin,3,3,3,1,11,4,2026-01-01,yesterday
+region,202604,District of Columbia,1,1,1,1,4,19,2026-01-01,yesterday
+region,202604,England,5,6,5,5,35,94,2026-01-01,yesterday
+region,202604,Guangdong Province,1,1,1,0,3,0,2026-01-01,yesterday
+region,202604,Gujarat,1,1,1,0,3,0,2026-01-01,yesterday
+region,202604,Hai Phong,1,1,1,0,3,0,2026-01-01,yesterday
+region,202604,Hanoi,1,1,1,0,3,0,2026-01-01,yesterday
+region,202604,Hawke's Bay Region,2,2,3,2,25,63,2026-01-01,yesterday
+region,202604,Hessen,2,3,2,1,10,0,2026-01-01,yesterday
+region,202604,Ile-de-France,1,2,1,1,6,0,2026-01-01,yesterday
+region,202604,Iowa,2,2,2,1,7,7,2026-01-01,yesterday
+region,202604,Jakarta,1,1,1,1,17,217,2026-01-01,yesterday
+region,202604,Jiangsu,1,1,1,0,3,0,2026-01-01,yesterday
+region,202604,Kansas,2,2,2,0,6,0,2026-01-01,yesterday
+region,202604,Manawatu-Whanganui Region,3,1,3,1,11,36,2026-01-01,yesterday
+region,202604,Nelson Region,2,2,2,1,8,5,2026-01-01,yesterday
+region,202604,New South Wales,11,11,11,2,39,80,2026-01-01,yesterday
+region,202604,New York,1,1,1,0,3,0,2026-01-01,yesterday
+region,202604,North Carolina,4,4,4,2,14,14,2026-01-01,yesterday
+region,202604,Ontario,1,1,1,0,3,0,2026-01-01,yesterday
+region,202604,Oregon,10,10,10,4,48,23,2026-01-01,yesterday
+region,202604,Otago Region,2,2,2,2,16,229,2026-01-01,yesterday
+region,202604,Pennsylvania,1,1,1,0,3,0,2026-01-01,yesterday
+region,202604,Punjab,1,1,1,1,4,17,2026-01-01,yesterday
+region,202604,Quebec,2,4,2,2,12,0,2026-01-01,yesterday
+region,202604,Shandong,2,2,2,0,7,0,2026-01-01,yesterday
+region,202604,Shanghai,1,1,1,0,4,0,2026-01-01,yesterday
+region,202604,Sinaloa,1,1,1,1,4,12,2026-01-01,yesterday
+region,202604,Southland Region,4,4,8,4,51,360,2026-01-01,yesterday
+region,202604,Stockholm County,1,1,1,0,5,2,2026-01-01,yesterday
+region,202604,Taranaki Region,0,0,2,0,4,0,2026-01-01,yesterday
+region,202604,Texas,1,1,1,0,3,0,2026-01-01,yesterday
+region,202604,Victoria,3,3,3,0,9,0,2026-01-01,yesterday
+region,202604,Virginia,20,20,20,4,71,34,2026-01-01,yesterday
+region,202604,Waikato Region,5,3,6,1,21,47,2026-01-01,yesterday
+region,202604,Washington,1,1,1,0,3,0,2026-01-01,yesterday
+region,202604,Wellington Region,17,14,24,15,191,1998,2026-01-01,yesterday
+region,202604,Western Division,1,1,1,0,3,0,2026-01-01,yesterday
+region,202604,Western Province,2,2,2,1,7,17,2026-01-01,yesterday
+region,202604,Zhejiang,1,1,1,0,4,0,2026-01-01,yesterday

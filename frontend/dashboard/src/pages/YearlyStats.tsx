@@ -8,7 +8,7 @@ const YearlyStats = () => (
   <div className="space-y-6">
     <div>
       <h1 className="text-4xl font-black text-slate-900 tracking-tight mb-1">Yearly Impact Overview</h1>
-      <p className="text-slate-500 font-medium">Consolidated data from Jan 1, 2023 – Dec 31, 2023</p>
+      <p className="text-slate-500 font-medium">Consolidated data from Jan 1, 2026 – Dec 31, 2026</p>
     </div>
 
     <YearlySummary />

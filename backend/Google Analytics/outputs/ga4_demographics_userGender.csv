@@ -1,4 +1,13 @@
-dimension_name,dimension_value,activeUsers,newUsers,sessions,engagedSessions,eventCount,userEngagementDuration,date_range_start,date_range_end
-userGender,unknown,626,624,782,235,3528,21227,28daysAgo,today
-userGender,female,94,88,137,92,849,7970,28daysAgo,today
-userGender,male,25,24,39,22,176,1313,28daysAgo,today
+demographic_dimension,year_month,demographic_value,activeUsers,newUsers,sessions,engagedSessions,eventCount,userEngagementDuration,date_range_start,date_range_end
+userGender,202601,female,31,30,51,37,416,6870,2026-01-01,yesterday
+userGender,202601,male,12,11,31,11,111,746,2026-01-01,yesterday
+userGender,202601,unknown,505,492,563,184,2444,17129,2026-01-01,yesterday
+userGender,202602,female,65,59,99,65,623,4679,2026-01-01,yesterday
+userGender,202602,male,30,26,40,25,187,761,2026-01-01,yesterday
+userGender,202602,unknown,644,633,725,209,3431,15260,2026-01-01,yesterday
+userGender,202603,female,96,89,144,89,844,5873,2026-01-01,yesterday
+userGender,202603,male,21,19,25,15,130,1120,2026-01-01,yesterday
+userGender,202603,unknown,726,717,857,220,3611,19095,2026-01-01,yesterday
+userGender,202604,female,63,56,93,72,763,7112,2026-01-01,yesterday
+userGender,202604,male,20,19,31,17,148,1139,2026-01-01,yesterday
+userGender,202604,unknown,384,378,481,140,2048,10888,2026-01-01,yesterday
