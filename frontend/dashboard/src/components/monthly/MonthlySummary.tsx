@@ -6,6 +6,8 @@ import type { KPIData } from '../../types';
 
 interface Props { yearMonth?: string; }
 
+type DataSource = 'all' | 'google' | 'meta';
+
 const combineKPIs = (a: KPIData[], b: KPIData[]): KPIData[] => {
   const map = new Map<string, KPIData>();
   [...a, ...b].forEach(kpi => {
@@ -24,48 +26,42 @@ const combineKPIs = (a: KPIData[], b: KPIData[]): KPIData[] => {
 };
 
 const MonthlySummary = ({ yearMonth }: Props) => {
-  const [combinedKPIs, setCombinedKPIs] = useState<KPIData[]>(MONTHLY_KPIS);
+  const [selectedSource, setSelectedSource] = useState<DataSource>('all');
+  const [googleKPIs, setGoogleKPIs] = useState<KPIData[]>(MONTHLY_KPIS);
+  const [metaKPIs, setMetaKPIs] = useState<KPIData[]>(MONTHLY_KPIS);
+  const [isGoogleReal, setIsGoogleReal] = useState(false);
+  const [isMetaReal, setIsMetaReal] = useState(false);
 
   useEffect(() => {
-    let googleData: KPIData[] = MONTHLY_KPIS;
-    let metaData: KPIData[] = [];
-    let googleReal = false;
-    let metaReal = false;
-
     // Fetch Google Analytics data
     fetchKPIs(yearMonth)
-      .then(({ totalActive, totalNew, engagementRate }) => {
-        googleData = [
+      .then(({ totalActive, totalNew, engagementRate }) => {  
+        setGoogleKPIs([
           { label: 'TOTAL USERS', value: totalActive.toLocaleString(), icon: 'users' },
           { label: 'NEW USERS', value: totalNew.toLocaleString(), isNew: true, icon: 'user-plus' },
           { label: 'ENGAGEMENT RATE', value: `${engagementRate}%`, icon: 'mouse' },
           { label: 'ACTIVE USERS', value: totalActive.toLocaleString(), icon: 'heart' },
-        ];
-        googleReal = true;
+        ]);
+        setIsGoogleReal(true);
       })
       .catch(() => {
-        googleReal = false;
+        // Fallback to mock data if fetch fails
+        setGoogleKPIs(MONTHLY_KPIS);
+        setIsGoogleReal(false);
+      });
+
+    // Fetch Meta data (Facebook/Instagram) - easily replaceable once real API is available
+    fetch('http://localhost:3001/kpi_summary?access_token=fake_token')
+      .then((res) => res.json())
+      .then((res) => {
+        setMetaKPIs(res.data || []);
+        setIsMetaReal(true);
       })
-      .finally(() => {
-        // Fetch Meta data (Facebook/Instagram) - easily replaceable once real API is available
-        fetch('http://localhost:3001/kpi_summary?access_token=fake_token')
-          .then((res) => res.json())
-          .then((res) => {
-            metaData = res.data || [];
-            metaReal = true;
-          })
-          .catch((err) => {
-            console.error('Failed to fetch Meta KPI summary:', err);
-            metaReal = false;
-          })
-          .finally(() => {
-            // Combine data after both fetches complete
-            if (googleReal && metaReal) {
-              setCombinedKPIs(combineKPIs(googleData, metaData));
-            } else {
-              setCombinedKPIs(MONTHLY_KPIS);
-            }
-          });
+      .catch((err) => {
+        console.error('Failed to fetch Meta KPI summary:', err);
+        // Fallback to empty
+        setMetaKPIs(MONTHLY_KPIS);
+        setIsMetaReal(false);
       });
   }, [yearMonth]);
 
@@ -75,15 +71,14 @@ const MonthlySummary = ({ yearMonth }: Props) => {
         return googleKPIs;
       case 'meta':
         return metaKPIs;
-      // case 'instagram':
-      //   // Assuming Meta data includes Instagram; filter if possible, else return all Meta
-      //   return metaKPIs.filter(kpi => kpi.label?.toLowerCase().includes('instagram') || true); // Placeholder filter
-      // case 'facebook':
-      //   // Assuming Meta data includes Facebook; filter if possible, else return all Meta
-      //   return metaKPIs.filter(kpi => kpi.label?.toLowerCase().includes('facebook') || true); // Placeholder filter
       case 'all':
       default:
-        return [...googleKPIs, ...metaKPIs];
+        // Return combined real data if both are real, else fallback to mock
+        if (isGoogleReal && isMetaReal) {
+          return combineKPIs(googleKPIs, metaKPIs);
+        } else {
+          return MONTHLY_KPIS;
+        }
     }
   };
 
@@ -91,7 +86,18 @@ const MonthlySummary = ({ yearMonth }: Props) => {
     <div className="bg-white p-6 rounded-lg shadow-md">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
         <div>
-          <h3 className="text-base font-black text-slate-900">Key Performance Metrics</h3>
+          <h3 className="text-base font-black text-slate-900">
+            Key Performance Metrics
+            {selectedSource === 'all' && (!isGoogleReal || !isMetaReal) && (
+              <span className="ml-2 text-sm font-normal text-orange-600">Mock Data</span>
+            )}
+            {selectedSource === 'google' && !isGoogleReal && (
+              <span className="ml-2 text-sm font-normal text-orange-600">Mock Data</span>
+            )}
+            {selectedSource === 'meta' && !isMetaReal && (
+              <span className="ml-2 text-sm font-normal text-orange-600">Mock Data</span>
+            )}
+          </h3>
         </div>
         <div className="mb-4">
           <select
