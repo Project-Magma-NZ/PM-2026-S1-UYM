@@ -1,0 +1,517 @@
+year,month,country,region,city,activeUsers,newUsers,sessions,engagedSessions,eventCount,userEngagementDuration
+2026,01,Afghanistan,Kabul,Kabul,1,1,1,0,3,0
+2026,01,Argentina,Buenos Aires Province,Tres Arroyos,1,1,1,0,3,0
+2026,01,Australia,Australian Capital Territory,Canberra,1,1,1,0,3,0
+2026,01,Australia,New South Wales,Grafton,1,1,1,1,7,10
+2026,01,Australia,New South Wales,Moruya,1,0,1,0,2,0
+2026,01,Australia,New South Wales,Sydney,1,1,1,1,8,148
+2026,01,Australia,Queensland,Brisbane,2,2,2,2,16,206
+2026,01,Australia,Victoria,Melbourne,1,1,1,1,5,13
+2026,01,Bangladesh,Dhaka Division,Dhaka,1,1,1,0,3,0
+2026,01,Canada,Alberta,Calgary,1,0,1,0,2,0
+2026,01,Canada,Alberta,Edmonton,10,10,10,7,55,3813
+2026,01,Canada,Alberta,Peace River,1,1,1,1,4,4
+2026,01,Canada,Alberta,Vegreville,1,1,1,0,3,0
+2026,01,Canada,Ontario,Toronto,1,1,1,1,4,25
+2026,01,Canada,Quebec,Quebec City,1,0,1,0,2,0
+2026,01,China,(not set),(not set),19,19,19,1,61,29
+2026,01,China,Beijing,Beijing,1,1,1,0,3,0
+2026,01,China,Gansu,Lanzhou,237,237,236,1,716,4
+2026,01,China,Guangdong Province,Zhuhai,1,1,1,0,3,0
+2026,01,China,Shandong,Qingdao,2,2,2,0,7,0
+2026,01,China,Shanghai,Shanghai,1,1,1,0,3,0
+2026,01,China,Zhejiang,Hangzhou,2,2,2,0,6,0
+2026,01,China,Zhejiang,Taizhou,1,1,1,0,3,0
+2026,01,Colombia,Valle del Cauca,Roldanillo,1,1,1,0,3,0
+2026,01,Congo - Brazzaville,(not set),Brazzaville,1,1,1,0,3,0
+2026,01,France,Ile-de-France,Paris,1,0,1,1,2,3
+2026,01,Honduras,(not set),San Pedro Sula,1,1,1,1,4,65
+2026,01,India,Delhi Division,Delhi,1,1,1,0,5,1
+2026,01,Indonesia,East Java,Loceret,1,1,1,0,3,0
+2026,01,Indonesia,Special Region of Yogyakarta,Dlingo,1,1,1,1,5,31
+2026,01,Ireland,County Dublin,Dublin,1,1,1,0,3,0
+2026,01,Japan,Okinawa,Okinawa,1,1,2,1,6,11
+2026,01,Netherlands,North Holland,Amsterdam,1,1,1,0,3,0
+2026,01,New Zealand,(not set),Richmond,1,0,1,1,14,186
+2026,01,New Zealand,Auckland,Auckland,145,130,224,148,1389,16438
+2026,01,New Zealand,Auckland,Kumeu,1,0,1,0,2,0
+2026,01,New Zealand,Auckland,Whangaparaoa,0,0,2,0,4,0
+2026,01,New Zealand,Bay of Plenty Region,Tauranga,5,4,6,5,23,157
+2026,01,New Zealand,Canterbury Region,Christchurch,21,17,22,18,111,1391
+2026,01,New Zealand,Canterbury Region,Prebbleton,3,3,3,2,17,199
+2026,01,New Zealand,Hawke's Bay Region,Napier,1,1,1,1,6,203
+2026,01,New Zealand,Manawatu-Whanganui Region,(not set),1,0,1,1,9,128
+2026,01,New Zealand,Manawatu-Whanganui Region,Palmerston North,1,1,1,1,6,83
+2026,01,New Zealand,Nelson Region,Nelson,1,1,2,1,14,43
+2026,01,New Zealand,Northland Region,(not set),1,1,1,1,10,90
+2026,01,New Zealand,Otago Region,Dunedin,1,1,1,1,18,146
+2026,01,New Zealand,Waikato Region,(not set),2,2,2,2,25,139
+2026,01,New Zealand,Waikato Region,Hamilton,2,2,4,2,35,129
+2026,01,New Zealand,Wellington Region,Lower Hutt,1,1,1,1,6,23
+2026,01,New Zealand,Wellington Region,Masterton,1,1,1,0,3,0
+2026,01,New Zealand,Wellington Region,Paraparaumu,1,1,2,1,9,54
+2026,01,New Zealand,Wellington Region,Upper Hutt,1,1,1,1,4,104
+2026,01,New Zealand,Wellington Region,Wellington,15,12,17,11,71,344
+2026,01,Singapore,(not set),Singapore,1,1,1,0,3,0
+2026,01,Sweden,(not set),(not set),1,1,1,0,4,121
+2026,01,Sweden,Norrbotten County,Lulea,1,1,1,0,3,0
+2026,01,United Kingdom,England,(not set),1,1,1,1,4,72
+2026,01,United Kingdom,England,Amesbury,1,1,1,1,4,6
+2026,01,United Kingdom,England,London,1,1,1,0,3,0
+2026,01,United Kingdom,Scotland,Johnstone,1,1,1,1,5,18
+2026,01,United States,(not set),(not set),3,3,3,1,12,17
+2026,01,United States,Arizona,Gilbert,1,1,1,0,4,1
+2026,01,United States,California,(not set),2,2,2,0,7,1
+2026,01,United States,California,Chula Vista,1,1,1,0,3,0
+2026,01,United States,California,Irvine,1,1,1,0,3,0
+2026,01,United States,California,San Jose,1,1,1,0,4,3
+2026,01,United States,Colorado,(not set),7,7,7,0,23,9
+2026,01,United States,Colorado,Aspen,1,1,1,0,5,4
+2026,01,United States,Florida,(not set),3,3,3,2,11,19
+2026,01,United States,Florida,Greenacres,1,1,1,1,4,10
+2026,01,United States,Iowa,Des Moines,2,2,2,0,8,9
+2026,01,United States,Louisiana,Bossier City,1,1,1,1,4,32
+2026,01,United States,Massachusetts,Everett,1,1,1,0,4,6
+2026,01,United States,New Jersey,North Bergen,1,1,1,0,3,0
+2026,01,United States,New Jersey,Union,1,1,1,0,3,0
+2026,01,United States,North Carolina,Forest City,2,2,2,0,6,0
+2026,01,United States,Pennsylvania,Philadelphia,1,1,1,0,4,1
+2026,01,United States,South Carolina,Williston,1,1,1,1,4,9
+2026,01,United States,Texas,Arlington,1,1,1,0,3,0
+2026,01,United States,Texas,Houston,1,1,1,0,4,2
+2026,01,United States,Virginia,Ashburn,14,14,14,10,74,136
+2026,01,United States,Washington,Moses Lake,3,3,3,2,11,49
+2026,01,Vietnam,Hanoi,Hanoi,1,1,1,0,3,0
+2026,01,Vietnam,Vinh Phuc,Phuc Yen,1,1,1,0,3,0
+2026,02,(not set),(not set),(not set),6,6,6,4,24,97
+2026,02,Afghanistan,Kabul,Kabul,1,1,1,0,3,0
+2026,02,Albania,(not set),Tirana,2,2,2,0,6,0
+2026,02,Australia,Australian Capital Territory,Canberra,2,2,2,0,6,0
+2026,02,Australia,New South Wales,Sydney,5,4,5,1,20,21
+2026,02,Australia,Victoria,Melbourne,3,3,3,1,10,6
+2026,02,China,(not set),(not set),48,50,48,8,182,2809
+2026,02,China,Gansu,Lanzhou,160,159,160,3,482,4
+2026,02,China,Guangdong Province,Guangzhou,1,1,1,0,3,0
+2026,02,China,Guangdong Province,Shenzhen,2,2,2,1,9,25
+2026,02,China,Jiangsu,Suzhou,2,2,2,0,7,2
+2026,02,China,Shandong,Qingdao,2,2,2,0,8,1
+2026,02,China,Shanghai,Shanghai,4,4,4,0,16,8
+2026,02,China,Sichuan,(not set),1,1,1,0,3,0
+2026,02,China,Xinjiang,Bayingolin Mongol Autonomous Prefecture,4,4,4,0,13,0
+2026,02,China,Zhejiang,Hangzhou,2,2,2,0,6,0
+2026,02,China,Zhejiang,Jiaxing,1,1,1,0,4,2
+2026,02,France,(not set),(not set),1,1,1,0,3,0
+2026,02,Germany,(not set),(not set),1,1,1,0,4,0
+2026,02,Germany,Bavaria,Bayreuth,1,1,1,0,4,1
+2026,02,Germany,Berlin,Berlin,2,2,2,1,8,18
+2026,02,Germany,North Rhine-Westphalia,(not set),1,1,1,0,4,2
+2026,02,Germany,North Rhine-Westphalia,Dortmund,3,3,3,0,9,0
+2026,02,Germany,North Rhine-Westphalia,Mechernich,1,1,1,1,7,61
+2026,02,Germany,Saxony,Leipzig,1,1,1,0,4,1
+2026,02,Ghana,Greater Accra Region,Accra,3,4,4,4,24,51
+2026,02,India,Andhra Pradesh,Visakhapatnam,1,1,1,1,6,5
+2026,02,India,Delhi Division,New Delhi,1,1,1,0,3,0
+2026,02,India,Haryana,Sonipat,1,1,1,1,4,11
+2026,02,India,Mizoram,Aizawl,1,1,1,1,4,1
+2026,02,India,Telangana,(not set),3,3,3,2,12,5
+2026,02,India,Telangana,Hanamkonda,7,7,7,5,37,71
+2026,02,India,Telangana,Hyderabad,1,0,1,1,2,3
+2026,02,India,Telangana,Kodad,1,1,1,1,5,5
+2026,02,India,Telangana,Warangal,1,1,1,1,6,10
+2026,02,Indonesia,Central Java,57373,1,1,1,0,3,0
+2026,02,Indonesia,West Nusa Tenggara,Suralaga,1,1,1,1,4,32
+2026,02,Ireland,County Dublin,Dublin,5,5,5,1,17,1
+2026,02,New Zealand,(not set),Pukekohe,2,1,5,4,196,964
+2026,02,New Zealand,(not set),Richmond,1,1,1,1,6,31
+2026,02,New Zealand,Auckland,Auckland,177,155,274,171,1849,12049
+2026,02,New Zealand,Bay of Plenty Region,Rotorua,1,1,1,0,4,5
+2026,02,New Zealand,Bay of Plenty Region,Tauranga,1,1,1,1,4,62
+2026,02,New Zealand,Bay of Plenty Region,Te Puke,1,1,1,1,10,65
+2026,02,New Zealand,Canterbury Region,(not set),1,1,1,1,7,28
+2026,02,New Zealand,Canterbury Region,Christchurch,25,18,29,19,148,1654
+2026,02,New Zealand,Canterbury Region,Prebbleton,2,2,2,2,15,36
+2026,02,New Zealand,Gisborne Region,Gisborne,1,1,1,1,4,22
+2026,02,New Zealand,Hawke's Bay Region,Napier,1,1,1,1,14,66
+2026,02,New Zealand,Manawatu-Whanganui Region,(not set),1,1,1,0,3,0
+2026,02,New Zealand,Manawatu-Whanganui Region,Palmerston North,2,2,4,2,20,54
+2026,02,New Zealand,Northland Region,(not set),1,1,1,1,7,91
+2026,02,New Zealand,Otago Region,Queenstown,1,1,2,0,5,0
+2026,02,New Zealand,Southland Region,Gore,1,1,1,1,10,35
+2026,02,New Zealand,Waikato Region,Cambridge,1,1,1,1,8,247
+2026,02,New Zealand,Waikato Region,Hamilton,3,2,3,3,20,196
+2026,02,New Zealand,Waikato Region,Taupo,1,1,1,1,5,32
+2026,02,New Zealand,Wellington Region,(not set),1,1,1,0,3,0
+2026,02,New Zealand,Wellington Region,Lower Hutt,3,3,5,5,33,160
+2026,02,New Zealand,Wellington Region,Wellington,18,13,20,14,78,850
+2026,02,New Zealand,West Coast Region,(not set),1,1,1,1,5,11
+2026,02,Poland,Masovian Voivodeship,Warsaw,1,1,1,0,3,0
+2026,02,Singapore,(not set),(not set),37,37,37,1,111,0
+2026,02,Singapore,(not set),Singapore,70,67,73,1,211,144
+2026,02,Sweden,(not set),(not set),1,1,1,0,3,0
+2026,02,Sweden,Norrbotten County,Lulea,2,2,2,0,6,0
+2026,02,Thailand,Chiang Mai,(not set),1,1,1,1,6,14
+2026,02,United Kingdom,England,London,1,1,1,1,5,19
+2026,02,United States,(not set),(not set),14,13,14,9,72,228
+2026,02,United States,California,Los Angeles,1,1,1,0,3,0
+2026,02,United States,California,San Diego,1,1,1,0,3,0
+2026,02,United States,California,San Jose,1,1,1,0,3,0
+2026,02,United States,Colorado,(not set),8,8,8,2,26,18
+2026,02,United States,Colorado,Aspen,1,1,1,0,3,0
+2026,02,United States,District of Columbia,Washington,1,1,1,1,8,27
+2026,02,United States,Florida,(not set),2,2,2,0,8,2
+2026,02,United States,Florida,Apopka,2,2,2,1,8,0
+2026,02,United States,Florida,Sebring,2,2,2,1,8,13
+2026,02,United States,Florida,Wellington,1,1,1,0,4,9
+2026,02,United States,Georgia,Atlanta,1,1,1,0,3,0
+2026,02,United States,Georgia,Lawrenceville,1,1,1,0,3,0
+2026,02,United States,Georgia,Ringgold,1,1,1,1,6,10
+2026,02,United States,Illinois,Chicago,1,1,1,1,5,0
+2026,02,United States,Indiana,Bloomington,1,0,1,1,8,9
+2026,02,United States,Indiana,Ossian,1,1,1,1,6,9
+2026,02,United States,Iowa,Altoona,2,2,2,0,6,0
+2026,02,United States,Iowa,Council Bluffs,6,6,6,1,19,13
+2026,02,United States,Kansas,Osborne,1,1,1,1,4,29
+2026,02,United States,Nebraska,Springfield,1,1,1,1,5,6
+2026,02,United States,New Mexico,Santa Fe,1,1,1,0,3,0
+2026,02,United States,New York,(not set),2,2,2,0,8,7
+2026,02,United States,New York,New York,6,6,6,0,20,2
+2026,02,United States,New York,Yonkers,2,2,2,1,8,17
+2026,02,United States,North Carolina,Forest City,6,6,6,0,18,0
+2026,02,United States,Ohio,Columbus,7,7,7,0,21,0
+2026,02,United States,Ohio,Rossford,2,2,2,1,13,11
+2026,02,United States,Oregon,Boardman,4,4,4,1,27,18
+2026,02,United States,Oregon,Prineville,7,7,7,0,21,0
+2026,02,United States,South Carolina,Socastee,2,2,2,1,12,22
+2026,02,United States,Tennessee,(not set),1,1,1,1,3,0
+2026,02,United States,Tennessee,Gallatin,3,2,3,2,10,12
+2026,02,United States,Texas,(not set),1,1,1,1,4,58
+2026,02,United States,Texas,Fort Worth,4,4,4,0,13,0
+2026,02,United States,Texas,Houston,1,1,1,0,4,1
+2026,02,United States,Utah,Salt Lake City,1,1,1,0,4,6
+2026,02,United States,Virginia,(not set),1,1,1,1,4,31
+2026,02,United States,Virginia,Ashburn,13,13,13,7,58,53
+2026,02,United States,Virginia,Reston,1,1,1,1,4,0
+2026,02,United States,Washington,Seattle,1,1,1,0,4,1
+2026,03,(not set),(not set),(not set),3,3,3,0,10,6
+2026,03,Afghanistan,Kabul,Kabul,1,1,1,0,3,0
+2026,03,Albania,(not set),Tirana,2,2,2,0,6,0
+2026,03,Armenia,(not set),Yerevan,2,2,2,0,6,0
+2026,03,Australia,Australian Capital Territory,Canberra,9,9,9,1,28,0
+2026,03,Australia,New South Wales,Sydney,14,14,14,3,49,44
+2026,03,Australia,Queensland,Brisbane,1,1,1,0,3,0
+2026,03,Australia,Queensland,Gold Coast,1,1,1,1,7,11
+2026,03,Australia,Victoria,Melbourne,14,14,14,0,42,0
+2026,03,Australia,Western Australia,Perth,1,1,1,0,3,0
+2026,03,Bahamas,(not set),Nassau,1,1,1,1,5,72
+2026,03,Canada,British Columbia,Chilliwack,1,1,2,1,6,0
+2026,03,Canada,Quebec,Montreal,1,2,1,1,6,0
+2026,03,China,(not set),(not set),55,53,55,1,183,47
+2026,03,China,Beijing,Beijing,1,1,1,0,3,0
+2026,03,China,Chongqing,Chongqing,2,2,2,0,8,4
+2026,03,China,Fujian,Xiamen,2,2,2,0,8,4
+2026,03,China,Gansu,Lanzhou,41,41,41,0,123,0
+2026,03,China,Guangdong Province,Guangzhou,5,5,5,1,17,7
+2026,03,China,Guangdong Province,Zhuhai,3,3,3,0,9,0
+2026,03,China,Heilongjiang,(not set),2,2,2,0,9,12
+2026,03,China,Hubei,Yichang,1,1,1,0,4,0
+2026,03,China,Hunan,Changsha,2,2,2,0,8,9
+2026,03,China,Jiangsu,Suzhou,1,1,1,0,3,0
+2026,03,China,Shaanxi,Xi'An,3,3,3,0,12,4
+2026,03,China,Shandong,Jinan,1,1,1,0,4,3
+2026,03,China,Shanghai,Shanghai,4,4,4,0,14,1
+2026,03,China,Sichuan,Chengdu,3,3,3,0,10,4
+2026,03,China,Xinjiang,Bayingolin Mongol Autonomous Prefecture,2,2,2,0,6,0
+2026,03,China,Zhejiang,Hangzhou,7,7,7,0,24,1
+2026,03,China,Zhejiang,Jiaxing,2,1,2,0,4,1
+2026,03,China,Zhejiang,Zhoushan,1,1,1,1,4,0
+2026,03,France,Ile-de-France,Paris,2,0,2,2,4,6
+2026,03,Germany,(not set),(not set),1,1,1,1,6,16
+2026,03,Hong Kong,(not set),Hong Kong,1,1,1,0,3,0
+2026,03,India,Bihar,Patna,1,1,1,1,5,2
+2026,03,India,Karnataka,Bengaluru,1,1,1,0,3,0
+2026,03,India,Telangana,Hyderabad,1,1,1,1,10,52
+2026,03,Indonesia,Banten,Serang,1,1,1,1,4,12
+2026,03,Iraq,Baghdad Governorate,Baghdad,1,1,1,0,3,0
+2026,03,Iraq,Wasit Governorate,(not set),1,1,1,0,3,0
+2026,03,Ireland,County Dublin,Dublin,3,3,3,0,9,0
+2026,03,Malaysia,Selangor,Puchong,1,1,1,1,16,97
+2026,03,Netherlands,North Holland,Amsterdam,2,2,2,0,6,0
+2026,03,New Zealand,Auckland,Auckland,203,183,332,199,1982,16849
+2026,03,New Zealand,Auckland,Karaka,1,1,1,0,3,0
+2026,03,New Zealand,Auckland,Whangaparaoa,1,1,1,1,7,81
+2026,03,New Zealand,Bay of Plenty Region,(not set),1,1,1,1,14,67
+2026,03,New Zealand,Bay of Plenty Region,Mount Maunganui,1,1,1,0,3,0
+2026,03,New Zealand,Bay of Plenty Region,Rotorua,1,1,1,1,5,1
+2026,03,New Zealand,Bay of Plenty Region,Tauranga,11,9,12,10,89,708
+2026,03,New Zealand,Bay of Plenty Region,Te Puke,2,2,2,2,14,162
+2026,03,New Zealand,Canterbury Region,Ashburton,1,1,1,0,3,0
+2026,03,New Zealand,Canterbury Region,Christchurch,37,30,49,23,234,1843
+2026,03,New Zealand,Canterbury Region,Lincoln,1,1,1,1,4,15
+2026,03,New Zealand,Canterbury Region,Prebbleton,12,8,13,7,48,257
+2026,03,New Zealand,Hawke's Bay Region,Napier,1,1,1,1,5,45
+2026,03,New Zealand,Manawatu-Whanganui Region,Levin,3,2,6,3,40,502
+2026,03,New Zealand,Nelson Region,Nelson,1,1,2,1,6,100
+2026,03,New Zealand,Otago Region,(not set),1,1,1,1,3,0
+2026,03,New Zealand,Otago Region,Dunedin,1,0,1,1,3,56
+2026,03,New Zealand,Otago Region,Oamaru,1,1,1,0,3,0
+2026,03,New Zealand,Waikato Region,(not set),1,1,1,0,3,0
+2026,03,New Zealand,Waikato Region,Hamilton,6,5,10,5,74,813
+2026,03,New Zealand,Waikato Region,Taupo,3,2,3,2,16,221
+2026,03,New Zealand,Wellington Region,Raumati South,1,1,1,1,4,10
+2026,03,New Zealand,Wellington Region,Wellington,35,27,44,17,186,1151
+2026,03,Nigeria,Lagos,Lagos,1,1,1,1,9,1865
+2026,03,Oman,Muscat Governorate,Muscat,1,1,1,0,4,3
+2026,03,Russia,Primorsky Krai,Vladivostok,1,1,1,0,3,0
+2026,03,Saudi Arabia,Makkah Province,Jeddah,1,1,1,0,3,0
+2026,03,Singapore,(not set),(not set),26,26,26,1,78,0
+2026,03,Singapore,(not set),Singapore,182,181,181,0,544,1
+2026,03,Sweden,Norrbotten County,Lulea,7,7,7,2,25,14
+2026,03,United Arab Emirates,Abu Dhabi,Abu Dhabi,1,1,1,0,3,0
+2026,03,United Arab Emirates,Dubai,Dubai,4,4,4,0,12,0
+2026,03,United Kingdom,England,(not set),2,2,2,2,10,34
+2026,03,United Kingdom,England,Bristol,1,1,1,1,7,33
+2026,03,United Kingdom,England,Chertsey,1,1,1,1,4,77
+2026,03,United Kingdom,England,Norwich,1,1,1,1,4,47
+2026,03,United Kingdom,England,Stockton-on-Tees,1,0,1,1,1,34
+2026,03,United Kingdom,Scotland,Alloa,1,1,1,1,4,33
+2026,03,United States,(not set),(not set),5,5,5,0,19,7
+2026,03,United States,Alabama,Birmingham,1,1,1,0,3,0
+2026,03,United States,California,(not set),4,4,4,1,17,18
+2026,03,United States,California,Los Angeles,2,2,2,0,6,0
+2026,03,United States,California,Santa Clara,1,1,1,0,3,0
+2026,03,United States,Colorado,(not set),4,4,4,0,12,0
+2026,03,United States,Colorado,Aspen,4,4,4,0,13,4
+2026,03,United States,Colorado,Idaho Springs,1,1,1,0,3,0
+2026,03,United States,Florida,(not set),6,6,6,0,21,16
+2026,03,United States,Florida,Indian River Shores,1,1,1,0,3,0
+2026,03,United States,Illinois,Chicago,1,1,1,0,3,0
+2026,03,United States,Iowa,Altoona,5,5,5,2,17,14
+2026,03,United States,Iowa,Council Bluffs,1,1,1,0,3,0
+2026,03,United States,Iowa,Des Moines,8,10,10,3,34,34
+2026,03,United States,Minnesota,Minneapolis,1,1,1,1,8,86
+2026,03,United States,Nebraska,(not set),3,3,3,0,9,0
+2026,03,United States,New Mexico,Santa Fe,1,1,1,0,3,0
+2026,03,United States,New York,New York,1,1,1,0,4,1
+2026,03,United States,North Carolina,Forest City,4,4,4,0,12,0
+2026,03,United States,Oregon,(not set),3,3,3,1,9,0
+2026,03,United States,Oregon,Boardman,6,6,6,2,21,14
+2026,03,United States,Oregon,Prineville,2,1,2,1,5,7
+2026,03,United States,Rhode Island,Providence,1,1,1,0,3,0
+2026,03,United States,Tennessee,Nashville,1,1,1,0,3,0
+2026,03,United States,Texas,(not set),3,3,3,2,11,7
+2026,03,United States,Texas,Fort Worth,4,2,4,2,8,4
+2026,03,United States,Texas,Knox City,2,2,2,1,11,34
+2026,03,United States,Utah,Salt Lake City,1,1,1,0,4,4
+2026,03,United States,Virginia,(not set),5,7,6,4,29,222
+2026,03,United States,Virginia,Ashburn,21,20,21,9,84,94
+2026,03,United States,Virginia,Flint Hill,3,4,3,3,18,82
+2026,03,United States,Washington,Seattle,3,3,4,0,12,1
+2026,03,United States,Wyoming,Cheyenne,3,3,3,0,11,2
+2026,03,Uzbekistan,(not set),Samarkand,1,1,1,0,3,0
+2026,03,Vietnam,Kien Giang,Rach Gia,1,0,1,0,1,0
+2026,04,(not set),(not set),(not set),7,7,7,2,24,34
+2026,04,Afghanistan,Kabul,Kabul,2,2,2,0,6,0
+2026,04,Albania,(not set),Tirana,1,1,1,0,3,0
+2026,04,Australia,Australian Capital Territory,Canberra,8,8,8,0,24,0
+2026,04,Australia,New South Wales,Sydney,16,15,17,4,86,743
+2026,04,Australia,Queensland,Brisbane,1,1,1,1,6,13
+2026,04,Australia,Victoria,Melbourne,8,8,11,4,40,69
+2026,04,Canada,British Columbia,Burnaby,1,1,1,0,3,0
+2026,04,Canada,Ontario,Toronto,1,1,1,0,3,0
+2026,04,Canada,Quebec,Montreal,2,4,2,2,12,0
+2026,04,Chile,Santiago Metropolitan Region,Santiago,2,2,2,2,82,655
+2026,04,China,(not set),(not set),23,21,23,0,67,71
+2026,04,China,Guangdong Province,Zhuhai,1,1,1,0,3,0
+2026,04,China,Jiangsu,Suzhou,1,1,1,0,3,0
+2026,04,China,Shandong,Qingdao,2,2,2,0,7,0
+2026,04,China,Shanghai,Shanghai,2,2,2,0,7,0
+2026,04,China,Sichuan,(not set),2,2,2,0,6,0
+2026,04,China,Zhejiang,Jinhua,1,1,1,0,4,0
+2026,04,Cyprus,(not set),(not set),1,1,1,1,15,11
+2026,04,Fiji,Western Division,Nadi,1,1,1,0,3,0
+2026,04,France,Ile-de-France,Paris,1,2,1,1,6,0
+2026,04,Germany,(not set),(not set),2,2,2,2,13,38
+2026,04,Germany,Hessen,Frankfurt am Main,2,3,2,1,10,0
+2026,04,Hong Kong,(not set),Hong Kong,1,1,1,0,5,1
+2026,04,India,Gujarat,Ahmedabad,1,1,1,0,3,0
+2026,04,Indonesia,Jakarta,Jakarta,1,1,1,0,4,0
+2026,04,Indonesia,Jakarta,Menteng,1,1,1,1,17,217
+2026,04,Ireland,County Dublin,Dublin,5,5,5,1,17,4
+2026,04,Malaysia,Federal Territory of Kuala Lumpur,Kuala Lumpur,1,1,1,1,5,8
+2026,04,Mexico,Sinaloa,Culiacan,1,1,1,1,4,12
+2026,04,Netherlands,(not set),(not set),2,2,2,0,6,0
+2026,04,New Zealand,(not set),Pukekohe,1,1,1,0,3,0
+2026,04,New Zealand,Auckland,Auckland,249,224,403,245,2366,20047
+2026,04,New Zealand,Auckland,Orewa,1,1,1,1,4,7
+2026,04,New Zealand,Auckland,Silverdale,2,2,3,2,18,75
+2026,04,New Zealand,Auckland,Warkworth,1,1,1,0,3,0
+2026,04,New Zealand,Auckland,Whangaparaoa,1,1,1,1,9,26
+2026,04,New Zealand,Bay of Plenty Region,(not set),1,1,1,1,5,18
+2026,04,New Zealand,Bay of Plenty Region,Rotorua,2,2,2,0,7,8
+2026,04,New Zealand,Bay of Plenty Region,Tauranga,6,6,6,6,47,298
+2026,04,New Zealand,Canterbury Region,(not set),1,0,4,1,9,0
+2026,04,New Zealand,Canterbury Region,Christchurch,56,44,71,38,363,2961
+2026,04,New Zealand,Canterbury Region,Prebbleton,4,3,5,3,21,134
+2026,04,New Zealand,Canterbury Region,Rolleston,2,2,2,2,19,581
+2026,04,New Zealand,Hawke's Bay Region,Hastings,1,1,1,1,5,16
+2026,04,New Zealand,Hawke's Bay Region,Napier,3,3,6,4,37,84
+2026,04,New Zealand,Manawatu-Whanganui Region,Levin,1,0,1,0,3,2
+2026,04,New Zealand,Manawatu-Whanganui Region,Palmerston North,2,1,2,1,9,28
+2026,04,New Zealand,Manawatu-Whanganui Region,Whanganui,1,1,1,1,5,33
+2026,04,New Zealand,Nelson Region,Nelson,2,2,2,1,8,5
+2026,04,New Zealand,Northland Region,(not set),1,1,1,1,6,18
+2026,04,New Zealand,Northland Region,Whangarei,1,1,1,1,4,10
+2026,04,New Zealand,Otago Region,Dunedin,1,1,1,1,6,90
+2026,04,New Zealand,Otago Region,Queenstown,3,2,3,2,17,177
+2026,04,New Zealand,Southland Region,Invercargill,1,1,1,1,19,129
+2026,04,New Zealand,Southland Region,Te Anau,3,3,7,3,32,231
+2026,04,New Zealand,Taranaki Region,(not set),1,0,1,1,4,3
+2026,04,New Zealand,Taranaki Region,Inglewood,1,0,1,0,3,0
+2026,04,New Zealand,Taranaki Region,New Plymouth,0,0,2,0,4,0
+2026,04,New Zealand,Waikato Region,(not set),2,1,3,0,7,0
+2026,04,New Zealand,Waikato Region,Hamilton,4,3,4,1,17,47
+2026,04,New Zealand,Waikato Region,Taupo,2,2,2,1,8,65
+2026,04,New Zealand,Wellington Region,Lower Hutt,3,3,4,3,22,165
+2026,04,New Zealand,Wellington Region,Porirua,2,2,2,2,20,238
+2026,04,New Zealand,Wellington Region,Raumati South,1,1,1,1,4,16
+2026,04,New Zealand,Wellington Region,Wellington,38,29,47,31,329,3202
+2026,04,Pakistan,Punjab,Lahore,1,1,1,1,4,17
+2026,04,Portugal,Porto District,Vila Nova de Gaia,1,1,1,0,3,0
+2026,04,Russia,Novosibirsk Oblast,Novosibirsk,1,1,1,0,3,0
+2026,04,Singapore,(not set),(not set),4,4,4,1,12,0
+2026,04,Singapore,(not set),Singapore,233,234,233,7,716,95
+2026,04,South Korea,Gyeonggi-do,Yongin-si,1,1,1,1,4,42
+2026,04,Sri Lanka,Western Province,(not set),2,2,2,1,7,17
+2026,04,Sweden,Norrbotten County,Lulea,3,3,3,1,10,4
+2026,04,Sweden,Stockholm County,Stockholm,1,1,1,0,5,2
+2026,04,United Kingdom,England,London,6,7,6,6,52,315
+2026,04,United States,(not set),(not set),3,3,3,0,9,0
+2026,04,United States,California,Los Angeles,1,1,1,0,3,0
+2026,04,United States,California,San Francisco,1,1,1,0,4,4
+2026,04,United States,California,San Jose,3,3,3,2,11,44
+2026,04,United States,California,San Marcos,1,1,1,1,5,25
+2026,04,United States,California,Santa Clara,2,2,2,0,7,3
+2026,04,United States,California,Vacaville,1,1,1,1,4,38
+2026,04,United States,Colorado,(not set),4,4,4,1,13,6
+2026,04,United States,Colorado,Aspen,6,6,6,0,19,5
+2026,04,United States,Colorado,Denver,1,1,1,0,4,4
+2026,04,United States,Colorado,Gunnison,3,3,3,0,12,6
+2026,04,United States,District of Columbia,Washington,1,1,1,1,4,19
+2026,04,United States,Florida,Jacksonville,1,1,1,0,3,0
+2026,04,United States,Iowa,Altoona,2,2,2,1,7,7
+2026,04,United States,Iowa,Council Bluffs,2,2,2,0,6,0
+2026,04,United States,Kansas,(not set),3,3,3,1,11,29
+2026,04,United States,Minnesota,Maple Grove,1,1,1,1,5,15
+2026,04,United States,Nebraska,(not set),1,1,1,0,3,0
+2026,04,United States,Nebraska,Springfield,1,1,1,0,3,0
+2026,04,United States,New York,New York,2,2,2,0,6,0
+2026,04,United States,North Carolina,Forest City,8,8,8,2,26,14
+2026,04,United States,Ohio,Jefferson,1,1,1,0,3,0
+2026,04,United States,Ohio,New Albany,1,1,1,0,3,0
+2026,04,United States,Oklahoma,Bartlesville,1,1,1,0,3,0
+2026,04,United States,Oregon,Boardman,2,2,2,1,22,14
+2026,04,United States,Oregon,Prineville,12,12,12,4,40,22
+2026,04,United States,Oregon,The Dalles,1,1,1,0,3,0
+2026,04,United States,Pennsylvania,Philadelphia,1,1,1,0,3,0
+2026,04,United States,Tennessee,Gallatin,1,1,1,0,3,0
+2026,04,United States,Texas,Fort Worth,3,3,3,0,9,0
+2026,04,United States,Virginia,(not set),1,1,1,0,3,0
+2026,04,United States,Virginia,Ashburn,21,21,21,5,77,43
+2026,04,United States,Virginia,Chesapeake,1,1,1,0,3,0
+2026,04,United States,Virginia,Fredericksburg,1,1,1,1,5,9
+2026,04,United States,Washington,Moses Lake,1,1,1,0,3,0
+2026,04,United States,Washington,Seattle,2,2,2,0,8,2
+2026,04,United States,Wisconsin,Amery,1,0,1,1,3,5
+2026,04,United States,Wyoming,Cheyenne,3,3,3,0,12,4
+2026,04,Uzbekistan,(not set),Samarkand,1,0,1,1,1,22
+2026,04,Vietnam,Ha Tinh,(not set),1,1,1,0,3,0
+2026,04,Vietnam,Hai Phong,Haiphong,2,1,2,0,4,0
+2026,04,Vietnam,Hanoi,Hanoi,1,1,1,0,3,0
+2026,05,Albania,(not set),Tirana,5,5,5,0,15,0
+2026,05,Armenia,(not set),Yerevan,2,2,2,0,6,0
+2026,05,Australia,Australian Capital Territory,Canberra,3,3,3,1,10,21
+2026,05,Australia,New South Wales,Sydney,6,7,9,2,59,302
+2026,05,Australia,Tasmania,Hobart,1,0,1,0,2,0
+2026,05,Australia,Victoria,Ballarat,1,0,1,0,2,0
+2026,05,Australia,Victoria,Melbourne,3,2,4,3,25,103
+2026,05,Australia,Western Australia,Perth,1,1,1,1,6,28
+2026,05,Bangladesh,Dhaka Division,Dhaka,1,1,1,0,3,0
+2026,05,Canada,New Brunswick,Edmundston,1,0,1,1,1,68
+2026,05,Canada,New Brunswick,Saint-Quentin,1,1,1,1,4,63
+2026,05,Canada,Ontario,Toronto,2,2,2,1,7,32
+2026,05,Canada,Quebec,Montreal,1,2,1,1,6,0
+2026,05,China,(not set),(not set),8,8,8,1,27,4
+2026,05,France,Ile-de-France,Paris,1,1,1,1,6,20
+2026,05,India,Madhya Pradesh,Indore,1,1,1,0,3,0
+2026,05,Indonesia,Bali,Denpasar,1,1,1,1,6,180
+2026,05,Ireland,County Dublin,Dublin,1,1,1,1,4,27
+2026,05,Kenya,Nairobi County,Nairobi,1,1,1,0,3,0
+2026,05,Netherlands,South Holland,The Hague,1,1,1,1,5,34
+2026,05,New Zealand,(not set),Richmond,1,1,1,1,8,96
+2026,05,New Zealand,Auckland,Auckland,305,288,427,265,2328,18803
+2026,05,New Zealand,Auckland,Hunua,1,1,1,1,9,41
+2026,05,New Zealand,Auckland,Karaka,1,1,1,1,4,66
+2026,05,New Zealand,Auckland,Mauku,1,1,1,1,9,47
+2026,05,New Zealand,Auckland,Whangaparaoa,1,1,1,1,5,75
+2026,05,New Zealand,Bay of Plenty Region,Rotorua,2,2,3,0,8,0
+2026,05,New Zealand,Bay of Plenty Region,Tauranga,8,8,13,7,58,272
+2026,05,New Zealand,Bay of Plenty Region,Te Puna,1,1,1,1,4,29
+2026,05,New Zealand,Canterbury Region,(not set),1,1,1,1,6,83
+2026,05,New Zealand,Canterbury Region,Christchurch,39,33,54,29,252,1737
+2026,05,New Zealand,Canterbury Region,Lincoln,1,1,1,1,5,53
+2026,05,New Zealand,Canterbury Region,Prebbleton,5,4,9,4,28,79
+2026,05,New Zealand,Gisborne Region,Gisborne,1,1,1,1,6,4
+2026,05,New Zealand,Hawke's Bay Region,Hastings,1,1,1,0,4,7
+2026,05,New Zealand,Manawatu-Whanganui Region,Levin,1,0,3,2,14,89
+2026,05,New Zealand,Manawatu-Whanganui Region,Marton,1,1,1,0,4,6
+2026,05,New Zealand,Manawatu-Whanganui Region,Palmerston North,3,3,4,3,27,92
+2026,05,New Zealand,Northland Region,Pukenui,1,1,1,1,4,0
+2026,05,New Zealand,Northland Region,Ruakaka,1,1,8,5,73,465
+2026,05,New Zealand,Northland Region,Whangarei,2,2,2,2,14,70
+2026,05,New Zealand,Otago Region,Mosgiel,1,1,1,1,8,12
+2026,05,New Zealand,Otago Region,Queenstown,1,1,1,0,4,3
+2026,05,New Zealand,Otago Region,Wanaka,1,1,1,0,3,0
+2026,05,New Zealand,Taranaki Region,New Plymouth,1,1,1,1,8,104
+2026,05,New Zealand,Waikato Region,Hamilton,5,4,5,3,24,211
+2026,05,New Zealand,Waikato Region,Lichfield,1,1,1,1,4,0
+2026,05,New Zealand,Waikato Region,Pokeno,1,1,1,1,7,17
+2026,05,New Zealand,Waikato Region,Taupo,0,0,1,0,2,0
+2026,05,New Zealand,Waikato Region,Te Kuiti,1,1,1,0,3,0
+2026,05,New Zealand,Wellington Region,Lower Hutt,3,3,3,2,15,116
+2026,05,New Zealand,Wellington Region,Otaki,1,1,1,0,3,0
+2026,05,New Zealand,Wellington Region,Porirua,1,1,1,1,7,18
+2026,05,New Zealand,Wellington Region,Upper Hutt,1,1,1,1,14,93
+2026,05,New Zealand,Wellington Region,Wellington,40,35,52,26,201,1215
+2026,05,Pakistan,Sindh,Karachi,3,2,3,2,18,54
+2026,05,Philippines,Metro Manila,Makati City,1,1,1,1,8,55
+2026,05,Philippines,Metro Manila,Quezon City,1,1,1,1,5,117
+2026,05,Singapore,(not set),Singapore,278,278,278,0,834,0
+2026,05,South Africa,Mpumalanga,eMalahleni,1,1,1,1,7,24
+2026,05,Sri Lanka,Western Province,(not set),1,1,1,0,3,0
+2026,05,Sweden,Norrbotten County,Lulea,1,1,1,0,3,0
+2026,05,United Arab Emirates,Dubai,Dubai,6,6,6,0,18,0
+2026,05,United Kingdom,England,Liverpool,1,1,1,0,3,0
+2026,05,United States,(not set),(not set),3,4,3,2,22,170
+2026,05,United States,Arizona,Phoenix,1,1,1,1,5,16
+2026,05,United States,California,Sacramento,1,1,1,0,4,0
+2026,05,United States,California,San Jose,1,1,1,0,3,0
+2026,05,United States,Colorado,(not set),1,1,1,0,3,0
+2026,05,United States,Colorado,Gunnison,1,1,1,1,4,5
+2026,05,United States,Florida,(not set),1,1,1,0,3,0
+2026,05,United States,Florida,Palm Beach Gardens,1,1,1,0,3,0
+2026,05,United States,Illinois,Chicago,1,1,1,0,3,0
+2026,05,United States,Indiana,Sheridan,1,1,1,1,4,34
+2026,05,United States,Indiana,Warsaw,1,1,1,1,6,8
+2026,05,United States,Iowa,Altoona,1,1,1,0,3,0
+2026,05,United States,Massachusetts,(not set),1,1,1,0,3,0
+2026,05,United States,Massachusetts,Newton,1,1,1,1,5,28
+2026,05,United States,Mississippi,New Albany,1,1,1,0,3,0
+2026,05,United States,New York,Guilderland,1,1,1,0,3,0
+2026,05,United States,North Carolina,Forest City,2,2,2,0,6,0
+2026,05,United States,Oregon,Prineville,3,3,3,1,11,7
+2026,05,United States,Pennsylvania,Mountain Top,1,2,1,1,6,0
+2026,05,United States,Texas,Fort Worth,1,1,1,0,3,0
+2026,05,United States,Virginia,Ashburn,15,14,15,4,67,79
+2026,05,United States,Wisconsin,Amery,1,0,1,1,3,31
+2026,05,Vanuatu,Shefa Province,Port Vila,1,1,1,0,3,0
+2026,05,Zambia,Lusaka Province,Lusaka,1,1,1,0,3,0
