@@ -44,7 +44,6 @@ In root folder, run:
 In backend/Meta Business Suite, run: 
 ```python3 final_fake_meta_api.py```
 
-
 In frontend/dashboard, run: 
 ```npm run dev```
 
