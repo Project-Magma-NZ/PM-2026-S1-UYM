@@ -11,10 +11,10 @@ router = APIRouter(tags=["Metrics"])
 
 
 class MetricEntry(BaseModel):
-    metric_name: str
-    date: str
-    value: str
-    platform: str 
+    metric_name: str | None = None
+    date: str | None = None
+    value: str | None = None
+    platform: str | None = None
 
 
 @router.get("/metrics")
@@ -42,11 +42,10 @@ def add_metric(entry: MetricEntry):
 @router.put("/metrics/{id}")
 def update_metric(id: int, entry: MetricEntry):
     try:
-        response = supabase.table("metrics_entries").update({
-            "metric_name": entry.metric_name,
-            "date": entry.date,
-            "value": entry.value,
-        }).eq("id", id).execute()
+        updates = {k: v for k, v in entry.model_dump().items() if v is not None}
+        if not updates:
+            raise HTTPException(status_code=400, detail="No fields to update")
+        response = supabase.table("metrics_entries").update(updates).eq("id", id).execute()
         if not response.data:
             raise HTTPException(status_code=404, detail="Metric not found")
         return {"success": True, "item": response.data[0]}
