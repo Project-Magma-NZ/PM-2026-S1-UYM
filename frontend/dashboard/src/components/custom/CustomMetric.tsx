@@ -16,12 +16,13 @@ const Record = ({ id, metric_name, platform, value, date, onDelete, onEdit }: Cu
   const [editName, setEditName] = useState(metric_name);
   const [editValue, setEditValue] = useState(value);
   const [editDate, setEditDate] = useState(date);
+  const [editPlatform, setEditPlatform] = useState(platform);
 
   const handleSave = async () => {
     const res = await fetch(`http://localhost:8000/api/v1/metrics/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ metric_name: editName, date: editDate, value: editValue }),
+      body: JSON.stringify({ metric_name: editName, date: editDate, value: editValue, platform: editPlatform }),
     });
     if (res.ok) {
       onEdit(id, { metric_name: editName, date: editDate, value: editValue });
@@ -39,7 +40,9 @@ const Record = ({ id, metric_name, platform, value, date, onDelete, onEdit }: Cu
       <div className="grid grid-cols-[2fr_1fr_1fr_1fr_0.5fr] items-center px-4 py-3 border-b border-slate-100 gap-2">
         <input value={editName} onChange={(e) => setEditName(e.target.value)}
           className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-brand-yellow" />
-        <span className="bg-brand-cream text-brand-brown text-[10px] font-bold px-3 py-1 rounded-full uppercase w-fit">{platform || "—"}</span>
+        <input value={editPlatform} onChange={(e) => setEditPlatform(e.target.value)}
+  placeholder="Platform"
+  className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm text-brand-brown outline-none focus:ring-2 focus:ring-brand-yellow" />
         <input value={editValue} onChange={(e) => setEditValue(e.target.value)}
           className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm font-bold text-slate-900 outline-none focus:ring-2 focus:ring-brand-yellow" />
         <input type="date" value={editDate} onChange={(e) => setEditDate(e.target.value)}
