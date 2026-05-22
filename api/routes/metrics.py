@@ -36,3 +36,32 @@ def add_metric(entry: MetricEntry):
         return {"success": True, "item": response.data[0]}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+@router.put("/metrics/{id}")
+def update_metric(id: int, entry: MetricEntry):
+    try:
+        response = supabase.table("metrics_entries").update({
+            "metric_name": entry.metric_name,
+            "date": entry.date,
+            "value": entry.value,
+        }).eq("id", id).execute()
+        if not response.data:
+            raise HTTPException(status_code=404, detail="Metric not found")
+        return {"success": True, "item": response.data[0]}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.delete("/metrics/{id}")
+def delete_metric(id: int):
+    try:
+        response = supabase.table("metrics_entries").delete().eq("id", id).execute()
+        if not response.data:
+            raise HTTPException(status_code=404, detail="Metric not found")
+        return {"success": True, "deleted_id": id}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
