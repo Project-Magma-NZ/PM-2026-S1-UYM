@@ -17,6 +17,7 @@ const Record = ({ id, metric_name, platform, value, date, onDelete, onEdit }: Cu
   const [editValue, setEditValue] = useState(value);
   const [editDate, setEditDate] = useState(date);
   const [editPlatform, setEditPlatform] = useState(platform);
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   const handleSave = async () => {
     const res = await fetch(`http://localhost:8000/api/v1/metrics/${id}`, {
@@ -70,9 +71,16 @@ const Record = ({ id, metric_name, platform, value, date, onDelete, onEdit }: Cu
         <button onClick={() => setIsEditing(true)} className="text-slate-400 hover:text-brand-brown transition">
           <Pencil size={15} />
         </button>
-        <button onClick={handleDelete} className="text-slate-400 hover:text-red-500 transition">
-          <Trash2 size={15} />
-        </button>
+        {confirmDelete ? (
+  <div className="flex gap-1">
+    <button onClick={handleDelete} className="text-xs bg-red-500 text-white px-2 py-1 rounded-lg font-semibold">Yes</button>
+    <button onClick={() => setConfirmDelete(false)} className="text-xs border border-slate-200 px-2 py-1 rounded-lg text-slate-500">No</button>
+  </div>
+) : (
+  <button onClick={() => setConfirmDelete(true)} className="text-slate-400 hover:text-red-500 transition">
+    <Trash2 size={15} />
+  </button>
+)}
       </div>
     </div>
   );
