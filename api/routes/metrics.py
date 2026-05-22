@@ -14,6 +14,7 @@ class MetricEntry(BaseModel):
     metric_name: str
     date: str
     value: str
+    platform: str 
 
 
 @router.get("/metrics")
@@ -32,6 +33,7 @@ def add_metric(entry: MetricEntry):
             "metric_name": entry.metric_name,
             "date": entry.date,
             "value": entry.value,
+            "platform": entry.platform
         }).execute()
         return {"success": True, "item": response.data[0]}
     except Exception as e:

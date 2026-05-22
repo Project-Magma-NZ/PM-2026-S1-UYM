@@ -1,7 +1,9 @@
+import CustomMetricsTable from "../components/custom/CustomMetricsTable";
+
 const CustomMetrics = () => {
   return (
     <div>
-      <h1>Custom Metrics</h1>
+      <CustomMetricsTable />
     </div>
   );
 };
