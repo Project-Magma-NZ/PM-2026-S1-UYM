@@ -1,11 +1,11 @@
-export type View = 'login' | 'monthly' | 'yearly';
+export type View = "login" | "monthly" | "yearly" | "custom-metrics";
 
 export interface KPIData {
   label: string;
   value: string | number;
   change?: string;
   isNew?: boolean;
-  trend?: 'up' | 'down' | 'neutral';
+  trend?: "up" | "down" | "neutral";
   icon?: string;
 }
 
