@@ -14,6 +14,7 @@ import {
 import type { GenderData } from '../../types';
 
 type PlatformMode = 'all' | 'meta' | 'facebook' | 'instagram' | 'google';
+type PullState = 'checking' | 'live' | 'mock';
 
 type Props = { yearMonth?: string };
 
@@ -66,15 +67,13 @@ const GenderDistributionChart = ({ yearMonth }: Props) => {
   const [data, setData] = useState<GenderData[]>(() =>
     combineGenderData(GENDER_DISTRIBUTION_FACEBOOK, GENDER_DISTRIBUTION_INSTAGRAM),
   );
+  const [pullState, setPullState] = useState<Record<'facebook' | 'instagram', PullState>>({
+    facebook: 'checking',
+    instagram: 'checking',
+  });
 
   useEffect(() => {
     let active = true;
-
-    const setMockData = (values: GenderData[]) => {
-      if (active) {
-        setData(normalizeToPercent(values));
-      }
-    };
 
     const loadGoogleData = async () => {
       try {
@@ -85,19 +84,62 @@ const GenderDistributionChart = ({ yearMonth }: Props) => {
       }
     };
 
+    const loadFacebookData = async () => {
+      try {
+        const facebookCounts = await fetchFacebookGenderDistributionCounts();
+        const facebookData = convertCountsToData(facebookCounts);
+        const isLive = facebookData.length > 0;
+        if (active) {
+          setPullState((current) => ({ ...current, facebook: isLive ? 'live' : 'mock' }));
+        }
+        return isLive ? facebookData : GENDER_DISTRIBUTION_FACEBOOK.map((item) => ({ ...item }));
+      } catch {
+        if (active) {
+          setPullState((current) => ({ ...current, facebook: 'mock' }));
+        }
+        return GENDER_DISTRIBUTION_FACEBOOK.map((item) => ({ ...item }));
+      }
+    };
+
+    const loadInstagramData = async () => {
+      try {
+        const instagramCounts = await fetchInstagramGenderDistributionCounts();
+        const instagramData = convertCountsToData(instagramCounts);
+        const isLive = instagramData.length > 0;
+        if (active) {
+          setPullState((current) => ({ ...current, instagram: isLive ? 'live' : 'mock' }));
+        }
+        return isLive ? instagramData : GENDER_DISTRIBUTION_INSTAGRAM.map((item) => ({ ...item }));
+      } catch {
+        if (active) {
+          setPullState((current) => ({ ...current, instagram: 'mock' }));
+        }
+        return GENDER_DISTRIBUTION_INSTAGRAM.map((item) => ({ ...item }));
+      }
+    };
+
     const loadData = async () => {
       if (mode === 'facebook') {
-        setMockData(GENDER_DISTRIBUTION_FACEBOOK);
+        const facebookData = await loadFacebookData();
+        if (!active) return;
+        setData(normalizeToPercent(facebookData));
         return;
       }
 
       if (mode === 'instagram') {
-        setMockData(GENDER_DISTRIBUTION_INSTAGRAM);
+        const instagramData = await loadInstagramData();
+        if (!active) return;
+        setData(normalizeToPercent(instagramData));
         return;
       }
 
       if (mode === 'meta') {
-        setMockData(combineGenderData(GENDER_DISTRIBUTION_FACEBOOK, GENDER_DISTRIBUTION_INSTAGRAM));
+        const [facebookData, instagramData] = await Promise.all([
+          loadFacebookData(),
+          loadInstagramData(),
+        ]);
+        if (!active) return;
+        setData(combineGenderData(facebookData, instagramData));
         return;
       }
 
@@ -109,17 +151,13 @@ const GenderDistributionChart = ({ yearMonth }: Props) => {
       }
 
       if (mode === 'all') {
-        const [googleCounts, fbCounts, igCounts] = await Promise.all([
+        const [googleData, fbData, igData] = await Promise.all([
           loadGoogleData(),
-          fetchFacebookGenderDistributionCounts(),
-          fetchInstagramGenderDistributionCounts(),
+          loadFacebookData(),
+          loadInstagramData(),
         ]);
 
         if (!active) return;
-
-        const googleData = googleCounts;
-        const fbData = convertCountsToData(fbCounts);
-        const igData = convertCountsToData(igCounts);
 
         const allCombined = combineGenderData(googleData, fbData, igData);
         setData(allCombined);
@@ -132,6 +170,26 @@ const GenderDistributionChart = ({ yearMonth }: Props) => {
       active = false;
     };
   }, [mode, yearMonth]);
+
+  const visibleSources =
+    mode === 'facebook'
+      ? ['facebook' as const]
+      : mode === 'instagram'
+      ? ['instagram' as const]
+      : mode === 'google'
+      ? []
+      : ['facebook' as const, 'instagram' as const];
+
+  const statusText = (source: 'facebook' | 'instagram') => {
+    if (source === 'facebook') {
+      if (pullState.facebook === 'live') return 'Facebook gender: Live';
+      if (pullState.facebook === 'mock') return 'Facebook gender: Not available (New Page Experience)';
+      return 'Facebook gender: Checking';
+    }
+    if (pullState.instagram === 'live') return 'Instagram gender: Live';
+    if (pullState.instagram === 'mock') return 'Instagram gender: Mock fallback';
+    return 'Instagram gender: Checking';
+  };
 
   const dominant = [...data].sort((a, b) => b.value - a.value)[0] ?? {
     name: 'Unknown',
@@ -156,6 +214,24 @@ const GenderDistributionChart = ({ yearMonth }: Props) => {
         <div>
           <h3 className="text-base font-black text-slate-900">Gender Distribution</h3>
           <p className="text-xs font-semibold text-slate-500 mt-1">{platformLabel}</p>
+          {visibleSources.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-2">
+              {visibleSources.map((source) => (
+                <span
+                  key={source}
+                  className={`text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full ${
+                    pullState[source] === 'live'
+                      ? 'bg-green-50 text-green-700'
+                      : pullState[source] === 'mock'
+                      ? 'bg-orange-50 text-orange-700'
+                      : 'bg-slate-100 text-slate-500'
+                  }`}
+                >
+                  {statusText(source)}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="flex flex-wrap gap-2 bg-slate-100 p-1 rounded-xl">

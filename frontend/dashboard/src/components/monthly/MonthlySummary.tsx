@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import StatsCard from '../StatsCard';
 import { MONTHLY_KPIS } from '../../data/mockData';
 import { fetchKPIs } from '../../services/analytics';
+import { fetchMetaKPIs } from '../../services/meta';
 import type { KPIData } from '../../types';
 
 interface Props { yearMonth?: string; }
@@ -14,10 +15,9 @@ const combineKPIs = (a: KPIData[], b: KPIData[]): KPIData[] => {
     const key = kpi.label;
     if (map.has(key)) {
       const existing = map.get(key)!;
-      const valA = parseFloat(existing.value.replace(/,/g, '')) || 0;
-      const valB = parseFloat(kpi.value.replace(/,/g, '')) || 0;
-      const sum = valA + valB;
-      map.set(key, { ...existing, value: sum.toLocaleString() });
+      const valA = parseFloat(String(existing.value).replace(/,/g, '')) || 0;
+      const valB = parseFloat(String(kpi.value).replace(/,/g, '')) || 0;
+      map.set(key, { ...existing, value: (valA + valB).toLocaleString() });
     } else {
       map.set(key, kpi);
     }
@@ -50,16 +50,17 @@ const MonthlySummary = ({ yearMonth }: Props) => {
         setIsGoogleReal(false);
       });
 
-    // Fetch Meta data (Facebook/Instagram) - easily replaceable once real API is available
-    fetch('http://localhost:3001/kpi_summary?access_token=fake_token')
-      .then((res) => res.json())
-      .then((res) => {
-        setMetaKPIs(res.data || []);
-        setIsMetaReal(true);
+    fetchMetaKPIs()
+      .then((kpis) => {
+        if (kpis.length > 0) {
+          setMetaKPIs(kpis);
+          setIsMetaReal(true);
+        } else {
+          setMetaKPIs(MONTHLY_KPIS);
+          setIsMetaReal(false);
+        }
       })
-      .catch((err) => {
-        console.error('Failed to fetch Meta KPI summary:', err);
-        // Fallback to empty
+      .catch(() => {
         setMetaKPIs(MONTHLY_KPIS);
         setIsMetaReal(false);
       });
@@ -68,19 +69,25 @@ const MonthlySummary = ({ yearMonth }: Props) => {
   const getFilteredKPIs = (): KPIData[] => {
     switch (selectedSource) {
       case 'google':
-        return googleKPIs;
+        return isGoogleReal ? googleKPIs : MONTHLY_KPIS;
       case 'meta':
-        return metaKPIs;
+        return isMetaReal ? metaKPIs : MONTHLY_KPIS;
       case 'all':
       default:
-        // Return combined real data if both are real, else fallback to mock
-        if (isGoogleReal && isMetaReal) {
-          return combineKPIs(googleKPIs, metaKPIs);
-        } else {
-          return MONTHLY_KPIS;
+        if (isGoogleReal || isMetaReal) {
+          return combineKPIs(
+            isGoogleReal ? googleKPIs : [],
+            isMetaReal ? metaKPIs : [],
+          );
         }
+        return MONTHLY_KPIS;
     }
   };
+
+  const isMock =
+    (selectedSource === 'all' && !isGoogleReal && !isMetaReal) ||
+    (selectedSource === 'google' && !isGoogleReal) ||
+    (selectedSource === 'meta' && !isMetaReal);
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
@@ -88,13 +95,7 @@ const MonthlySummary = ({ yearMonth }: Props) => {
         <div>
           <h3 className="text-base font-black text-slate-900">
             Key Performance Metrics
-            {selectedSource === 'all' && (!isGoogleReal || !isMetaReal) && (
-              <span className="ml-2 text-sm font-normal text-orange-600">Mock Data</span>
-            )}
-            {selectedSource === 'google' && !isGoogleReal && (
-              <span className="ml-2 text-sm font-normal text-orange-600">Mock Data</span>
-            )}
-            {selectedSource === 'meta' && !isMetaReal && (
+            {isMock && (
               <span className="ml-2 text-sm font-normal text-orange-600">Mock Data</span>
             )}
           </h3>

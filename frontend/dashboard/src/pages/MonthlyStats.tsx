@@ -4,6 +4,7 @@ import AgeDemographicsChart from '../components/monthly/AgeDemographicsChart';
 import GenderDistributionChart from '../components/monthly/GenderDistributionChart';
 import GlobalAudienceReach from '../components/monthly/GlobalAudienceReach';
 import { fetchAvailableMonths, fetchKPIs } from '../services/analytics';
+import { fetchMetaFbInsights, fetchMetaIgInsights } from '../services/meta';
 
 const WEBSITE_TARGET = 6800;
 
@@ -17,11 +18,23 @@ const MonthlyStats = () => {
   const [months, setMonths] = useState<string[]>([]);
   const [selected, setSelected] = useState<string>('YTD');
   const [websiteVisitors, setWebsiteVisitors] = useState<number>(0);
+  const [fbViews, setFbViews] = useState<number | null>(null);
+  const [igViews, setIgViews] = useState<number | null>(null);
 
   useEffect(() => {
     fetchAvailableMonths()
       .then(m => setMonths(m))
       .catch(() => {});
+
+    Promise.all([fetchMetaFbInsights(), fetchMetaIgInsights()])
+      .then(([fb, ig]) => {
+        setFbViews(fb.page_followers || fb.page_fans || fb.page_impressions || fb.page_reach || 0);
+        setIgViews(ig.reach || ig.impressions || ig.views || 0);
+      })
+      .catch(() => {
+        setFbViews(0);
+        setIgViews(0);
+      });
   }, []);
 
   useEffect(() => {
@@ -77,13 +90,53 @@ const MonthlyStats = () => {
             </div>
             <p className="text-[11px] text-slate-400 font-bold mt-1">{targetPercent.toFixed(1)}% of 2026 target reached</p>
           </div>
-          <div>
-            <div className="flex justify-between text-sm font-bold mb-2">
-              <span className="text-slate-600">Meta Views</span>
-              <span className="text-slate-400">— / 150,000</span>
+          <div className="space-y-4">
+            <div>
+              <div className="flex justify-between text-sm font-bold mb-2">
+                <span className="text-slate-600">Facebook Followers</span>
+                <span className="text-slate-900">
+                  {fbViews === null ? '…' : fbViews > 0 ? fbViews.toLocaleString() : '—'}
+                </span>
+              </div>
+              <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                {fbViews !== null && fbViews > 0 && (
+                  <div
+                    className="h-full bg-brand-yellow rounded-full transition-all duration-700"
+                    style={{ width: `${Math.min((fbViews / 5000) * 100, 100)}%` }}
+                  />
+                )}
+              </div>
+              <p className="text-[11px] font-bold mt-1">
+                {fbViews === null
+                  ? <span className="text-slate-400">Loading…</span>
+                  : fbViews > 0
+                    ? <span className="text-emerald-600">Live count — Meta API</span>
+                    : <span className="text-amber-500">No data available</span>}
+              </p>
             </div>
-            <div className="h-2.5 bg-slate-100 rounded-full" />
-            <p className="text-[11px] text-amber-500 font-bold mt-1">Meta Ads not connected — manual entry needed</p>
+            <div>
+              <div className="flex justify-between text-sm font-bold mb-2">
+                <span className="text-slate-600">Instagram Reach</span>
+                <span className="text-slate-900">
+                  {igViews === null ? '…' : igViews > 0 ? igViews.toLocaleString() : '—'}
+                </span>
+              </div>
+              <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                {igViews !== null && igViews > 0 && (
+                  <div
+                    className="h-full bg-brand-brown rounded-full transition-all duration-700"
+                    style={{ width: `${Math.min((igViews / 5000) * 100, 100)}%` }}
+                  />
+                )}
+              </div>
+              <p className="text-[11px] font-bold mt-1">
+                {igViews === null
+                  ? <span className="text-slate-400">Loading…</span>
+                  : igViews > 0
+                    ? <span className="text-emerald-600">Last 28 days — Meta API</span>
+                    : <span className="text-amber-500">No reach data available</span>}
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -13,10 +13,15 @@ import {
   AGE_DEMOGRAPHICS_FACEBOOK,
   AGE_DEMOGRAPHICS_INSTAGRAM,
 } from '../../data/mockData';
-import { fetchAgeDemographics } from '../../services/analytics';
+import {
+  fetchAgeDemographics,
+  fetchFacebookAgeDemographics,
+  fetchInstagramAgeDemographics,
+} from '../../services/analytics';
 import type { AgeDemographic } from '../../types';
 
 type PlatformMode = 'all' | 'meta' | 'facebook' | 'instagram' | 'google';
+type PullState = 'checking' | 'live' | 'mock';
 
 type Props = { yearMonth?: string };
 
@@ -29,8 +34,10 @@ const PLATFORM_OPTIONS: { key: PlatformMode; label: string }[] = [
 ];
 
 const AGE_GROUPS = AGE_DEMOGRAPHICS.map((item) => item.age);
+const MOCK_FACEBOOK_AGE = AGE_DEMOGRAPHICS_FACEBOOK.map((row) => ({ ...row, google: 0 }));
+const MOCK_INSTAGRAM_AGE = AGE_DEMOGRAPHICS_INSTAGRAM.map((row) => ({ ...row, google: 0 }));
 
-const combineAgeSources = (...sources: AgeDemographic[]) => {
+const combineAgeSources = (...sources: AgeDemographic[][]) => {
   const rowMap = new Map<string, AgeDemographic>();
 
   AGE_GROUPS.forEach((age) => rowMap.set(age, { age, meta: 0, google: 0 }));
@@ -50,25 +57,71 @@ const combineAgeSources = (...sources: AgeDemographic[]) => {
 
 const AgeDemographicsChart = ({ yearMonth }: Props) => {
   const [mode, setMode] = useState<PlatformMode>('all');
-  const [data, setData] = useState<AgeDemographic>(() =>
+  const [data, setData] = useState<AgeDemographic[]>(() =>
     combineAgeSources(AGE_DEMOGRAPHICS_FACEBOOK, AGE_DEMOGRAPHICS_INSTAGRAM, AGE_DEMOGRAPHICS),
   );
+  const [pullState, setPullState] = useState<Record<'facebook' | 'instagram', PullState>>({
+    facebook: 'checking',
+    instagram: 'checking',
+  });
 
   useEffect(() => {
     let active = true;
 
+    const loadFacebookData = async () => {
+      try {
+        const facebookData = await fetchFacebookAgeDemographics();
+        const isLive = facebookData.length > 0;
+        if (active) {
+          setPullState((current) => ({ ...current, facebook: isLive ? 'live' : 'mock' }));
+        }
+        return isLive ? facebookData : MOCK_FACEBOOK_AGE;
+      } catch {
+        if (active) {
+          setPullState((current) => ({ ...current, facebook: 'mock' }));
+        }
+        return MOCK_FACEBOOK_AGE;
+      }
+    };
+
+    const loadInstagramData = async () => {
+      try {
+        const instagramData = await fetchInstagramAgeDemographics();
+        const isLive = instagramData.length > 0;
+        if (active) {
+          setPullState((current) => ({ ...current, instagram: isLive ? 'live' : 'mock' }));
+        }
+        return isLive ? instagramData : MOCK_INSTAGRAM_AGE;
+      } catch {
+        if (active) {
+          setPullState((current) => ({ ...current, instagram: 'mock' }));
+        }
+        return MOCK_INSTAGRAM_AGE;
+      }
+    };
+
     const loadData = async () => {
       if (mode === 'facebook') {
-        setData(AGE_DEMOGRAPHICS_FACEBOOK.map((row) => ({ ...row, google: 0 })));
+        const facebookData = await loadFacebookData();
+        if (!active) return;
+        setData(facebookData);
         return;
       }
 
       if (mode === 'instagram') {
-        setData(AGE_DEMOGRAPHICS_INSTAGRAM.map((row) => ({ ...row, google: 0 })));
+        const instagramData = await loadInstagramData();
+        if (!active) return;
+        setData(instagramData);
         return;
       }
 
-      const metaData = combineAgeSources(AGE_DEMOGRAPHICS_FACEBOOK, AGE_DEMOGRAPHICS_INSTAGRAM);
+      const [facebookData, instagramData] = await Promise.all([
+        loadFacebookData(),
+        loadInstagramData(),
+      ]);
+      if (!active) return;
+
+      const metaData = combineAgeSources(facebookData, instagramData);
 
       if (mode === 'meta') {
         setData(metaData);
@@ -95,6 +148,26 @@ const AgeDemographicsChart = ({ yearMonth }: Props) => {
     };
   }, [mode, yearMonth]);
 
+  const visibleSources =
+    mode === 'facebook'
+      ? ['facebook' as const]
+      : mode === 'instagram'
+      ? ['instagram' as const]
+      : mode === 'google'
+      ? []
+      : ['facebook' as const, 'instagram' as const];
+
+  const statusText = (source: 'facebook' | 'instagram') => {
+    if (source === 'facebook') {
+      if (pullState.facebook === 'live') return 'Facebook age: Live';
+      if (pullState.facebook === 'mock') return 'Facebook age: Not available (New Page Experience)';
+      return 'Facebook age: Checking';
+    }
+    if (pullState.instagram === 'live') return 'Instagram age: Live';
+    if (pullState.instagram === 'mock') return 'Instagram age: Mock fallback';
+    return 'Instagram age: Checking';
+  };
+
   const platformLabel =
     mode === 'all'
       ? 'All sources combined'
@@ -112,6 +185,24 @@ const AgeDemographicsChart = ({ yearMonth }: Props) => {
         <div>
           <h3 className="text-base font-black text-slate-900">Age Demographics</h3>
           <p className="text-xs font-semibold text-slate-500 mt-1">{platformLabel}</p>
+          {visibleSources.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-2">
+              {visibleSources.map((source) => (
+                <span
+                  key={source}
+                  className={`text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full ${
+                    pullState[source] === 'live'
+                      ? 'bg-green-50 text-green-700'
+                      : pullState[source] === 'mock'
+                      ? 'bg-orange-50 text-orange-700'
+                      : 'bg-slate-100 text-slate-500'
+                  }`}
+                >
+                  {statusText(source)}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="flex flex-wrap gap-2 bg-slate-100 p-1 rounded-xl">
