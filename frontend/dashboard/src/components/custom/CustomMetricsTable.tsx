@@ -81,6 +81,8 @@ export default function CustomMetricsTable() {
               platform={record.platform}
               value={record.value}
               date={record.date}
+              onDelete={(id) => setRecords(records.filter((r) => r.id !== id))}
+              onEdit={(id, updated) => setRecords(records.map((r) => r.id === id ? { ...r, ...updated } : r))}
             />
           ))
         )}

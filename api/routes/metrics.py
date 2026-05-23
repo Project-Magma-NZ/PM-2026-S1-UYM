@@ -11,10 +11,10 @@ router = APIRouter(tags=["Metrics"])
 
 
 class MetricEntry(BaseModel):
-    metric_name: str
-    date: str
-    value: str
-    platform: str 
+    metric_name: str | None = None
+    date: str | None = None
+    value: str | None = None
+    platform: str | None = None
 
 
 @router.get("/metrics")
@@ -36,5 +36,33 @@ def add_metric(entry: MetricEntry):
             "platform": entry.platform
         }).execute()
         return {"success": True, "item": response.data[0]}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+@router.put("/metrics/{id}")
+def update_metric(id: int, entry: MetricEntry):
+    try:
+        updates = {k: v for k, v in entry.model_dump().items() if v is not None}
+        if not updates:
+            raise HTTPException(status_code=400, detail="No fields to update")
+        response = supabase.table("metrics_entries").update(updates).eq("id", id).execute()
+        if not response.data:
+            raise HTTPException(status_code=404, detail="Metric not found")
+        return {"success": True, "item": response.data[0]}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.delete("/metrics/{id}")
+def delete_metric(id: int):
+    try:
+        response = supabase.table("metrics_entries").delete().eq("id", id).execute()
+        if not response.data:
+            raise HTTPException(status_code=404, detail="Metric not found")
+        return {"success": True, "deleted_id": id}
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
