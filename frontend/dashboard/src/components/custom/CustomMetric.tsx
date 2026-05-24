@@ -20,7 +20,7 @@ const Record = ({ id, metric_name, platform, value, date, onDelete, onEdit }: Cu
   const [confirmDelete, setConfirmDelete] = useState(false);
 
   const handleSave = async () => {
-    const res = await fetch(`http://localhost:8000/api/v1/metrics/${id}`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/metrics/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ metric_name: editName, date: editDate, value: editValue, platform: editPlatform }),
@@ -32,7 +32,7 @@ const Record = ({ id, metric_name, platform, value, date, onDelete, onEdit }: Cu
   };
 
   const handleDelete = async () => {
-    const res = await fetch(`http://localhost:8000/api/v1/metrics/${id}`, { method: "DELETE" });
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/metrics/${id}`, { method: "DELETE" });
     if (res.ok) onDelete(id);
   };
 

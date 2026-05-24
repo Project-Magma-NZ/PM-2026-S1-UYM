@@ -7,7 +7,7 @@ export default function CustomMetricsTable() {
   const [records, setRecords] = useState<{ id: string; metric_name: string; platform: string; value: string; date: string }[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/v1/metrics")
+    fetch(`${import.meta.env.VITE_API_URL}/api/v1/metrics`)
       .then((res) => res.json())
       .then((data) => {
         const mapped = data.items.map((item: any) => ({

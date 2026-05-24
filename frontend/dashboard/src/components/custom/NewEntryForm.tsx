@@ -21,7 +21,7 @@ const NewEntryForm = ({ onClose, onSave }: NewEntryFormProps) => {
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
 
   const handleSave = async () => {
-    const res = await fetch("http://localhost:8000/api/v1/metrics", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/metrics`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ metric_name, date, value, platform }),
