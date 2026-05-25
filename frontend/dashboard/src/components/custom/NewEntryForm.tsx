@@ -30,7 +30,7 @@ const NewEntryForm = ({ onClose, onSave }: NewEntryFormProps) => {
     onSave({
       id: String(data.item.id),
       metric_name: data.item.metric_name,
-      platform: data.item.platform,
+      platform: data.item.platform || "",
       value: data.item.value,
       date: data.item.date,
     });
