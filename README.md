@@ -39,7 +39,7 @@ Dashboard which shows:
 
 ## How to Run This Project
 In root folder, run: 
-```uv run --with fastapi --with uvicorn --with pandas uvicorn api.main:app --reload```
+```uv run --with fastapi --with uvicorn --with pandas --with supabase uvicorn api.main:app --reload```
 
 In backend/Meta Business Suite, run: 
 ```python3 final_fake_meta_api.py```
