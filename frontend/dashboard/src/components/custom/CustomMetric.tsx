@@ -8,10 +8,10 @@ type CustomMetric = {
   value: string;
   date: string;
   onDelete: (id: string) => void;
-  onEdit: (id: string, updated: { metric_name: string; date: string; value: string }) => void;
+  onEdit: (id: string, updated: { metric_name: string; date: string; value: string; platform: string }) => void;
 };
 
-const Record = ({ id, metric_name, platform, value, date, onDelete, onEdit }: CustomMetric) => {
+const CustomMetric = ({ id, metric_name, platform, value, date, onDelete, onEdit }: CustomMetric) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editName, setEditName] = useState(metric_name);
   const [editValue, setEditValue] = useState(value);
@@ -26,7 +26,7 @@ const Record = ({ id, metric_name, platform, value, date, onDelete, onEdit }: Cu
       body: JSON.stringify({ metric_name: editName, date: editDate, value: editValue, platform: editPlatform }),
     });
     if (res.ok) {
-      onEdit(id, { metric_name: editName, date: editDate, value: editValue });
+      onEdit(id, { metric_name: editName, date: editDate, value: editValue, platform: editPlatform });
       setIsEditing(false);
     }
   };
@@ -39,15 +39,28 @@ const Record = ({ id, metric_name, platform, value, date, onDelete, onEdit }: Cu
   if (isEditing) {
     return (
       <div className="grid grid-cols-[2fr_1fr_1fr_1fr_0.5fr] items-center px-4 py-3 border-b border-slate-100 gap-2">
-        <input value={editName} onChange={(e) => setEditName(e.target.value)}
-          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-brand-yellow" />
-        <input value={editPlatform} onChange={(e) => setEditPlatform(e.target.value)}
-  placeholder="Platform"
-  className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm text-brand-brown outline-none focus:ring-2 focus:ring-brand-yellow" />
-        <input value={editValue} onChange={(e) => setEditValue(e.target.value)}
-          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm font-bold text-slate-900 outline-none focus:ring-2 focus:ring-brand-yellow" />
-        <input type="date" value={editDate} onChange={(e) => setEditDate(e.target.value)}
-          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm text-slate-500 outline-none focus:ring-2 focus:ring-brand-yellow" />
+        <input 
+          value={editName} 
+          onChange={(e) => setEditName(e.target.value)}
+          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-brand-yellow" 
+        />
+        <input 
+          value={editPlatform} 
+          onChange={(e) => setEditPlatform(e.target.value)}
+          placeholder="Platform"
+          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm text-brand-brown outline-none focus:ring-2 focus:ring-brand-yellow" 
+        />
+        <input 
+          value={editValue} 
+          onChange={(e) => setEditValue(e.target.value)}
+          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm font-bold text-slate-900 outline-none focus:ring-2 focus:ring-brand-yellow" 
+        />
+        <input 
+          type="date" 
+          value={editDate} 
+          onChange={(e) => setEditDate(e.target.value)}
+          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm text-slate-500 outline-none focus:ring-2 focus:ring-brand-yellow" 
+        />
         <div className="flex gap-1">
           <button onClick={handleSave} className="text-xs bg-brand-brown text-white px-2 py-1 rounded-lg font-semibold">Save</button>
           <button onClick={() => setIsEditing(false)} className="text-xs border border-slate-200 px-2 py-1 rounded-lg text-slate-500">Cancel</button>
@@ -72,18 +85,18 @@ const Record = ({ id, metric_name, platform, value, date, onDelete, onEdit }: Cu
           <Pencil size={15} />
         </button>
         {confirmDelete ? (
-  <div className="flex gap-1">
-    <button onClick={handleDelete} className="text-xs bg-red-500 text-white px-2 py-1 rounded-lg font-semibold">Yes</button>
-    <button onClick={() => setConfirmDelete(false)} className="text-xs border border-slate-200 px-2 py-1 rounded-lg text-slate-500">No</button>
-  </div>
-) : (
-  <button onClick={() => setConfirmDelete(true)} className="text-slate-400 hover:text-red-500 transition">
-    <Trash2 size={15} />
-  </button>
-)}
+          <div className="flex gap-1">
+            <button onClick={handleDelete} className="text-xs bg-red-500 text-white px-2 py-1 rounded-lg font-semibold">Yes</button>
+            <button onClick={() => setConfirmDelete(false)} className="text-xs border border-slate-200 px-2 py-1 rounded-lg text-slate-500">No</button>
+          </div>
+        ) : (
+          <button onClick={() => setConfirmDelete(true)} className="text-slate-400 hover:text-red-500 transition">
+            <Trash2 size={15} />
+          </button>
+        )}
       </div>
     </div>
   );
 };
 
-export default Record;
+export default CustomMetric;

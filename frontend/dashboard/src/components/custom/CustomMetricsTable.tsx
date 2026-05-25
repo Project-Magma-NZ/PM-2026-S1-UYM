@@ -13,13 +13,14 @@ export default function CustomMetricsTable() {
         const mapped = data.items.map((item: any) => ({
           id: String(item.id),
           metric_name: item.metric_name,
-          platform: "",
+          platform: item.platform || "",
           value: item.value,
           date: item.date,
         }));
         setRecords(mapped);
       });
   }, []);
+  
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(7);
 
@@ -35,6 +36,7 @@ export default function CustomMetricsTable() {
     window.addEventListener("resize", calculate);
     return () => window.removeEventListener("resize", calculate);
   }, []);
+  
   const totalPages = Math.ceil(records.length / recordsPerPage);
   const paginatedRecords = records.slice(
     (currentPage - 1) * recordsPerPage,
@@ -90,7 +92,7 @@ export default function CustomMetricsTable() {
         {/* Pagination */}
         <div className="flex items-center justify-between px-6 py-4 bg-brand-cream rounded-b-2xl">
           <p className="text-sm text-brand-brown font-medium">
-            Showing {Math.min(currentPage * recordsPerPage, records.length)} of {records.length} records
+            Showing {paginatedRecords.length > 0 ? Math.min(currentPage * recordsPerPage, records.length) : 0} of {records.length} records
           </p>
           <div className="flex items-center gap-2">
             <button
