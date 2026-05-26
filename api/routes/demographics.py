@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Query
 
 from api.models import DemographicListResponse, MetadataListResponse
-from api.service import (
+from api.ga4_service import (
     SORTABLE_COLUMNS,
     DataNotReadyError,
     list_dimensions,

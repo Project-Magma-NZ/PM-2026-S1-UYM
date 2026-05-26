@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
 from api.models import HealthResponse
-from api.service import DataNotReadyError, get_data, last_loaded_at_iso, list_dimensions
+from api.ga4_service import DataNotReadyError, get_data, last_loaded_at_iso, list_dimensions
 
 router = APIRouter(tags=["Health"])
 
