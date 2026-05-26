@@ -14,6 +14,7 @@ from google.analytics.data_v1beta.types import (
 
 PROPERTY_ID = os.getenv("GA4_PROPERTY_ID")
 CREDENTIALS_PATH = os.getenv("GA4_CREDENTIALS_PATH", "credentials.json")
+CREDENTIALS_JSON = os.getenv("GA4_CREDENTIALS_JSON")
 
 DEMOGRAPHIC_DIMENSIONS = [
     "city", "country", "region", "language", "userAgeBracket", "userGender"
@@ -48,7 +49,13 @@ _client = None
 def _get_client() -> BetaAnalyticsDataClient:
     global _client
     if _client is None:
-        creds = service_account.Credentials.from_service_account_file(CREDENTIALS_PATH)
+        if CREDENTIALS_JSON:
+            import json
+            from google.oauth2.service_account import Credentials
+            info = json.loads(CREDENTIALS_JSON)
+            creds = Credentials.from_service_account_info(info)
+        else:
+            creds = service_account.Credentials.from_service_account_file(CREDENTIALS_PATH)
         _client = BetaAnalyticsDataClient(credentials=creds)
     return _client
 
