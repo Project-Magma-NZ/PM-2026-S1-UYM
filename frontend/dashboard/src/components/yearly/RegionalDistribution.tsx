@@ -27,14 +27,14 @@ const RegionalDistribution = () => {
         >
           <Geographies geography={WORLD_TOPO_URL}>
             {({ geographies }) =>
-              geographies.map((geo) => {
-                const isNZ = geo.id === NZ_COUNTRY_ID;
-                return (
+              geographies
+                .filter((geo) => geo.id === NZ_COUNTRY_ID)  // ← add this
+                .map((geo) => (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    fill={isNZ ? '#4a7c59' : 'transparent'}
-                    stroke={isNZ ? '#3a6347' : 'none'}
+                    fill="#4a7c59"
+                    stroke="#3a6347"
                     strokeWidth={0.5}
                     style={{
                       default: { outline: 'none' },
@@ -42,8 +42,7 @@ const RegionalDistribution = () => {
                       pressed: { outline: 'none' },
                     }}
                   />
-                );
-              })
+                ))
             }
           </Geographies>
         </ComposableMap>

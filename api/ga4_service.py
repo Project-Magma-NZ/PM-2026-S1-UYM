@@ -9,7 +9,7 @@ import pandas as pd
 from google.oauth2 import service_account
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import (
-    DateRange, Dimension, Metric, RunReportRequest
+    DateRange, Dimension, Metric, RunReportRequest, FilterExpression, Filter
 )
 
 PROPERTY_ID = os.getenv("GA4_PROPERTY_ID")
@@ -62,6 +62,16 @@ def _get_client() -> BetaAnalyticsDataClient:
 
 def _fetch_dimension(dimension: str, start_date: str, end_date: str) -> pd.DataFrame:
     client = _get_client()
+
+    dimension_filter = None
+    if dimension == "region":
+        dimension_filter = FilterExpression(
+            filter=Filter(
+                field_name="country",
+                string_filter=Filter.StringFilter(value="New Zealand")
+            )
+        )
+
     request = RunReportRequest(
         property=f"properties/{PROPERTY_ID}",
         date_ranges=[DateRange(start_date=start_date, end_date=end_date)],
@@ -71,6 +81,7 @@ def _fetch_dimension(dimension: str, start_date: str, end_date: str) -> pd.DataF
             Dimension(name=dimension),
         ],
         metrics=[Metric(name=m) for m in METRICS],
+        dimension_filter=dimension_filter,
         keep_empty_rows=False,
         limit=250000
     )
@@ -116,7 +127,7 @@ def get_data(force_reload: bool = False) -> pd.DataFrame:
         cache_valid = (
             _cache.frame is not None
             and _cache.loaded_at is not None
-            and (now - _cache.loaded_at).total_seconds() < 3600  # 1 hour cache
+            and (now - _cache.loaded_at).total_seconds() < 3600
         )
         if force_reload or not cache_valid:
             _cache.frame = _load_from_ga4()
