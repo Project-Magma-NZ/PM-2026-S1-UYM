@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { View } from './types';
-import Sidebar from './components/Sidebar';
-import LoginPage from './pages/LoginPage';
-import MonthlyStats from './pages/MonthlyStats';
-import YearlyStats from './pages/YearlyStats';
-import { supabase } from './lib/supabase';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { View } from "./types";
+import Sidebar from "./components/Sidebar";
+import LoginPage from "./pages/LoginPage";
+import MonthlyStats from "./pages/MonthlyStats";
+import YearlyStats from "./pages/YearlyStats";
+import CustomMetrics from "./pages/CustomMetrics";
+import { supabase } from "./lib/supabase";
 
 export default function App() {
-  const [view, setView] = useState<View>('monthly');
+  const [view, setView] = useState<View>("monthly");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -20,7 +21,9 @@ export default function App() {
     });
 
     // Listen for login/logout events
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
       setIsAuthenticated(!!session);
     });
 
@@ -58,7 +61,9 @@ export default function App() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
               >
-                {view === 'monthly' ? <MonthlyStats /> : <YearlyStats />}
+                {view === "monthly" && <MonthlyStats />}
+                {view === "yearly" && <YearlyStats />}
+                {view === "custom-metrics" && <CustomMetrics />}
               </motion.div>
             </main>
           </motion.div>

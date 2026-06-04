@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -7,7 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-} from 'recharts';
+} from "recharts";
 import {
   AGE_DEMOGRAPHICS,
   AGE_DEMOGRAPHICS_FACEBOOK,
@@ -26,11 +26,11 @@ type PullState = 'checking' | 'live' | 'mock';
 type Props = { yearMonth?: string };
 
 const PLATFORM_OPTIONS: { key: PlatformMode; label: string }[] = [
-  { key: 'all', label: 'All' },
-  { key: 'meta', label: 'Meta' },
-  { key: 'facebook', label: 'Facebook' },
-  { key: 'instagram', label: 'Instagram' },
-  { key: 'google', label: 'Google' },
+  { key: "all", label: "All" },
+  { key: "meta", label: "Meta" },
+  { key: "facebook", label: "Facebook" },
+  { key: "instagram", label: "Instagram" },
+  { key: "google", label: "Google" },
 ];
 
 const AGE_GROUPS = AGE_DEMOGRAPHICS.map((item) => item.age);
@@ -123,20 +123,28 @@ const AgeDemographicsChart = ({ yearMonth }: Props) => {
 
       const metaData = combineAgeSources(facebookData, instagramData);
 
-      if (mode === 'meta') {
+      if (mode === "meta") {
         setData(metaData);
         return;
       }
 
-      const googleData = await fetchAgeDemographics(yearMonth).catch(() => AGE_DEMOGRAPHICS);
+      const googleData = await fetchAgeDemographics(yearMonth).catch(
+        () => AGE_DEMOGRAPHICS,
+      );
       if (!active) return;
 
-      if (mode === 'google') {
-        setData(googleData.map((row) => ({ age: row.age, google: row.google, meta: 0 })));
+      if (mode === "google") {
+        setData(
+          googleData.map((row) => ({
+            age: row.age,
+            google: row.google,
+            meta: 0,
+          })),
+        );
         return;
       }
 
-      if (mode === 'all') {
+      if (mode === "all") {
         setData(combineAgeSources(metaData, googleData));
         return;
       }
@@ -169,15 +177,15 @@ const AgeDemographicsChart = ({ yearMonth }: Props) => {
   };
 
   const platformLabel =
-    mode === 'all'
-      ? 'All sources combined'
-      : mode === 'meta'
-      ? 'Meta (Facebook + Instagram)'
-      : mode === 'facebook'
-      ? 'Facebook'
-      : mode === 'instagram'
-      ? 'Instagram'
-      : 'Google Analytics';
+    mode === "all"
+      ? "All sources combined"
+      : mode === "meta"
+        ? "Meta (Facebook + Instagram)"
+        : mode === "facebook"
+          ? "Facebook"
+          : mode === "instagram"
+            ? "Instagram"
+            : "Google Analytics";
 
   return (
     <div className="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
@@ -222,26 +230,46 @@ const AgeDemographicsChart = ({ yearMonth }: Props) => {
 
       <div className="h-[260px] w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} barGap={8} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+          <BarChart
+            data={data}
+            barGap={8}
+            margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+          >
+            <CartesianGrid
+              strokeDasharray="3 3"
+              vertical={false}
+              stroke="#f1f5f9"
+            />
             <XAxis
               dataKey="age"
               axisLine={false}
               tickLine={false}
-              tick={{ fill: '#94a3b8', fontSize: 12, fontWeight: 600 }}
+              tick={{ fill: "#94a3b8", fontSize: 12, fontWeight: 600 }}
               dy={10}
             />
             <YAxis hide />
             <Tooltip
-              cursor={{ fill: '#f8fafc' }}
+              cursor={{ fill: "#f8fafc" }}
               contentStyle={{
-                borderRadius: '12px',
-                border: 'none',
-                boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
+                borderRadius: "12px",
+                border: "none",
+                boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
               }}
             />
-            <Bar dataKey="meta" fill="#0f172a" radius={[4, 4, 0, 0]} barSize={32} />
-            <Bar dataKey="google" fill="#FFB800" radius={[4, 4, 0, 0]} barSize={32} />
+            <Bar
+              dataKey="meta"
+              name="Meta"
+              fill="#0f172a"
+              radius={[4, 4, 0, 0]}
+              barSize={32}
+            />
+            <Bar
+              dataKey="google"
+              name="Google"
+              fill="#FFB800"
+              radius={[4, 4, 0, 0]}
+              barSize={32}
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>
