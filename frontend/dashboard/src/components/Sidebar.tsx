@@ -2,6 +2,7 @@ import { Calendar, BarChart3, LogOut, LayoutList } from "lucide-react";
 import { cn } from "../lib/utils";
 import { View } from "../types";
 import { supabase } from "../lib/supabase";
+import MetaConnect from './MetaConnect';
 
 interface SidebarProps {
   currentView: View;
@@ -69,6 +70,8 @@ const Sidebar = ({ currentView, setView }: SidebarProps) => {
           <span className="font-semibold text-sm">Custom Records</span>
         </button>
       </nav>
+
+      <MetaConnect />
 
       <button
         onClick={handleLogout}

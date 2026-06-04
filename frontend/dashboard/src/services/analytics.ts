@@ -1,12 +1,13 @@
-const API_BASE = import.meta.env.VITE_API_URL + '/api/v1';
+const API_BASE = (import.meta as any).env?.VITE_API_BASE ?? '/api/v1';
 const CURRENT_YEAR = '2026';
 
 import {
-  AGE_DEMOGRAPHICS_FACEBOOK,
-  AGE_DEMOGRAPHICS_INSTAGRAM,
-  GENDER_DISTRIBUTION_FACEBOOK,
-  GENDER_DISTRIBUTION_INSTAGRAM,
-} from '../data/mockData';
+  fetchMetaFbAge,
+  fetchMetaFbGender,
+  fetchMetaIgAge,
+  fetchMetaIgGender,
+  fetchMetaMonthlyData,
+} from './meta';
 
 interface DemographicRecord {
   demographic_dimension: string;
@@ -79,11 +80,11 @@ export async function fetchAgeDemographics(yearMonth?: string) {
 }
 
 export async function fetchFacebookAgeDemographics() {
-  return AGE_DEMOGRAPHICS_FACEBOOK;
+  return fetchMetaFbAge();
 }
 
 export async function fetchInstagramAgeDemographics() {
-  return AGE_DEMOGRAPHICS_INSTAGRAM;
+  return fetchMetaIgAge();
 }
 
 export async function fetchGenderDistributionCounts(yearMonth?: string): Promise<GenderDistributionCount[]> {
@@ -115,19 +116,11 @@ export async function fetchGenderDistributionCounts(yearMonth?: string): Promise
 }
 
 export async function fetchFacebookGenderDistributionCounts() {
-  return GENDER_DISTRIBUTION_FACEBOOK.map((item) => ({
-    name: item.name,
-    count: item.value,
-    color: item.color,
-  }));
+  return fetchMetaFbGender();
 }
 
 export async function fetchInstagramGenderDistributionCounts() {
-  return GENDER_DISTRIBUTION_INSTAGRAM.map((item) => ({
-    name: item.name,
-    count: item.value,
-    color: item.color,
-  }));
+  return fetchMetaIgGender();
 }
 
 export async function fetchGenderDistribution(yearMonth?: string) {
@@ -169,8 +162,41 @@ export async function fetchMonthlyWebsiteData() {
     .map(([ym, count]) => {
       const month = new Date(parseInt(ym.slice(0, 4)), parseInt(ym.slice(4, 6)) - 1)
         .toLocaleString('default', { month: 'short' }).toUpperCase();
-      return { month, website: count };
+      return { ym, month, website: count };
     });
+}
+
+export async function fetchMonthlyAllPlatformData() {
+  const [websiteResult, metaResult] = await Promise.allSettled([
+    fetchMonthlyWebsiteData(),
+    fetchMetaMonthlyData(),
+  ]);
+
+  const map = new Map<string, { month: string; website: number; facebook: number; instagram: number }>();
+
+  if (websiteResult.status === 'fulfilled') {
+    for (const d of websiteResult.value) {
+      map.set(d.ym, { month: d.month, website: d.website, facebook: 0, instagram: 0 });
+    }
+  }
+
+  if (metaResult.status === 'fulfilled') {
+    for (const d of metaResult.value) {
+      const label = new Date(parseInt(d.ym.slice(0, 4)), parseInt(d.ym.slice(4, 6)) - 1)
+        .toLocaleString('default', { month: 'short' }).toUpperCase();
+      const existing = map.get(d.ym);
+      if (existing) {
+        existing.facebook = d.facebook;
+        existing.instagram = d.instagram;
+      } else {
+        map.set(d.ym, { month: label, website: 0, facebook: d.facebook, instagram: d.instagram });
+      }
+    }
+  }
+
+  return Array.from(map.entries())
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([, v]) => v);
 }
 
 export async function fetchNZRegions(yearMonth?: string) {

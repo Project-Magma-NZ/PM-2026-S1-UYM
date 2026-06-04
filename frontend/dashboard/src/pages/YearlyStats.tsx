@@ -3,6 +3,7 @@ import GrowthTrajectoryChart from '../components/yearly/GrowthTrajectoryChart';
 import RegionalDistribution from '../components/yearly/RegionalDistribution';
 import AgeDistributionGrid from '../components/yearly/AgeDistributionGrid';
 import GenderRepresentation from '../components/yearly/GenderRepresentation';
+import MetaRegions from '../components/yearly/MetaRegions';
 
 const YearlyStats = () => (
   <div className="space-y-6">
@@ -17,6 +18,8 @@ const YearlyStats = () => (
       <GrowthTrajectoryChart />
       <RegionalDistribution />
     </div>
+
+    <MetaRegions />
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
       <AgeDistributionGrid />
