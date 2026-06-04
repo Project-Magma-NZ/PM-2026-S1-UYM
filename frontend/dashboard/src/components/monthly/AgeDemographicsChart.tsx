@@ -10,32 +10,27 @@ import {
 } from "recharts";
 import {
   AGE_DEMOGRAPHICS,
-  AGE_DEMOGRAPHICS_FACEBOOK,
   AGE_DEMOGRAPHICS_INSTAGRAM,
 } from '../../data/mockData';
 import {
   fetchAgeDemographics,
-  fetchFacebookAgeDemographics,
   fetchInstagramAgeDemographics,
 } from '../../services/analytics';
 import type { AgeDemographic } from '../../types';
 
-type PlatformMode = 'all' | 'meta' | 'facebook' | 'instagram' | 'google';
+type PlatformMode = 'all' | 'meta' | 'instagram' | 'google';
 type PullState = 'checking' | 'live' | 'mock';
 
 type Props = { yearMonth?: string };
 
 const PLATFORM_OPTIONS: { key: PlatformMode; label: string }[] = [
   { key: "all", label: "All" },
-  { key: "meta", label: "Meta" },
-  { key: "facebook", label: "Facebook" },
   { key: "instagram", label: "Instagram" },
   { key: "google", label: "Google" },
 ];
 
 const AGE_GROUPS = AGE_DEMOGRAPHICS.map((item) => item.age);
-const MOCK_FACEBOOK_AGE = AGE_DEMOGRAPHICS_FACEBOOK.map((row) => ({ ...row, google: 0 }));
-const MOCK_INSTAGRAM_AGE = AGE_DEMOGRAPHICS_INSTAGRAM.map((row) => ({ ...row, google: 0 }));
+const MOCK_INSTAGRAM_AGE = AGE_DEMOGRAPHICS_INSTAGRAM.map((row: AgeDemographic) => ({ ...row, google: 0 }));
 
 const combineAgeSources = (...sources: AgeDemographic[][]) => {
   const rowMap = new Map<string, AgeDemographic>();
@@ -58,134 +53,68 @@ const combineAgeSources = (...sources: AgeDemographic[][]) => {
 const AgeDemographicsChart = ({ yearMonth }: Props) => {
   const [mode, setMode] = useState<PlatformMode>('all');
   const [data, setData] = useState<AgeDemographic[]>(() =>
-    combineAgeSources(AGE_DEMOGRAPHICS_FACEBOOK, AGE_DEMOGRAPHICS_INSTAGRAM, AGE_DEMOGRAPHICS),
+    combineAgeSources(MOCK_INSTAGRAM_AGE, AGE_DEMOGRAPHICS),
   );
-  const [pullState, setPullState] = useState<Record<'facebook' | 'instagram', PullState>>({
-    facebook: 'checking',
+  const [pullState, setPullState] = useState<Record<'instagram', PullState>>({
     instagram: 'checking',
   });
 
   useEffect(() => {
     let active = true;
 
-    const loadFacebookData = async () => {
-      try {
-        const facebookData = await fetchFacebookAgeDemographics();
-        const isLive = facebookData.length > 0;
-        if (active) {
-          setPullState((current) => ({ ...current, facebook: isLive ? 'live' : 'mock' }));
-        }
-        return isLive ? facebookData : MOCK_FACEBOOK_AGE;
-      } catch {
-        if (active) {
-          setPullState((current) => ({ ...current, facebook: 'mock' }));
-        }
-        return MOCK_FACEBOOK_AGE;
-      }
-    };
-
     const loadInstagramData = async () => {
       try {
         const instagramData = await fetchInstagramAgeDemographics();
         const isLive = instagramData.length > 0;
         if (active) {
-          setPullState((current) => ({ ...current, instagram: isLive ? 'live' : 'mock' }));
+          setPullState({ instagram: isLive ? 'live' : 'mock' });
         }
         return isLive ? instagramData : MOCK_INSTAGRAM_AGE;
       } catch {
-        if (active) {
-          setPullState((current) => ({ ...current, instagram: 'mock' }));
-        }
+        if (active) setPullState({ instagram: 'mock' });
         return MOCK_INSTAGRAM_AGE;
       }
     };
 
     const loadData = async () => {
-      if (mode === 'facebook') {
-        const facebookData = await loadFacebookData();
-        if (!active) return;
-        setData(facebookData);
-        return;
-      }
-
-      if (mode === 'instagram') {
+      if (mode === 'instagram' || mode === 'meta') {
         const instagramData = await loadInstagramData();
         if (!active) return;
         setData(instagramData);
         return;
       }
 
-      const [facebookData, instagramData] = await Promise.all([
-        loadFacebookData(),
-        loadInstagramData(),
-      ]);
+      const googleData = await fetchAgeDemographics(yearMonth).catch(() => AGE_DEMOGRAPHICS);
       if (!active) return;
 
-      const metaData = combineAgeSources(facebookData, instagramData);
-
-      if (mode === "meta") {
-        setData(metaData);
+      if (mode === 'google') {
+        setData(googleData.map((row) => ({ age: row.age, google: row.google, meta: 0 })));
         return;
       }
 
-      const googleData = await fetchAgeDemographics(yearMonth).catch(
-        () => AGE_DEMOGRAPHICS,
-      );
-      if (!active) return;
-
-      if (mode === "google") {
-        setData(
-          googleData.map((row) => ({
-            age: row.age,
-            google: row.google,
-            meta: 0,
-          })),
-        );
-        return;
-      }
-
-      if (mode === "all") {
-        setData(combineAgeSources(metaData, googleData));
-        return;
+      if (mode === 'all') {
+        const instagramData = await loadInstagramData();
+        if (!active) return;
+        setData(combineAgeSources(instagramData, googleData));
       }
     };
 
     loadData();
-    return () => {
-      active = false;
-    };
+    return () => { active = false; };
   }, [mode, yearMonth]);
 
-  const visibleSources =
-    mode === 'facebook'
-      ? ['facebook' as const]
-      : mode === 'instagram'
-      ? ['instagram' as const]
-      : mode === 'google'
-      ? []
-      : ['facebook' as const, 'instagram' as const];
+  const visibleSources = mode === 'google' ? [] : ['instagram' as const];
 
-  const statusText = (source: 'facebook' | 'instagram') => {
-    if (source === 'facebook') {
-      if (pullState.facebook === 'live') return 'Facebook age: Live';
-      if (pullState.facebook === 'mock') return 'Facebook age: Not available (New Page Experience)';
-      return 'Facebook age: Checking';
-    }
+  const statusText = (_source: 'instagram') => {
     if (pullState.instagram === 'live') return 'Instagram age: Live';
     if (pullState.instagram === 'mock') return 'Instagram age: Mock fallback';
     return 'Instagram age: Checking';
   };
 
   const platformLabel =
-    mode === "all"
-      ? "All sources combined"
-      : mode === "meta"
-        ? "Meta (Facebook + Instagram)"
-        : mode === "facebook"
-          ? "Facebook"
-          : mode === "instagram"
-            ? "Instagram"
-            : "Google Analytics";
+    mode === 'all' ? 'Google + Instagram combined'
+    : mode === 'meta' || mode === 'instagram' ? 'Instagram'
+    : 'Google Analytics';
 
   return (
     <div className="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
