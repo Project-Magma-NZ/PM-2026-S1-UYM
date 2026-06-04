@@ -2,26 +2,22 @@ import { useEffect, useState } from 'react';
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import {
   GENDER_DISTRIBUTION,
-  GENDER_DISTRIBUTION_FACEBOOK,
   GENDER_DISTRIBUTION_INSTAGRAM,
 } from '../../data/mockData';
 import {
-  fetchFacebookGenderDistributionCounts,
   fetchGenderDistributionCounts,
   fetchInstagramGenderDistributionCounts,
   type GenderDistributionCount,
 } from '../../services/analytics';
 import type { GenderData } from '../../types';
 
-type PlatformMode = 'all' | 'meta' | 'facebook' | 'instagram' | 'google';
+type PlatformMode = 'all' | 'meta' | 'instagram' | 'google';
 type PullState = 'checking' | 'live' | 'mock';
 
 type Props = { yearMonth?: string };
 
 const PLATFORM_OPTIONS: { key: PlatformMode; label: string }[] = [
   { key: 'all', label: 'All' },
-  { key: 'meta', label: 'Meta' },
-  { key: 'facebook', label: 'Facebook' },
   { key: 'instagram', label: 'Instagram' },
   { key: 'google', label: 'Google' },
 ];
@@ -65,10 +61,9 @@ const convertCountsToData = (counts: GenderDistributionCount[]): GenderData[] =>
 const GenderDistributionChart = ({ yearMonth }: Props) => {
   const [mode, setMode] = useState<PlatformMode>('all');
   const [data, setData] = useState<GenderData[]>(() =>
-    combineGenderData(GENDER_DISTRIBUTION_FACEBOOK, GENDER_DISTRIBUTION_INSTAGRAM),
+    combineGenderData(GENDER_DISTRIBUTION_INSTAGRAM.map((i) => ({ ...i })), GENDER_DISTRIBUTION),
   );
-  const [pullState, setPullState] = useState<Record<'facebook' | 'instagram', PullState>>({
-    facebook: 'checking',
+  const [pullState, setPullState] = useState<Record<'instagram', PullState>>({
     instagram: 'checking',
   });
 
@@ -77,115 +72,55 @@ const GenderDistributionChart = ({ yearMonth }: Props) => {
 
     const loadGoogleData = async () => {
       try {
-        const googleCounts = await fetchGenderDistributionCounts(yearMonth);
-        return convertCountsToData(googleCounts);
+        const counts = await fetchGenderDistributionCounts(yearMonth);
+        return convertCountsToData(counts);
       } catch {
         return GENDER_DISTRIBUTION.map((item) => ({ ...item }));
       }
     };
 
-    const loadFacebookData = async () => {
-      try {
-        const facebookCounts = await fetchFacebookGenderDistributionCounts();
-        const facebookData = convertCountsToData(facebookCounts);
-        const isLive = facebookData.length > 0;
-        if (active) {
-          setPullState((current) => ({ ...current, facebook: isLive ? 'live' : 'mock' }));
-        }
-        return isLive ? facebookData : GENDER_DISTRIBUTION_FACEBOOK.map((item) => ({ ...item }));
-      } catch {
-        if (active) {
-          setPullState((current) => ({ ...current, facebook: 'mock' }));
-        }
-        return GENDER_DISTRIBUTION_FACEBOOK.map((item) => ({ ...item }));
-      }
-    };
-
     const loadInstagramData = async () => {
       try {
-        const instagramCounts = await fetchInstagramGenderDistributionCounts();
-        const instagramData = convertCountsToData(instagramCounts);
-        const isLive = instagramData.length > 0;
-        if (active) {
-          setPullState((current) => ({ ...current, instagram: isLive ? 'live' : 'mock' }));
-        }
-        return isLive ? instagramData : GENDER_DISTRIBUTION_INSTAGRAM.map((item) => ({ ...item }));
+        const counts = await fetchInstagramGenderDistributionCounts();
+        const igData = convertCountsToData(counts);
+        const isLive = igData.length > 0;
+        if (active) setPullState({ instagram: isLive ? 'live' : 'mock' });
+        return isLive ? igData : GENDER_DISTRIBUTION_INSTAGRAM.map((item) => ({ ...item }));
       } catch {
-        if (active) {
-          setPullState((current) => ({ ...current, instagram: 'mock' }));
-        }
+        if (active) setPullState({ instagram: 'mock' });
         return GENDER_DISTRIBUTION_INSTAGRAM.map((item) => ({ ...item }));
       }
     };
 
     const loadData = async () => {
-      if (mode === 'facebook') {
-        const facebookData = await loadFacebookData();
+      if (mode === 'instagram' || mode === 'meta') {
+        const igData = await loadInstagramData();
         if (!active) return;
-        setData(normalizeToPercent(facebookData));
-        return;
-      }
-
-      if (mode === 'instagram') {
-        const instagramData = await loadInstagramData();
-        if (!active) return;
-        setData(normalizeToPercent(instagramData));
-        return;
-      }
-
-      if (mode === 'meta') {
-        const [facebookData, instagramData] = await Promise.all([
-          loadFacebookData(),
-          loadInstagramData(),
-        ]);
-        if (!active) return;
-        setData(combineGenderData(facebookData, instagramData));
+        setData(normalizeToPercent(igData));
         return;
       }
 
       if (mode === 'google') {
-        const googleCounts = await loadGoogleData();
+        const googleData = await loadGoogleData();
         if (!active) return;
-        setData(normalizeToPercent(googleCounts));
+        setData(normalizeToPercent(googleData));
         return;
       }
 
       if (mode === 'all') {
-        const [googleData, fbData, igData] = await Promise.all([
-          loadGoogleData(),
-          loadFacebookData(),
-          loadInstagramData(),
-        ]);
-
+        const [googleData, igData] = await Promise.all([loadGoogleData(), loadInstagramData()]);
         if (!active) return;
-
-        const allCombined = combineGenderData(googleData, fbData, igData);
-        setData(allCombined);
+        setData(combineGenderData(googleData, igData));
       }
     };
 
     loadData();
-
-    return () => {
-      active = false;
-    };
+    return () => { active = false; };
   }, [mode, yearMonth]);
 
-  const visibleSources =
-    mode === 'facebook'
-      ? ['facebook' as const]
-      : mode === 'instagram'
-      ? ['instagram' as const]
-      : mode === 'google'
-      ? []
-      : ['facebook' as const, 'instagram' as const];
+  const visibleSources = mode === 'google' ? [] : ['instagram' as const];
 
-  const statusText = (source: 'facebook' | 'instagram') => {
-    if (source === 'facebook') {
-      if (pullState.facebook === 'live') return 'Facebook gender: Live';
-      if (pullState.facebook === 'mock') return 'Facebook gender: Not available (New Page Experience)';
-      return 'Facebook gender: Checking';
-    }
+  const statusText = (_source: 'instagram') => {
     if (pullState.instagram === 'live') return 'Instagram gender: Live';
     if (pullState.instagram === 'mock') return 'Instagram gender: Mock fallback';
     return 'Instagram gender: Checking';
@@ -198,15 +133,9 @@ const GenderDistributionChart = ({ yearMonth }: Props) => {
   };
 
   const platformLabel =
-    mode === 'all'
-      ? 'Combined Google + Meta data'
-      : mode === 'meta'
-      ? 'Meta (Facebook + Instagram)'
-      : mode === 'facebook'
-      ? 'Facebook'
-      : mode === 'instagram'
-      ? 'Instagram'
-      : 'Google Analytics';
+    mode === 'all' ? 'Google + Instagram combined'
+    : mode === 'meta' || mode === 'instagram' ? 'Instagram'
+    : 'Google Analytics';
 
   return (
     <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col">

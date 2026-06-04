@@ -7,10 +7,10 @@ const MetaConnect = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchMetaStatus().then((s) => {
-      setStatus(s);
-      setLoading(false);
-    });
+    fetchMetaStatus()
+      .then((s) => setStatus(s))
+      .catch(() => setStatus({ connected: false, page_name: null }))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
