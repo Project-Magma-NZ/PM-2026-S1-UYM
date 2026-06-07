@@ -29,16 +29,16 @@ const MonthlyStats = () => {
       .then((m) => setMonths(m))
       .catch(() => {});
 
-    Promise.all([fetchMetaFbInsights(), fetchMetaIgInsights()])
+    Promise.all([fetchMetaFbInsights(), fetchMetaIgInsights(selected === 'YTD' ? undefined : selected)])
       .then(([fb, ig]) => {
         setFbViews(fb.page_followers || fb.page_fans || fb.page_impressions || fb.page_reach || 0);
-        setIgViews(ig.reach || ig.impressions || ig.views || 0);
+        setIgViews(ig.reach || ig.impressions || 0);
       })
       .catch(() => {
         setFbViews(0);
         setIgViews(0);
       });
-  }, []);
+  }, [selected]);
 
   useEffect(() => {
     fetchKPIs(selected)
