@@ -8,23 +8,23 @@ router = APIRouter(tags=["Meta"])
 
 GRAPH_API_BASE = "https://graph.facebook.com/v21.0"
 
-META_PAGE_ACCESS_TOKEN = os.getenv("META_PAGE_ACCESS_TOKEN", "")
-META_PAGE_ID = os.getenv("META_PAGE_ID", "")
-META_IG_ACCOUNT_ID = os.getenv("META_IG_ACCOUNT_ID", "")
-META_PAGE_NAME = os.getenv("META_PAGE_NAME", "")
-
 
 def _get_connection() -> dict:
-    if not META_PAGE_ACCESS_TOKEN or not META_PAGE_ID:
+    token = os.getenv("META_PAGE_ACCESS_TOKEN", "")
+    page_id = os.getenv("META_PAGE_ID", "")
+    ig_id = os.getenv("META_IG_ACCOUNT_ID", "")
+    page_name = os.getenv("META_PAGE_NAME", "")
+    print(f"[Meta] _get_connection: token_set={bool(token)}, page_id={page_id or 'MISSING'}, ig_id={ig_id or 'MISSING'}")
+    if not token or not page_id:
         raise HTTPException(
             status_code=503,
             detail="META_PAGE_ACCESS_TOKEN and META_PAGE_ID must be set in the environment",
         )
     return {
-        "page_id": META_PAGE_ID,
-        "page_name": META_PAGE_NAME,
-        "page_access_token": META_PAGE_ACCESS_TOKEN,
-        "ig_account_id": META_IG_ACCOUNT_ID,
+        "page_id": page_id,
+        "page_name": page_name,
+        "page_access_token": token,
+        "ig_account_id": ig_id,
     }
 
 
@@ -55,15 +55,19 @@ async def _optional_graph_get(path: str, params: dict) -> dict | None:
 
 @router.get("/meta/oauth/status")
 async def meta_status():
-    facebook_connected = bool(META_PAGE_ACCESS_TOKEN and META_PAGE_ID)
-    instagram_connected = bool(META_IG_ACCOUNT_ID)
+    token = os.getenv("META_PAGE_ACCESS_TOKEN", "")
+    page_id = os.getenv("META_PAGE_ID", "")
+    ig_id = os.getenv("META_IG_ACCOUNT_ID", "")
+    page_name = os.getenv("META_PAGE_NAME", "")
+    facebook_connected = bool(token and page_id)
+    instagram_connected = bool(ig_id)
     return {
         "connected": facebook_connected or instagram_connected,
         "facebook_connected": facebook_connected,
         "instagram_connected": instagram_connected,
-        "page_name": META_PAGE_NAME or None,
-        "page_id": META_PAGE_ID or None,
-        "ig_account_id": META_IG_ACCOUNT_ID or None,
+        "page_name": page_name or None,
+        "page_id": page_id or None,
+        "ig_account_id": ig_id or None,
     }
 
 
