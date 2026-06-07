@@ -179,7 +179,7 @@ async def get_instagram_insights(days: int = 28, since: str | None = None, until
     if not (since and until):
         since, until = _date_range(days)
     data = []
-    for metric in ("reach", "views", "impressions"):
+    for metric in ("reach", "impressions"):
         result = await _optional_graph_get(
             f"{ig_id}/insights",
             {
