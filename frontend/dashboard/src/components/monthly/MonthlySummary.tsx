@@ -50,7 +50,7 @@ const MonthlySummary = ({ yearMonth }: Props) => {
         setIsGoogleReal(false);
       });
 
-    fetchMetaKPIs()
+    fetchMetaKPIs(yearMonth)
       .then((kpis) => {
         if (kpis.length > 0) {
           setMetaKPIs(kpis);

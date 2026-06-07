@@ -147,10 +147,19 @@ export async function fetchMetaFbAge(): Promise<AgeDemographic[]> {
 
 // --- Instagram ---
 
-export async function fetchMetaIgInsights(days = 28): Promise<Record<string, number>> {
+export async function fetchMetaIgInsights(yearMonth?: string): Promise<Record<string, number>> {
   try {
+    let insightsUrl: string;
+    if (yearMonth) {
+      const year = parseInt(yearMonth.slice(0, 4));
+      const month = parseInt(yearMonth.slice(4, 6)) - 1;
+      const { since, until } = _monthRange(year, month, new Date());
+      insightsUrl = `${API_BASE}/meta/instagram/insights?since=${since}&until=${until}`;
+    } else {
+      insightsUrl = `${API_BASE}/meta/instagram/insights?days=28`;
+    }
     const [insightsRes, accountRes] = await Promise.all([
-      fetch(`${API_BASE}/meta/instagram/insights?days=${days}`),
+      fetch(insightsUrl),
       fetch(`${API_BASE}/meta/instagram/account`),
     ]);
     if (!insightsRes.ok) {
@@ -162,8 +171,7 @@ export async function fetchMetaIgInsights(days = 28): Promise<Record<string, num
     return {
       follower_count: accountData.followers_count ?? 0,
       reach: sumMetricValues(getMetric(data, 'reach')?.values ?? []),
-      views: sumMetricValues(getMetric(data, 'views')?.values ?? []),
-      impressions: sumMetricValues(getMetric(data, 'views')?.values ?? []) || sumMetricValues(getMetric(data, 'impressions')?.values ?? []),
+      impressions: sumMetricValues(getMetric(data, 'impressions')?.values ?? []),
     };
   } catch (e) {
     console.error('[Meta] IG insights exception:', e);
@@ -301,7 +309,7 @@ export async function fetchMetaMonthlyData(): Promise<{ ym: string; facebook: nu
       const raw = await fetch(`${API_BASE}/meta/instagram/insights?since=${since}&until=${until}`)
         .then(r => r.ok ? r.json() : null)
         .catch(() => null);
-      const metric = raw?.data?.find((d: any) => ['reach', 'views', 'impressions'].includes(d.name));
+      const metric = raw?.data?.find((d: any) => ['reach', 'impressions'].includes(d.name));
       const total = (metric?.values ?? []).reduce((s: number, v: any) => s + (v.value ?? 0), 0);
       if (total > 0) igByMonth[ym] = total;
     })
@@ -329,8 +337,8 @@ export async function fetchMetaMonthlyData(): Promise<{ ym: string; facebook: nu
 
 // --- Combined KPIs for MonthlySummary ---
 
-export async function fetchMetaKPIs(): Promise<KPIData[]> {
-  const [status, fb, ig] = await Promise.all([fetchMetaStatus(), fetchMetaFbInsights(), fetchMetaIgInsights()]);
+export async function fetchMetaKPIs(yearMonth?: string): Promise<KPIData[]> {
+  const [status, fb, ig] = await Promise.all([fetchMetaStatus(), fetchMetaFbInsights(), fetchMetaIgInsights(yearMonth)]);
 
   const hasFb = Boolean(status.facebook_connected);
   const hasIg = Boolean(status.instagram_connected);
