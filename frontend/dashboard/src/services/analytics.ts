@@ -1,4 +1,4 @@
-const API_BASE = (import.meta as any).env?.VITE_API_BASE ?? '/api/v1';
+const API_BASE = `${(import.meta as any).env?.VITE_API_URL ?? ''}/api/v1`;
 const CURRENT_YEAR = '2026';
 
 import {
