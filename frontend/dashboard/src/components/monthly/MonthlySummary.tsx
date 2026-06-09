@@ -11,15 +11,20 @@ interface Props {
 
 type DataSource = 'all' | 'google' | 'meta';
 
+const PAGE_SIZE = 4;
+
 const MonthlySummary = ({ yearMonth }: Props) => {
   const [selectedSource, setSelectedSource] = useState<DataSource>('all');
+
   const [googleKPIs, setGoogleKPIs] = useState<KPIData[]>(MONTHLY_KPIS);
   const [metaKPIs, setMetaKPIs] = useState<KPIData[]>(MONTHLY_KPIS);
+
   const [isGoogleReal, setIsGoogleReal] = useState(false);
   const [isMetaReal, setIsMetaReal] = useState(false);
 
+  const [page, setPage] = useState(0);
+
   useEffect(() => {
-    // Google Analytics
     fetchKPIs(yearMonth)
       .then(({ totalActive, totalNew, engagementRate }) => {
         setGoogleKPIs([
@@ -53,16 +58,15 @@ const MonthlySummary = ({ yearMonth }: Props) => {
         setIsGoogleReal(false);
       });
 
-    // Meta KPIs
     fetchMetaKPIs(yearMonth)
       .then((kpis) => {
         if (kpis.length > 0) {
-          const labelled = kpis.map((kpi) => ({
-            ...kpi,
-            label: `${kpi.label} (Meta)`,
-          }));
-
-          setMetaKPIs(labelled);
+          setMetaKPIs(
+            kpis.map((kpi) => ({
+              ...kpi,
+              label: `${kpi.label} (Meta)`,
+            }))
+          );
           setIsMetaReal(true);
         } else {
           setMetaKPIs(MONTHLY_KPIS);
@@ -73,9 +77,11 @@ const MonthlySummary = ({ yearMonth }: Props) => {
         setMetaKPIs(MONTHLY_KPIS);
         setIsMetaReal(false);
       });
+
+    setPage(0); // reset page when switching month
   }, [yearMonth]);
 
-  const getFilteredKPIs = (): KPIData[] => {
+  const allKPIs = (() => {
     switch (selectedSource) {
       case 'google':
         return isGoogleReal ? googleKPIs : MONTHLY_KPIS;
@@ -90,48 +96,84 @@ const MonthlySummary = ({ yearMonth }: Props) => {
           ...(isMetaReal ? metaKPIs : MONTHLY_KPIS),
         ];
     }
-  };
+  })();
+
+  const totalPages = Math.ceil(allKPIs.length / PAGE_SIZE);
+
+  const paginatedKPIs = allKPIs.slice(
+    page * PAGE_SIZE,
+    page * PAGE_SIZE + PAGE_SIZE
+  );
 
   const isMock =
     (selectedSource === 'all' && !isGoogleReal && !isMetaReal) ||
     (selectedSource === 'google' && !isGoogleReal) ||
     (selectedSource === 'meta' && !isMetaReal);
 
-  return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      {/* Header */}
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
-        <div>
-          <h3 className="text-base font-black text-slate-900">
-            Key Performance Metrics
-            {isMock && (
-              <span className="ml-2 text-sm font-normal text-orange-600">
-                Mock Data
-              </span>
-            )}
-          </h3>
-        </div>
+  const nextPage = () => {
+    if (page < totalPages - 1) setPage(page + 1);
+  };
 
-        {/* Source selector */}
-        <div>
-          <select
-            id="data-source"
-            value={selectedSource}
-            onChange={(e) => setSelectedSource(e.target.value as DataSource)}
-            className="block px-4 py-2 border border-slate-200 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-          >
-            <option value="all">All</option>
-            <option value="google">Google Analytics</option>
-            <option value="meta">Meta</option>
-          </select>
-        </div>
+  const prevPage = () => {
+    if (page > 0) setPage(page - 1);
+  };
+
+  return (
+    <div className="bg-white p-6 rounded-lg shadow-md space-y-4">
+
+      {/* Header */}
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <h3 className="text-base font-black text-slate-900">
+          Key Performance Metrics
+          {isMock && (
+            <span className="ml-2 text-sm font-normal text-orange-600">
+              Mock Data
+            </span>
+          )}
+        </h3>
+
+        <select
+          value={selectedSource}
+          onChange={(e) => {
+            setSelectedSource(e.target.value as DataSource);
+            setPage(0);
+          }}
+          className="px-4 py-2 border border-slate-200 rounded-xl"
+        >
+          <option value="all">All</option>
+          <option value="google">Google Analytics</option>
+          <option value="meta">Meta</option>
+        </select>
       </div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {getFilteredKPIs().map((kpi, i) => (
+        {paginatedKPIs.map((kpi, i) => (
           <StatsCard key={i} data={kpi} />
         ))}
+      </div>
+
+      {/* Pagination */}
+      <div className="flex items-center justify-between pt-2">
+        <button
+          onClick={prevPage}
+          disabled={page === 0}
+          className="px-4 py-2 text-sm font-bold rounded-lg bg-slate-100 disabled:opacity-40"
+        >
+          Prev
+        </button>
+
+        <span className="text-sm text-slate-500 font-semibold">
+          Page {page + 1} of {totalPages || 1}
+        </span>
+
+        <button
+          onClick={nextPage}
+          disabled={page >= totalPages - 1}
+          className="px-4 py-2 text-sm font-bold rounded-lg bg-slate-100 disabled:opacity-40"
+        >
+          Next
+        </button>
       </div>
     </div>
   );
