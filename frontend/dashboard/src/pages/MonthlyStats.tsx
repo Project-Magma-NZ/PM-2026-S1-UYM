@@ -75,7 +75,7 @@ const MonthlyStats = () => {
           </select>
 
           <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500">
-            ▼
+            ▾
           </span>
         </div>
       </div>
@@ -87,7 +87,10 @@ const MonthlyStats = () => {
             ? "Year-to-Date Targets"
             : `${formatYearMonth(selected)} Targets`}
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          {/* Website Visitors */}
           <div>
             <div className="flex justify-between text-sm font-bold mb-2">
               <span className="text-slate-600">Website Unique Visitors</span>
@@ -96,64 +99,77 @@ const MonthlyStats = () => {
                 {WEBSITE_TARGET.toLocaleString()}
               </span>
             </div>
+
             <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
               <div
                 className="h-full bg-brand-yellow rounded-full transition-all duration-700"
                 style={{ width: `${targetPercent}%` }}
               />
             </div>
+
             <p className="text-[11px] text-slate-400 font-bold mt-1">
               {targetPercent.toFixed(1)}% of 2026 target reached
             </p>
           </div>
-          <div className="space-y-4">
-            <div>
-              <div className="flex justify-between text-sm font-bold mb-2">
-                <span className="text-slate-600">Facebook Followers</span>
-                <span className="text-slate-900">
-                  {fbViews === null ? '…' : fbViews > 0 ? fbViews.toLocaleString() : '—'}
-                </span>
-              </div>
-              <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
-                {fbViews !== null && fbViews > 0 && (
-                  <div
-                    className="h-full bg-brand-yellow rounded-full transition-all duration-700"
-                    style={{ width: `${Math.min((fbViews / 5000) * 100, 100)}%` }}
-                  />
-                )}
-              </div>
-              <p className="text-[11px] font-bold mt-1">
-                {fbViews === null
-                  ? <span className="text-slate-400">Loading…</span>
-                  : fbViews > 0
-                    ? <span className="text-emerald-600">Live count — Meta API</span>
-                    : <span className="text-amber-500">No data available</span>}
-              </p>
+
+          {/* Facebook Followers */}
+          <div>
+            <div className="flex justify-between text-sm font-bold mb-2">
+              <span className="text-slate-600">Facebook Followers</span>
+              <span className="text-slate-900">
+                {fbViews === null ? "…" : fbViews > 0 ? fbViews.toLocaleString() : "—"}
+              </span>
             </div>
-            <div>
-              <div className="flex justify-between text-sm font-bold mb-2">
-                <span className="text-slate-600">Instagram Reach</span>
-                <span className="text-slate-900">
-                  {igViews === null ? '…' : igViews > 0 ? igViews.toLocaleString() : '—'}
-                </span>
-              </div>
-              <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
-                {igViews !== null && igViews > 0 && (
-                  <div
-                    className="h-full bg-brand-brown rounded-full transition-all duration-700"
-                    style={{ width: `${Math.min((igViews / 5000) * 100, 100)}%` }}
-                  />
-                )}
-              </div>
-              <p className="text-[11px] font-bold mt-1">
-                {igViews === null
-                  ? <span className="text-slate-400">Loading…</span>
-                  : igViews > 0
-                    ? <span className="text-emerald-600">Last 28 days — Meta API</span>
-                    : <span className="text-amber-500">No reach data available</span>}
-              </p>
+
+            <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+              {fbViews !== null && fbViews > 0 && (
+                <div
+                  className="h-full bg-brand-yellow rounded-full transition-all duration-700"
+                  style={{ width: `${Math.min((fbViews / 5000) * 100, 100)}%` }}
+                />
+              )}
             </div>
+
+            <p className="text-[11px] font-bold mt-1">
+              {fbViews === null ? (
+                <span className="text-slate-400">Loading…</span>
+              ) : fbViews > 0 ? (
+                <span className="text-emerald-600">Live count — Meta API</span>
+              ) : (
+                <span className="text-amber-500">No data available</span>
+              )}
+            </p>
           </div>
+
+          {/* Instagram Reach */}
+          <div>
+            <div className="flex justify-between text-sm font-bold mb-2">
+              <span className="text-slate-600">Instagram Reach</span>
+              <span className="text-slate-900">
+                {igViews === null ? "…" : igViews > 0 ? igViews.toLocaleString() : "—"}
+              </span>
+            </div>
+
+            <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+              {igViews !== null && igViews > 0 && (
+                <div
+                  className="h-full bg-brand-brown rounded-full transition-all duration-700"
+                  style={{ width: `${Math.min((igViews / 5000) * 100, 100)}%` }}
+                />
+              )}
+            </div>
+
+            <p className="text-[11px] font-bold mt-1">
+              {igViews === null ? (
+                <span className="text-slate-400">Loading…</span>
+              ) : igViews > 0 ? (
+                <span className="text-emerald-600">Last 28 days — Meta API</span>
+              ) : (
+                <span className="text-amber-500">No reach data available</span>
+              )}
+            </p>
+          </div>
+
         </div>
       </div>
 
