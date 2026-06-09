@@ -7,6 +7,7 @@ import { fetchAvailableMonths, fetchKPIs } from '../services/analytics';
 import { fetchMetaFbInsights, fetchMetaIgInsights } from '../services/meta';
 
 const WEBSITE_TARGET = 6800;
+const MONTHLY_TARGET = WEBSITE_TARGET / 12;
 
 function formatYearMonth(ym: string): string {
   const year = parseInt(ym.slice(0, 4));
@@ -46,7 +47,15 @@ const MonthlyStats = () => {
       .catch(() => {});
   }, [selected]);
 
-  const targetPercent = Math.min((websiteVisitors / WEBSITE_TARGET) * 100, 100);
+  const activeWebsiteTarget =
+    selected === "YTD"
+      ? WEBSITE_TARGET
+      : MONTHLY_TARGET;
+
+  const targetPercent = Math.min(
+    (websiteVisitors / activeWebsiteTarget) * 100,
+    100
+  );
 
   return (
     <div className="space-y-6">
@@ -108,7 +117,9 @@ const MonthlyStats = () => {
             </div>
 
             <p className="text-[11px] text-slate-400 font-bold mt-1">
-              {targetPercent.toFixed(1)}% of 2026 target reached
+              {targetPercent.toFixed(1)}% of {
+                selected === "YTD" ? "2026 target" : "monthly target"
+              } reached
             </p>
           </div>
 
