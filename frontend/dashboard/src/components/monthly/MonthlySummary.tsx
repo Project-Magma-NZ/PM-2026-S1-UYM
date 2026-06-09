@@ -5,25 +5,11 @@ import { fetchKPIs } from '../../services/analytics';
 import { fetchMetaKPIs } from '../../services/meta';
 import type { KPIData } from '../../types';
 
-interface Props { yearMonth?: string; }
+interface Props {
+  yearMonth?: string;
+}
 
 type DataSource = 'all' | 'google' | 'meta';
-
-const combineKPIs = (a: KPIData[], b: KPIData[]): KPIData[] => {
-  const map = new Map<string, KPIData>();
-  [...a, ...b].forEach(kpi => {
-    const key = kpi.label;
-    if (map.has(key)) {
-      const existing = map.get(key)!;
-      const valA = parseFloat(String(existing.value).replace(/,/g, '')) || 0;
-      const valB = parseFloat(String(kpi.value).replace(/,/g, '')) || 0;
-      map.set(key, { ...existing, value: (valA + valB).toLocaleString() });
-    } else {
-      map.set(key, kpi);
-    }
-  });
-  return Array.from(map.values());
-};
 
 const MonthlySummary = ({ yearMonth }: Props) => {
   const [selectedSource, setSelectedSource] = useState<DataSource>('all');
@@ -33,27 +19,50 @@ const MonthlySummary = ({ yearMonth }: Props) => {
   const [isMetaReal, setIsMetaReal] = useState(false);
 
   useEffect(() => {
-    // Fetch Google Analytics data
+    // Google Analytics
     fetchKPIs(yearMonth)
-      .then(({ totalActive, totalNew, engagementRate }) => {  
+      .then(({ totalActive, totalNew, engagementRate }) => {
         setGoogleKPIs([
-          { label: 'TOTAL USERS', value: totalActive.toLocaleString(), icon: 'users' },
-          { label: 'NEW USERS', value: totalNew.toLocaleString(), isNew: true, icon: 'user-plus' },
-          { label: 'ENGAGEMENT RATE', value: `${engagementRate}%`, icon: 'mouse' },
-          { label: 'ACTIVE USERS', value: totalActive.toLocaleString(), icon: 'heart' },
+          {
+            label: 'TOTAL USERS (Website)',
+            value: totalActive.toLocaleString(),
+            icon: 'users',
+          },
+          {
+            label: 'NEW USERS (Website)',
+            value: totalNew.toLocaleString(),
+            isNew: true,
+            icon: 'user-plus',
+          },
+          {
+            label: 'ENGAGEMENT RATE (Website)',
+            value: `${engagementRate}%`,
+            icon: 'mouse',
+          },
+          {
+            label: 'ACTIVE USERS (Website)',
+            value: totalActive.toLocaleString(),
+            icon: 'heart',
+          },
         ]);
+
         setIsGoogleReal(true);
       })
       .catch(() => {
-        // Fallback to mock data if fetch fails
         setGoogleKPIs(MONTHLY_KPIS);
         setIsGoogleReal(false);
       });
 
+    // Meta KPIs
     fetchMetaKPIs(yearMonth)
       .then((kpis) => {
         if (kpis.length > 0) {
-          setMetaKPIs(kpis);
+          const labelled = kpis.map((kpi) => ({
+            ...kpi,
+            label: `${kpi.label} (Meta)`,
+          }));
+
+          setMetaKPIs(labelled);
           setIsMetaReal(true);
         } else {
           setMetaKPIs(MONTHLY_KPIS);
@@ -70,17 +79,16 @@ const MonthlySummary = ({ yearMonth }: Props) => {
     switch (selectedSource) {
       case 'google':
         return isGoogleReal ? googleKPIs : MONTHLY_KPIS;
+
       case 'meta':
         return isMetaReal ? metaKPIs : MONTHLY_KPIS;
+
       case 'all':
       default:
-        if (isGoogleReal || isMetaReal) {
-          return combineKPIs(
-            isGoogleReal ? googleKPIs : [],
-            isMetaReal ? metaKPIs : [],
-          );
-        }
-        return MONTHLY_KPIS;
+        return [
+          ...(isGoogleReal ? googleKPIs : MONTHLY_KPIS),
+          ...(isMetaReal ? metaKPIs : MONTHLY_KPIS),
+        ];
     }
   };
 
@@ -91,30 +99,39 @@ const MonthlySummary = ({ yearMonth }: Props) => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
+      {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
         <div>
           <h3 className="text-base font-black text-slate-900">
             Key Performance Metrics
             {isMock && (
-              <span className="ml-2 text-sm font-normal text-orange-600">Mock Data</span>
+              <span className="ml-2 text-sm font-normal text-orange-600">
+                Mock Data
+              </span>
             )}
           </h3>
         </div>
-        <div className="mb-4">
+
+        {/* Source selector */}
+        <div>
           <select
             id="data-source"
             value={selectedSource}
             onChange={(e) => setSelectedSource(e.target.value as DataSource)}
-            className="block p-6 py-2 border border-slate-100 rounded-2xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="block px-4 py-2 border border-slate-200 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           >
-          <option value="all">All</option>
-          <option value="google">Google Analytics</option>
-          <option value="meta">Meta</option>
-        </select>
+            <option value="all">All</option>
+            <option value="google">Google Analytics</option>
+            <option value="meta">Meta</option>
+          </select>
+        </div>
       </div>
-      </div>
+
+      {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {getFilteredKPIs().map((kpi, i) => <StatsCard key={i} data={kpi} />)}
+        {getFilteredKPIs().map((kpi, i) => (
+          <StatsCard key={i} data={kpi} />
+        ))}
       </div>
     </div>
   );
