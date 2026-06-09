@@ -108,10 +108,15 @@ const RegionalDistribution = () => {
             />
             <Tooltip
               cursor={{ fill: '#f8fafc' }}
-              contentStyle={{
-                borderRadius: '10px',
-                border: 'none',
-                boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
+              content={({ active, payload }) => {
+                if (active && payload && payload.length) {
+                  return (
+                    <div className="bg-white rounded-lg border-none shadow-lg px-3 py-1.5 text-sm text-slate-900">
+                      {payload[0].payload.label}: {payload[0].value}%
+                    </div>
+                  );
+                }
+                return null;
               }}
             />
             <Bar
