@@ -18,7 +18,7 @@ const RegionalDistribution = () => {
 
   return (
     <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-      <h3 className="text-base font-black text-slate-900 mb-4">Regional Distribution</h3>
+      <h3 className="text-base font-black text-slate-900 mb-4">Website Regional Distribution</h3>
 
       <div className="relative bg-slate-50 rounded-xl mb-4 overflow-hidden" style={{ height: '220px' }}>
         <ComposableMap
