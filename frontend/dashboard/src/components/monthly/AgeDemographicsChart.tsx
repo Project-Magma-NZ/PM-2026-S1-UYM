@@ -222,8 +222,20 @@ const AgeDemographicsChart = ({ yearMonth }: Props) => {
                 boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
               }}
             />
-            <Bar dataKey="meta" name="Meta" fill="#0f172a" barSize={32} />
-            <Bar dataKey="google" name="Google" fill="#FFB800" barSize={32} />
+            <Bar 
+              dataKey="meta" 
+              name="Meta" 
+              fill="#0f172a" 
+              barSize={32} 
+              radius={[4, 4, 0, 0]}
+            />
+            <Bar 
+              dataKey="google" 
+              name="Google" 
+              fill="#FFB800" 
+              barSize={32} 
+              radius={[4, 4, 0, 0]}
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>

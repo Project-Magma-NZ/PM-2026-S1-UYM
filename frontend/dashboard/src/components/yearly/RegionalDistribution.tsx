@@ -1,76 +1,127 @@
 import { useState, useEffect } from 'react';
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
+import {
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from 'recharts';
 import { fetchNZRegions } from '../../services/analytics';
 
-const WORLD_TOPO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
-const NZ_COUNTRY_ID = '554';
-
-interface Region { label: string; percentage: number; }
+interface Region {
+  label: string;
+  percentage: number;
+}
 
 const RegionalDistribution = () => {
   const [regions, setRegions] = useState<Region[]>([]);
 
   useEffect(() => {
-    fetchNZRegions().then(setRegions).catch(() => {});
+    fetchNZRegions()
+      .then((data) => {
+        // Debug: See what the API actually returns
+        console.log('Raw API data:', data);
+        
+        const nzRegions = new Set([
+          'Northland',
+          'Auckland',
+          'Waikato',
+          'Bay of Plenty',
+          'Gisborne',
+          "Hawke's Bay",
+          'Taranaki',
+          'Manawatū-Whanganui',
+          'Wellington',
+          'Tasman',
+          'Nelson',
+          'Marlborough',
+          'West Coast',
+          'Canterbury',
+          'Otago',
+          'Southland',
+        ]);
+
+        // Debug: Check which regions are being filtered out
+        const filtered = data
+          .filter((r) => {
+            const isValid = nzRegions.has(r.label);
+            if (!isValid) {
+              console.log(`Filtered out: "${r.label}" - not in NZ regions list`);
+            }
+            return isValid;
+          })
+          .sort((a, b) => b.percentage - a.percentage);
+
+        console.log('Filtered regions:', filtered);
+        setRegions(filtered);
+      })
+      .catch((err) => {
+        console.error('Error fetching regions:', err);
+        setRegions([]);
+      });
   }, []);
 
   const topRegion = regions[0];
 
   return (
-    <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-      <h3 className="text-base font-black text-slate-900 mb-4">Website Regional Distribution</h3>
-
-      <div className="relative bg-slate-50 rounded-xl mb-4 overflow-hidden" style={{ height: '220px' }}>
-        <ComposableMap
-          projectionConfig={{ scale: 1800, center: [172, -41] }}
-          style={{ width: '100%', height: '100%' }}
-        >
-          <Geographies geography={WORLD_TOPO_URL}>
-            {({ geographies }) =>
-              geographies.map((geo) => {
-                const isNZ = geo.id === NZ_COUNTRY_ID;
-                return (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    fill={isNZ ? '#4a7c59' : 'transparent'}
-                    stroke={isNZ ? '#3a6347' : 'none'}
-                    strokeWidth={0.5}
-                    style={{
-                      default: { outline: 'none' },
-                      hover: { outline: 'none' },
-                      pressed: { outline: 'none' },
-                    }}
-                  />
-                );
-              })
-            }
-          </Geographies>
-        </ComposableMap>
+    <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm h-full flex flex-col">
+      {/* HEADER */}
+      <div className="flex items-start justify-between mb-4">
+        <div>
+          <h3 className="text-sm font-black text-slate-900">
+            Website Regional Distribution
+          </h3>
+          <p className="text-[11px] font-semibold text-slate-500 mt-0.5">
+            New Zealand traffic breakdown
+          </p>
+        </div>
 
         {topRegion && (
-          <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-md border border-slate-100">
-            <p className="text-[8px] text-slate-400 font-bold uppercase tracking-widest">Top Region</p>
-            <p className="text-sm font-black text-slate-900">{topRegion.label}</p>
+          <div className="text-right">
+            <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">
+              Top Region
+            </p>
+            <p className="text-sm font-black text-slate-900">
+              {topRegion.label}
+            </p>
           </div>
         )}
       </div>
 
-      <div className="space-y-3">
-        {regions.length === 0 && (
-          <p className="text-sm text-slate-400 font-medium">No region data available.</p>
-        )}
-        {regions.map((region, i) => (
-          <div key={i} className="space-y-1">
-            <div className="flex justify-between text-sm font-bold">
-              <span className="text-slate-600">{region.label}</span>
-              <span className="text-slate-900">{region.percentage}%</span>
-            </div>
-            <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-              <div className="h-full bg-slate-900 rounded-full" style={{ width: `${region.percentage}%` }} />
-            </div>
-          </div>
-        ))}
+      {/* CHART */}
+      <div className="flex-1">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            data={regions}
+            layout="vertical"
+            margin={{ top: 5, right: 10, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#f1f5f9" />
+            <XAxis type="number" hide />
+            <YAxis
+              type="category"
+              dataKey="label"
+              width={110}
+              tick={{ fontSize: 11, fill: '#64748b', fontWeight: 600 }}
+            />
+            <Tooltip
+              cursor={{ fill: '#f8fafc' }}
+              contentStyle={{
+                borderRadius: '10px',
+                border: 'none',
+                boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
+              }}
+            />
+            <Bar
+              dataKey="percentage"
+              fill="#0f172a"
+              radius={[0, 6, 6, 0]}
+              barSize={10}
+            />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );
