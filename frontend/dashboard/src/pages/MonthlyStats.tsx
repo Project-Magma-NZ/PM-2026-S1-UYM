@@ -59,22 +59,24 @@ const MonthlyStats = () => {
             Cross-platform insights from Google Analytics
           </p>
         </div>
-        <div className="flex bg-slate-100 p-1 rounded-xl gap-1 flex-wrap justify-end">
-          <button
-            onClick={() => setSelected("YTD")}
-            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${selected === "YTD" ? "bg-white shadow-sm text-slate-900" : "text-slate-500"}`}
+        <div className="relative">
+          <select
+            value={selected}
+            onChange={(e) => setSelected(e.target.value)}
+            className="appearance-none px-4 pr-8 py-2 rounded-xl bg-slate-100 text-sm font-semibold text-slate-700 border border-slate-200"
           >
-            YTD
-          </button>
-          {months.map((m) => (
-            <button
-              key={m}
-              onClick={() => setSelected(m)}
-              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${selected === m ? "bg-white shadow-sm text-slate-900" : "text-slate-500"}`}
-            >
-              {formatYearMonth(m)}
-            </button>
-          ))}
+            <option value="YTD">Year to Date</option>
+
+            {months.map((m) => (
+              <option key={m} value={m}>
+                {formatYearMonth(m)}
+              </option>
+            ))}
+          </select>
+
+          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500">
+            ▼
+          </span>
         </div>
       </div>
 
