@@ -55,23 +55,41 @@ const AgeDemographicsChart = ({ yearMonth }: Props) => {
   const [data, setData] = useState<AgeDemographic[]>(() =>
     combineAgeSources(MOCK_INSTAGRAM_AGE, AGE_DEMOGRAPHICS),
   );
-  const [pullState, setPullState] = useState<Record<'instagram', PullState>>({
+  const [pullState, setPullState] = useState<{
+    instagram: PullState;
+    google: PullState;
+  }>({
     instagram: 'checking',
+    google: 'checking',
   });
 
   useEffect(() => {
     let active = true;
 
+    const loadGoogleData = async () => {
+      try {
+        const googleData = await fetchAgeDemographics(yearMonth);
+        const isLive = googleData.length > 0 && googleData.some(row => row.google > 0);
+        if (active) {
+          setPullState(prev => ({ ...prev, google: isLive ? 'live' : 'mock' }));
+        }
+        return isLive ? googleData : AGE_DEMOGRAPHICS;
+      } catch {
+        if (active) setPullState(prev => ({ ...prev, google: 'mock' }));
+        return AGE_DEMOGRAPHICS;
+      }
+    };
+
     const loadInstagramData = async () => {
       try {
         const instagramData = await fetchInstagramAgeDemographics();
-        const isLive = instagramData.length > 0;
+        const isLive = instagramData.length > 0 && instagramData.some(row => row.meta > 0);
         if (active) {
-          setPullState({ instagram: isLive ? 'live' : 'mock' });
+          setPullState(prev => ({ ...prev, instagram: isLive ? 'live' : 'mock' }));
         }
         return isLive ? instagramData : MOCK_INSTAGRAM_AGE;
       } catch {
-        if (active) setPullState({ instagram: 'mock' });
+        if (active) setPullState(prev => ({ ...prev, instagram: 'mock' }));
         return MOCK_INSTAGRAM_AGE;
       }
     };
@@ -84,16 +102,18 @@ const AgeDemographicsChart = ({ yearMonth }: Props) => {
         return;
       }
 
-      const googleData = await fetchAgeDemographics(yearMonth).catch(() => AGE_DEMOGRAPHICS);
-      if (!active) return;
-
       if (mode === 'google') {
+        const googleData = await loadGoogleData();
+        if (!active) return;
         setData(googleData.map((row) => ({ age: row.age, google: row.google, meta: 0 })));
         return;
       }
 
       if (mode === 'all') {
-        const instagramData = await loadInstagramData();
+        const [googleData, instagramData] = await Promise.all([
+          loadGoogleData(),
+          loadInstagramData(),
+        ]);
         if (!active) return;
         setData(combineAgeSources(instagramData, googleData));
       }
@@ -103,11 +123,24 @@ const AgeDemographicsChart = ({ yearMonth }: Props) => {
     return () => { active = false; };
   }, [mode, yearMonth]);
 
-  const visibleSources = mode === 'google' ? [] : ['instagram' as const];
+  const visibleSources: Array<'instagram' | 'google'> =
+    mode === 'google'
+      ? ['google']
+      : mode === 'instagram'
+      ? ['instagram']
+      : ['google', 'instagram'];
 
-  const statusText = (_source: 'instagram') => {
-    if (pullState.instagram === 'live') return 'Instagram age: Live';
-    if (pullState.instagram === 'mock') return 'Instagram age: Mock fallback';
+  const statusText = (source: 'instagram' | 'google') => {
+    const state = pullState[source];
+
+    if (source === 'google') {
+      if (state === 'live') return 'Google age: Live';
+      if (state === 'mock') return 'Google age: Mock fallback';
+      return 'Google age: Checking';
+    }
+
+    if (state === 'live') return 'Instagram age: Live';
+    if (state === 'mock') return 'Instagram age: Mock fallback';
     return 'Instagram age: Checking';
   };
 
@@ -120,26 +153,30 @@ const AgeDemographicsChart = ({ yearMonth }: Props) => {
     <div className="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-5">
         <div>
-          <h3 className="text-base font-black text-slate-900">Age Demographics</h3>
-          <p className="text-xs font-semibold text-slate-500 mt-1">{platformLabel}</p>
-          {visibleSources.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-2">
-              {visibleSources.map((source) => (
-                <span
-                  key={source}
-                  className={`text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full ${
-                    pullState[source] === 'live'
-                      ? 'bg-green-50 text-green-700'
-                      : pullState[source] === 'mock'
-                      ? 'bg-orange-50 text-orange-700'
-                      : 'bg-slate-100 text-slate-500'
-                  }`}
-                >
-                  {statusText(source)}
-                </span>
-              ))}
-            </div>
-          )}
+          <h3 className="text-base font-black text-slate-900">
+            Age Demographics
+          </h3>
+
+          <p className="text-xs font-semibold text-slate-500 mt-1">
+            {platformLabel}
+          </p>
+
+          <div className="flex flex-wrap gap-2 mt-2">
+            {visibleSources.map((source) => (
+              <span
+                key={source}
+                className={`text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full ${
+                  pullState[source] === 'live'
+                    ? 'bg-green-50 text-green-700'
+                    : pullState[source] === 'mock'
+                    ? 'bg-orange-50 text-orange-700'
+                    : 'bg-slate-100 text-slate-500'
+                }`}
+              >
+                {statusText(source)}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div className="flex flex-wrap gap-2 bg-slate-100 p-1 rounded-xl">
@@ -185,20 +222,8 @@ const AgeDemographicsChart = ({ yearMonth }: Props) => {
                 boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
               }}
             />
-            <Bar
-              dataKey="meta"
-              name="Meta"
-              fill="#0f172a"
-              radius={[4, 4, 0, 0]}
-              barSize={32}
-            />
-            <Bar
-              dataKey="google"
-              name="Google"
-              fill="#FFB800"
-              radius={[4, 4, 0, 0]}
-              barSize={32}
-            />
+            <Bar dataKey="meta" name="Meta" fill="#0f172a" barSize={32} />
+            <Bar dataKey="google" name="Google" fill="#FFB800" barSize={32} />
           </BarChart>
         </ResponsiveContainer>
       </div>
