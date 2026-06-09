@@ -68,7 +68,7 @@ const MetaRegions = () => {
     <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
       <div className="flex justify-between items-start mb-5">
         <div>
-          <h3 className="text-base font-black text-slate-900">Audience Regions</h3>
+          <h3 className="text-base font-black text-slate-900">Instgram Audience Regions</h3>
           <p className="text-xs font-semibold text-slate-400 mt-0.5">Instagram followers by location</p>
         </div>
         <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full bg-green-50 text-green-700">
@@ -82,7 +82,7 @@ const MetaRegions = () => {
       </div>
 
       <p className="text-[10px] text-slate-300 font-bold mt-5 pt-4 border-t border-slate-50">
-        Facebook regional data not available — Meta removed location insights from the New Page Experience API
+        Note: Facebook regional data not available — Meta removed location insights from the New Page Experience API
       </p>
     </div>
   );
