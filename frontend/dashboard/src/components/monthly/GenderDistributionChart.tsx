@@ -60,11 +60,20 @@ const convertCountsToData = (counts: GenderDistributionCount[]): GenderData[] =>
 
 const GenderDistributionChart = ({ yearMonth }: Props) => {
   const [mode, setMode] = useState<PlatformMode>('all');
+
   const [data, setData] = useState<GenderData[]>(() =>
-    combineGenderData(GENDER_DISTRIBUTION_INSTAGRAM.map((i) => ({ ...i })), GENDER_DISTRIBUTION),
+    combineGenderData(
+      GENDER_DISTRIBUTION_INSTAGRAM.map((i) => ({ ...i })),
+      GENDER_DISTRIBUTION,
+    ),
   );
-  const [pullState, setPullState] = useState<Record<'instagram', PullState>>({
+
+  const [pullState, setPullState] = useState<{
+    instagram: PullState;
+    google: PullState;
+  }>({
     instagram: 'checking',
+    google: 'checking',
   });
 
   useEffect(() => {
@@ -73,8 +82,22 @@ const GenderDistributionChart = ({ yearMonth }: Props) => {
     const loadGoogleData = async () => {
       try {
         const counts = await fetchGenderDistributionCounts(yearMonth);
-        return convertCountsToData(counts);
+        const data = convertCountsToData(counts);
+
+        if (active) {
+          setPullState((p) => ({
+            ...p,
+            google: data.length > 0 ? 'live' : 'mock',
+          }));
+        }
+
+        return data.length > 0
+          ? data
+          : GENDER_DISTRIBUTION.map((item) => ({ ...item }));
       } catch {
+        if (active) {
+          setPullState((p) => ({ ...p, google: 'mock' }));
+        }
         return GENDER_DISTRIBUTION.map((item) => ({ ...item }));
       }
     };
@@ -82,47 +105,76 @@ const GenderDistributionChart = ({ yearMonth }: Props) => {
     const loadInstagramData = async () => {
       try {
         const counts = await fetchInstagramGenderDistributionCounts();
-        const igData = convertCountsToData(counts);
-        const isLive = igData.length > 0;
-        if (active) setPullState({ instagram: isLive ? 'live' : 'mock' });
-        return isLive ? igData : GENDER_DISTRIBUTION_INSTAGRAM.map((item) => ({ ...item }));
+        const data = convertCountsToData(counts);
+
+        if (active) {
+          setPullState((p) => ({
+            ...p,
+            instagram: data.length > 0 ? 'live' : 'mock',
+          }));
+        }
+
+        return data.length > 0
+          ? data
+          : GENDER_DISTRIBUTION_INSTAGRAM.map((item) => ({ ...item }));
       } catch {
-        if (active) setPullState({ instagram: 'mock' });
+        if (active) {
+          setPullState((p) => ({ ...p, instagram: 'mock' }));
+        }
         return GENDER_DISTRIBUTION_INSTAGRAM.map((item) => ({ ...item }));
       }
     };
 
     const loadData = async () => {
       if (mode === 'instagram' || mode === 'meta') {
-        const igData = await loadInstagramData();
+        const ig = await loadInstagramData();
         if (!active) return;
-        setData(normalizeToPercent(igData));
+        setData(normalizeToPercent(ig));
         return;
       }
 
       if (mode === 'google') {
-        const googleData = await loadGoogleData();
+        const google = await loadGoogleData();
         if (!active) return;
-        setData(normalizeToPercent(googleData));
+        setData(normalizeToPercent(google));
         return;
       }
 
       if (mode === 'all') {
-        const [googleData, igData] = await Promise.all([loadGoogleData(), loadInstagramData()]);
+        const [google, ig] = await Promise.all([
+          loadGoogleData(),
+          loadInstagramData(),
+        ]);
+
         if (!active) return;
-        setData(combineGenderData(googleData, igData));
+        setData(combineGenderData(google, ig));
       }
     };
 
     loadData();
-    return () => { active = false; };
+    return () => {
+      active = false;
+    };
   }, [mode, yearMonth]);
 
-  const visibleSources = mode === 'google' ? [] : ['instagram' as const];
+  const visibleSources: Array<'instagram' | 'google'> =
+    mode === 'google'
+      ? ['google']
+      : mode === 'instagram'
+      ? ['instagram']
+      : ['google', 'instagram'];
 
-  const statusText = (_source: 'instagram') => {
-    if (pullState.instagram === 'live') return 'Instagram gender: Live';
-    if (pullState.instagram === 'mock') return 'Instagram gender: Mock fallback';
+  const statusText = (source: 'instagram' | 'google') => {
+    const state = pullState[source];
+
+    if (source === 'google') {
+      if (state === 'live') return 'Google gender: Live';
+      if (state === 'mock') return 'Google gender: Mock fallback';
+      return 'Google gender: Checking';
+    }
+
+    if (state === 'live') return 'Instagram gender: Live';
+    if (state === 'mock') return 'Instagram gender: Mock fallback';
     return 'Instagram gender: Checking';
   };
 
@@ -133,34 +185,46 @@ const GenderDistributionChart = ({ yearMonth }: Props) => {
   };
 
   const platformLabel =
-    mode === 'all' ? 'Google + Instagram combined'
-    : mode === 'meta' || mode === 'instagram' ? 'Instagram'
-    : 'Google Analytics';
+    mode === 'all'
+      ? 'Live Data (Google + Instagram)'
+      : mode === 'instagram' || mode === 'meta'
+      ? 'Instagram'
+      : 'Google Analytics';
 
   return (
     <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
         <div>
-          <h3 className="text-base font-black text-slate-900">Gender Distribution</h3>
-          <p className="text-xs font-semibold text-slate-500 mt-1">{platformLabel}</p>
-          {visibleSources.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-2">
-              {visibleSources.map((source) => (
-                <span
-                  key={source}
-                  className={`text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full ${
-                    pullState[source] === 'live'
-                      ? 'bg-green-50 text-green-700'
-                      : pullState[source] === 'mock'
-                      ? 'bg-orange-50 text-orange-700'
-                      : 'bg-slate-100 text-slate-500'
-                  }`}
-                >
-                  {statusText(source)}
-                </span>
-              ))}
-            </div>
-          )}
+          <h3 className="text-base font-black text-slate-900">
+            Gender Distribution
+          </h3>
+
+          <p className="text-xs font-semibold text-slate-500 mt-1">
+            {platformLabel}
+          </p>
+
+<div className="flex flex-wrap gap-2 mt-2">
+  {mode === 'all' ? (
+    <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full bg-green-50 text-green-700">
+      gender Data: live
+    </span>
+  ) : (
+    visibleSources.map((source) => (
+      <span
+        key={source}
+        className={`text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full ${
+          pullState[source] === 'live'
+            ? 'bg-green-50 text-green-700'
+            : pullState[source] === 'mock'
+            ? 'bg-orange-50 text-orange-700'
+            : 'bg-slate-100 text-slate-500'
+        }`}
+      >
+        {statusText(source)}
+      </span>
+    ))
+  )}
+</div>
         </div>
 
         <div className="flex flex-wrap gap-2 bg-slate-100 p-1 rounded-xl">
@@ -180,7 +244,9 @@ const GenderDistributionChart = ({ yearMonth }: Props) => {
 
       <div className="flex-1 relative flex items-center justify-center">
         <div className="absolute text-center">
-          <p className="text-3xl font-black text-slate-900">{dominant.value.toFixed(1)}%</p>
+          <p className="text-3xl font-black text-slate-900">
+            {dominant.value.toFixed(1)}%
+          </p>
           <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
             {dominant.name} Majority
           </p>
@@ -188,7 +254,13 @@ const GenderDistributionChart = ({ yearMonth }: Props) => {
 
         <ResponsiveContainer width="100%" height={210}>
           <PieChart>
-            <Pie data={data} innerRadius={65} outerRadius={82} paddingAngle={5} dataKey="value">
+            <Pie
+              data={data}
+              innerRadius={65}
+              outerRadius={82}
+              paddingAngle={5}
+              dataKey="value"
+            >
               {data.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.color} />
               ))}
@@ -201,10 +273,17 @@ const GenderDistributionChart = ({ yearMonth }: Props) => {
         {data.map((item, i) => (
           <div key={i} className="flex justify-between items-center">
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
-              <span className="text-sm font-bold text-slate-600">{item.name}</span>
+              <div
+                className="w-3 h-3 rounded-full"
+                style={{ backgroundColor: item.color }}
+              />
+              <span className="text-sm font-bold text-slate-600">
+                {item.name}
+              </span>
             </div>
-            <span className="text-sm font-black text-slate-900">{item.value.toFixed(1)}%</span>
+            <span className="text-sm font-black text-slate-900">
+              {item.value.toFixed(1)}%
+            </span>
           </div>
         ))}
       </div>
