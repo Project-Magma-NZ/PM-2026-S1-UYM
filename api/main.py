@@ -5,6 +5,7 @@ from api.config import settings
 from api.routes.demographics import router as demographics_router
 from api.routes.health import router as health_router
 from api.routes.meta import router as meta_router
+from api.routes.metrics import router as metrics_router
 
 app = FastAPI(
     title="GA4 Demographics API",
@@ -23,3 +24,4 @@ app.add_middleware(
 app.include_router(health_router)
 app.include_router(demographics_router, prefix=settings.api_prefix)
 app.include_router(meta_router, prefix=settings.api_prefix)
+app.include_router(metrics_router, prefix=settings.api_prefix)  
